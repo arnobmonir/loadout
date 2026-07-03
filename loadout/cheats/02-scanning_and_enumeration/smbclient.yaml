@@ -1,0 +1,18 @@
+tool: smbclient
+tags: [enumeration, smb, m05]
+exam_hint: "SMB/CIFS client — list shares, transfer files"
+docs:
+  - "man:smbclient"
+
+actions:
+  - title: list shares
+    desc: List available SMB shares (null session)
+    command: "smbclient -L //{{ip}} -N"
+
+  - title: connect share
+    desc: Interactive session on share
+    command: "smbclient //{{ip}}/{{share|C$}} -U {{user}}%{{pass}}"
+
+  - title: download file
+    desc: Get file from share non-interactively
+    command: "smbclient //{{ip}}/{{share|share}} -U {{user}}%{{pass}} -c 'get remote.txt'"

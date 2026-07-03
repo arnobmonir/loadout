@@ -1,0 +1,22 @@
+tool: curl
+tags: [network, web, m11]
+exam_hint: "HTTP client — headers, methods, file transfer, API testing"
+docs:
+  - "man:curl"
+
+actions:
+  - title: GET request
+    desc: Fetch URL with response headers
+    command: "curl -i http://{{ip}}/"
+
+  - title: POST JSON
+    desc: POST JSON body to endpoint
+    command: "curl -X POST http://{{ip}}/api -H 'Content-Type: application/json' -d '{\"user\":\"{{user}}\"}'"
+
+  - title: download file
+    desc: Download file to disk
+    command: "curl -o {{output|file.bin}} http://{{ip}}/file"
+
+  - title: custom headers
+    desc: Request with custom Host header
+    command: "curl -H 'Host: {{domain}}' http://{{ip}}/"

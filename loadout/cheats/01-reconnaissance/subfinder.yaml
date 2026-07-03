@@ -1,0 +1,18 @@
+tool: subfinder
+tags: [recon, dns, m02]
+exam_hint: "Passive subdomain discovery using OSINT sources"
+docs:
+  - https://github.com/projectdiscovery/subfinder
+
+actions:
+  - title: passive subdomains
+    desc: Enumerate subdomains for domain
+    command: "subfinder -d {{domain}} -silent"
+
+  - title: save output
+    desc: Write subdomains to file
+    command: "subfinder -d {{domain}} -o {{output|subs.txt}}"
+
+  - title: with resolvers
+    desc: Use custom DNS resolvers
+    command: "subfinder -d {{domain}} -r {{ip}} -silent"

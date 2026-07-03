@@ -1,0 +1,18 @@
+tool: rustscan
+tags: [scanning, recon, m03]
+exam_hint: "Fast port scanner that feeds results to nmap"
+docs:
+  - https://github.com/RustScan/RustScan
+
+actions:
+  - title: all ports
+    desc: Scan all 65535 ports quickly
+    command: "rustscan -a {{ip}} -- -sV"
+
+  - title: top ports
+    desc: Scan common ports with nmap follow-up
+    command: "rustscan -a {{ip}} -r 1-1000 -- -sC -sV"
+
+  - title: specific ports
+    desc: Scan defined ports
+    command: "rustscan -a {{ip}} -p {{port|80,443,8080}}"

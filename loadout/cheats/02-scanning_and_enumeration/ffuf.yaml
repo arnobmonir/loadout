@@ -1,0 +1,18 @@
+tool: ffuf
+tags: [enumeration, web, m04]
+exam_hint: "Fast web fuzzer — directories, parameters, vhosts"
+docs:
+  - https://github.com/ffuf/ffuf
+
+actions:
+  - title: directory fuzz
+    desc: Fuzz directories on web server
+    command: "ffuf -u http://{{ip}}/FUZZ -w {{wordlist}} -mc 200,301,302"
+
+  - title: vhost fuzz
+    desc: Fuzz Host header for vhosts
+    command: "ffuf -u http://{{ip}} -H 'Host: FUZZ.{{domain}}' -w {{wordlist}}"
+
+  - title: parameter fuzz
+    desc: Fuzz GET parameter values
+    command: "ffuf -u 'http://{{ip}}/page?param=FUZZ' -w {{wordlist}}"

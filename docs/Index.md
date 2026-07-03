@@ -2,7 +2,7 @@
 
 | Document | Description |
 |----------|-------------|
-| [DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md) | **Start here** — modules M1–M12, phases, acceptance criteria |
+| [DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md) | **Start here** — modules M1–M12, toolchain, phases, acceptance criteria |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | Package layout, dependency graph, config paths |
 | [CHEAT_SCHEMA.md](CHEAT_SCHEMA.md) | YAML cheat file format and validation rules |
 

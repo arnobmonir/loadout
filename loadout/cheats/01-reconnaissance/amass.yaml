@@ -1,0 +1,18 @@
+tool: amass
+tags: [recon, dns, m02]
+exam_hint: "Attack surface mapping — subdomains, ASNs, netblocks"
+docs:
+  - https://github.com/owasp-amass/amass
+
+actions:
+  - title: enum passive
+    desc: Passive subdomain enumeration
+    command: "amass enum -passive -d {{domain}}"
+
+  - title: enum active
+    desc: Active DNS brute force (authorized lab)
+    command: "amass enum -active -d {{domain}}"
+
+  - title: intel ASN
+    desc: ASN and network intel for domain
+    command: "amass intel -whois -d {{domain}}"

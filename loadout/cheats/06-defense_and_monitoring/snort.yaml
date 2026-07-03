@@ -1,0 +1,15 @@
+tool: snort
+tags: [defense, ids, m08]
+exam_hint: "Network IDS — rule-based detection on live traffic or pcaps"
+docs:
+  - https://docs.snort.org/
+  - "man:snort"
+
+actions:
+  - title: read pcap alert
+    desc: Run Snort rules against a pcap in console mode
+    command: "snort -r {{output|capture.pcap}} -A console -c /etc/snort/snort.conf"
+
+  - title: inline test config
+    desc: Validate Snort config syntax before deployment
+    command: "snort -T -c /etc/snort/snort.conf"

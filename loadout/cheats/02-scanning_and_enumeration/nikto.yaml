@@ -1,0 +1,18 @@
+tool: nikto
+tags: [scanning, web, m04]
+exam_hint: "Web server vulnerability scanner — misconfigs and known issues"
+docs:
+  - https://github.com/sullo/nikto
+
+actions:
+  - title: basic scan
+    desc: Scan web server on target host
+    command: "nikto -h http://{{ip}}"
+
+  - title: HTTPS scan
+    desc: Scan HTTPS service
+    command: "nikto -h https://{{domain}} -ssl"
+
+  - title: save report
+    desc: Write HTML report to file
+    command: "nikto -h http://{{ip}} -o {{output|nikto.html}} -Format htm"

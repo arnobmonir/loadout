@@ -66,10 +66,10 @@ cheats/
 └── conceptual/nessus.yaml      # exam_hint only
 ```
 
-## Validation rules (M11)
+## Validation rules (`loadout cheats validate` — M8; enforced in tests — M11)
 
 - `tool` must be non-empty
 - `actions[].title` unique within file
 - `actions[].command` non-empty when present
 - Placeholders must match `{{word}}` or `{{word|default}}`
-- No duplicate `tool` + `title` across user override and builtin (user wins)
+- No duplicate `tool` across builtin pack (user override by `tool` + `title` wins)

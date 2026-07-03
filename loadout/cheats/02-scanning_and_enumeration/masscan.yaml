@@ -1,0 +1,18 @@
+tool: masscan
+tags: [scanning, recon, m03]
+exam_hint: "Ultra-fast port scanner — stateless TCP/UDP SYN scanning"
+docs:
+  - https://github.com/robertdavidgraham/masscan
+
+actions:
+  - title: top ports sweep
+    desc: Scan top 1000 TCP ports on target
+    command: "masscan {{ip}} -p1-65535 --rate=1000"
+
+  - title: single port range
+    desc: Scan specific port range
+    command: "masscan {{ip}} -p{{port|80-443}} --rate=500"
+
+  - title: banner grab
+    desc: Grab banners on open ports
+    command: "masscan {{ip}} -p{{port|22,80,443}} --banners"

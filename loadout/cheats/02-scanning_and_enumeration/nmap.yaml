@@ -1,0 +1,23 @@
+tool: nmap
+tags: [recon, scanning, m03]
+exam_hint: "Network mapper — host/port/service/OS discovery"
+docs:
+  - https://nmap.org/book/man.html
+  - "man:nmap"
+
+actions:
+  - title: host discovery
+    desc: Ping sweep on subnet (authorized lab only)
+    command: "nmap -sn {{ip}}/24"
+
+  - title: SYN stealth scan
+    desc: Stealth TCP SYN scan on target
+    command: "nmap -sS {{ip}}"
+
+  - title: service version scan
+    desc: Probe open ports for service/version info
+    command: "nmap -sV {{ip}}"
+
+  - title: full TCP scan
+    desc: Scan all TCP ports (slow)
+    command: "nmap -p- {{ip}}"

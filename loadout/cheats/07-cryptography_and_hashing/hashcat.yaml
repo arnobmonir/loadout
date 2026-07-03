@@ -1,0 +1,18 @@
+tool: hashcat
+tags: [post, crypto, cracking, m08]
+exam_hint: "GPU-accelerated hash cracker — NTLM, bcrypt, WPA, etc."
+docs:
+  - https://hashcat.net/wiki/
+
+actions:
+  - title: wordlist attack
+    desc: Mode 0 dictionary attack
+    command: "hashcat -m {{mode|1000}} -a 0 {{output|hashes.txt}} {{wordlist}}"
+
+  - title: NT hash crack
+    desc: Crack NTLM (mode 1000)
+    command: "hashcat -m 1000 -a 0 {{output|ntlm.txt}} {{wordlist}}"
+
+  - title: show cracked
+    desc: Show potfile results
+    command: "hashcat -m {{mode|1000}} {{output|hashes.txt}} --show"

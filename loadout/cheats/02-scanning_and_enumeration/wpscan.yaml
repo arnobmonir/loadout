@@ -1,0 +1,18 @@
+tool: wpscan
+tags: [enumeration, web, wordpress, m04]
+exam_hint: "WordPress security scanner — plugins, themes, users, vulns"
+docs:
+  - https://github.com/wpscanteam/wpscan
+
+actions:
+  - title: basic scan
+    desc: Enumerate WordPress installation
+    command: "wpscan --url http://{{domain}} --enumerate ap,at,u"
+
+  - title: aggressive enum
+    desc: Aggressive plugin/theme detection
+    command: "wpscan --url http://{{domain}} --enumerate ap,at,cb,dbe"
+
+  - title: password attack
+    desc: Brute force WordPress logins (authorized lab)
+    command: "wpscan --url http://{{domain}} -U {{user|admin}} -P {{wordlist}}"

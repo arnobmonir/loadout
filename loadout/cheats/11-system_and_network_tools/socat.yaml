@@ -1,0 +1,18 @@
+tool: socat
+tags: [network, post, m11]
+exam_hint: "Socket relay — bidirectional data transfer, PTY shells"
+docs:
+  - "man:socat"
+
+actions:
+  - title: TCP listener relay
+    desc: Listen and relay TCP connection
+    command: "socat TCP-LISTEN:{{lport|4444}},fork TCP:{{ip}}:{{port|80}}"
+
+  - title: reverse shell handler
+    desc: PTY reverse shell listener
+    command: "socat file:`tty`,raw,echo=0 TCP-LISTEN:{{lport|4444}}"
+
+  - title: connect to service
+    desc: Interactive TCP connection
+    command: "socat - TCP:{{ip}}:{{port|443}}"

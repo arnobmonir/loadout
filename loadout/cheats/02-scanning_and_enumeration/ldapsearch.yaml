@@ -1,0 +1,18 @@
+tool: ldapsearch
+tags: [enumeration, ldap, m05]
+exam_hint: "LDAP query tool — AD users, groups, computers"
+docs:
+  - "man:ldapsearch"
+
+actions:
+  - title: anonymous bind
+    desc: Anonymous LDAP search (if allowed)
+    command: "ldapsearch -x -H ldap://{{ip}} -b '' '(objectClass=*)'"
+
+  - title: enumerate users
+    desc: Search for user objects
+    command: "ldapsearch -x -H ldap://{{ip}} -D '{{user}}' -w '{{pass}}' -b 'DC={{domain}},DC=local' '(objectClass=user)'"
+
+  - title: base DN discovery
+    desc: Discover naming contexts
+    command: "ldapsearch -x -H ldap://{{ip}} -s base namingContexts"

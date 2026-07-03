@@ -1,0 +1,18 @@
+tool: aws
+tags: [cloud, aws, m10]
+exam_hint: "AWS CLI — enumerate S3, IAM, and service configs in authorized accounts"
+docs:
+  - https://docs.aws.amazon.com/cli/
+
+actions:
+  - title: list s3 buckets
+    desc: Enumerate S3 buckets for configured profile
+    command: "aws s3 ls --profile {{user|default}}"
+
+  - title: describe caller identity
+    desc: Show current AWS principal and account ID
+    command: "aws sts get-caller-identity --profile {{user|default}}"
+
+  - title: list iam users
+    desc: Enumerate IAM users in the account
+    command: "aws iam list-users --profile {{user|default}}"

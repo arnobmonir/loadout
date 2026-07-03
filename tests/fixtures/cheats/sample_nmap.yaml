@@ -1,0 +1,13 @@
+tool: nmap
+tags: [recon, scanning]
+exam_hint: "Network mapper"
+docs:
+  - https://nmap.org/
+
+actions:
+  - title: SYN scan
+    desc: Stealth scan
+    command: "nmap -sS {{ip}}"
+
+  - title: with default
+    command: "nmap -p {{port|80}} {{ip}}"

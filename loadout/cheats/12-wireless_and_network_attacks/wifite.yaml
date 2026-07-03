@@ -1,0 +1,14 @@
+tool: wifite
+tags: [wireless, wifi, m12]
+exam_hint: "Automated wireless auditor — monitor, deauth, capture, crack workflow"
+docs:
+  - https://github.com/kimocoder/wifite2
+
+actions:
+  - title: auto audit
+    desc: Run wifite against nearby APs (monitor mode required, lab only)
+    command: "wifite --kill"
+
+  - title: target channel
+    desc: Lock to channel and attack named ESSID
+    command: "wifite --channel {{port|6}} --essid {{user|labnet}} --kill"

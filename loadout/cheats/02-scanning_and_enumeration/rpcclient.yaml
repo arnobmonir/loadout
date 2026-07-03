@@ -1,0 +1,18 @@
+tool: rpcclient
+tags: [enumeration, smb, m05]
+exam_hint: "MS-RPC client — SAMR, LSA, user enumeration via RPC"
+docs:
+  - "man:rpcclient"
+
+actions:
+  - title: null session
+    desc: Connect with null session
+    command: "rpcclient -U '' -N {{ip}}"
+
+  - title: enumerate users
+    desc: List domain users via enumdomusers
+    command: "rpcclient -U '' -N {{ip}} -c enumdomusers"
+
+  - title: password policy
+    desc: Query domain password policy
+    command: "rpcclient -U '' -N {{ip}} -c getdompwinfo"

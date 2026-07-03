@@ -1,0 +1,14 @@
+tool: drozer
+tags: [mobile, android, m14]
+exam_hint: "Android security assessment — IPC, content providers, and attack surface mapping"
+docs:
+  - https://github.com/WithSecureLabs/drozer
+
+actions:
+  - title: connect agent
+    desc: Connect drozer console to agent on device
+    command: "drozer console connect --server {{ip}}"
+
+  - title: list packages
+    desc: Enumerate installed packages on connected agent
+    command: "drozer console connect -c 'run app.package.list'"

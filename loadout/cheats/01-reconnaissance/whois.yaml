@@ -1,0 +1,14 @@
+tool: whois
+tags: [recon, osint, m02]
+exam_hint: "Domain/IP registration and ownership records"
+docs:
+  - "man:whois"
+
+actions:
+  - title: domain whois
+    desc: Registration info for domain
+    command: "whois {{domain}}"
+
+  - title: IP whois
+    desc: Network block registration for IP
+    command: "whois {{ip}}"

@@ -1,0 +1,18 @@
+tool: gobuster
+tags: [enumeration, web, m04]
+exam_hint: "Directory/DNS/vhost brute-forcer using wordlists"
+docs:
+  - https://github.com/OJ/gobuster
+
+actions:
+  - title: dir brute force
+    desc: Directory enumeration on web server
+    command: "gobuster dir -u http://{{ip}} -w {{wordlist}} -t 50"
+
+  - title: vhost brute force
+    desc: Virtual host discovery
+    command: "gobuster vhost -u http://{{ip}} -w {{wordlist}}"
+
+  - title: DNS subdomain
+    desc: DNS subdomain brute force
+    command: "gobuster dns -d {{domain}} -w {{wordlist}}"

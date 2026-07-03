@@ -1,0 +1,14 @@
+tool: bloodhound-python
+tags: [auth, ad, kerberos, m13]
+exam_hint: "BloodHound ingestor — collect AD objects and ACLs for attack-path analysis"
+docs:
+  - https://github.com/dirkjanm/BloodHound.py
+
+actions:
+  - title: full collection
+    desc: Ingest AD data with domain creds (authorized lab)
+    command: "bloodhound-python -d {{domain}} -u {{user}} -p {{pass}} -ns {{ip}} -c all"
+
+  - title: session collection
+    desc: Collect session data only for logged-on users
+    command: "bloodhound-python -d {{domain}} -u {{user}} -p {{pass}} -ns {{ip}} -c Session"

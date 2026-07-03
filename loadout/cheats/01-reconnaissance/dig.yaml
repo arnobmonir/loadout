@@ -1,0 +1,22 @@
+tool: dig
+tags: [recon, dns, m01]
+exam_hint: "DNS lookup utility — A, MX, NS, TXT, AXFR zone transfer"
+docs:
+  - "man:dig"
+
+actions:
+  - title: A record lookup
+    desc: Resolve hostname to IPv4 (authorized targets only)
+    command: "dig {{domain}} A +short"
+
+  - title: any record
+    desc: Query any DNS record type
+    command: "dig {{domain}} ANY"
+
+  - title: reverse DNS
+    desc: PTR lookup for IP
+    command: "dig -x {{ip}} +short"
+
+  - title: zone transfer attempt
+    desc: Attempt AXFR against nameserver (lab only)
+    command: "dig axfr {{domain}} @{{ip}}"

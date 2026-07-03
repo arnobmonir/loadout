@@ -1,0 +1,4 @@
+tool: nessus
+tags: [conceptual, m04]
+exam_hint: "Commercial vulnerability scanner — know features for CEH exam"
+actions: []

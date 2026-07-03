@@ -1,0 +1,18 @@
+tool: enum4linux
+tags: [enumeration, smb, m05]
+exam_hint: "SMB/NetBIOS enumeration — users, groups, shares, policies"
+docs:
+  - "man:enum4linux"
+
+actions:
+  - title: full enumeration
+    desc: All enum4linux checks against target
+    command: "enum4linux -a {{ip}}"
+
+  - title: user enumeration
+    desc: Enumerate SMB users
+    command: "enum4linux -U {{ip}}"
+
+  - title: share listing
+    desc: List SMB shares
+    command: "enum4linux -S {{ip}}"

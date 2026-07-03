@@ -1,0 +1,15 @@
+tool: aircrack-ng
+tags: [wireless, wifi, m12]
+exam_hint: "Wi-Fi security suite — capture handshakes and crack WPA/WEP (authorized lab)"
+docs:
+  - https://www.aircrack-ng.org/
+  - "man:aircrack-ng"
+
+actions:
+  - title: crack wpa handshake
+    desc: Dictionary attack on captured WPA handshake pcap
+    command: "aircrack-ng -w {{wordlist}} {{output|capture.cap}}"
+
+  - title: verify capture
+    desc: Show networks and handshakes found in capture file
+    command: "aircrack-ng {{output|capture.cap}}"

@@ -1,0 +1,18 @@
+tool: host
+tags: [recon, dns, m01]
+exam_hint: "Simple DNS lookup — converts names to addresses"
+docs:
+  - "man:host"
+
+actions:
+  - title: forward lookup
+    desc: Resolve domain to IP
+    command: "host {{domain}}"
+
+  - title: reverse lookup
+    desc: Resolve IP to hostname
+    command: "host {{ip}}"
+
+  - title: nameserver query
+    desc: Query specific DNS server
+    command: "host {{domain}} {{ip}}"

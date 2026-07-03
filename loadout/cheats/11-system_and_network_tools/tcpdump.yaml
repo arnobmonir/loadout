@@ -1,0 +1,18 @@
+tool: tcpdump
+tags: [network, sniffing, m12]
+exam_hint: "Packet capture and analysis — filter by host, port, protocol"
+docs:
+  - "man:tcpdump"
+
+actions:
+  - title: capture on interface
+    desc: Capture packets on interface
+    command: "tcpdump -i {{interface|eth0}} -w {{output|capture.pcap}}"
+
+  - title: filter host
+    desc: Capture traffic to/from host
+    command: "tcpdump -i {{interface|eth0}} host {{ip}}"
+
+  - title: filter port
+    desc: Capture traffic on port
+    command: "tcpdump -i {{interface|eth0}} port {{port|80}} -nn"

@@ -1,0 +1,18 @@
+tool: wget
+tags: [network, web, m11]
+exam_hint: "Non-interactive file downloader — HTTP/HTTPS/FTP"
+docs:
+  - "man:wget"
+
+actions:
+  - title: download file
+    desc: Download file from URL
+    command: "wget http://{{ip}}/{{target|file.txt}}"
+
+  - title: mirror site
+    desc: Recursive mirror (authorized lab, limited depth)
+    command: "wget -r -l 1 http://{{domain}}/"
+
+  - title: spider only
+    desc: Spider without downloading
+    command: "wget --spider -r -l 1 http://{{ip}}/"

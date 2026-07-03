@@ -1,0 +1,18 @@
+tool: theHarvester
+tags: [recon, osint, m02]
+exam_hint: "OSINT harvester — emails, hosts, subdomains from public sources"
+docs:
+  - https://github.com/laramies/theHarvester
+
+actions:
+  - title: all sources
+    desc: Harvest from all sources for domain
+    command: "theHarvester -d {{domain}} -b all"
+
+  - title: google and bing
+    desc: Search engine source harvest
+    command: "theHarvester -d {{domain}} -b google,bing"
+
+  - title: save to file
+    desc: Harvest and write results to file
+    command: "theHarvester -d {{domain}} -b all -f {{output|harvest}}"

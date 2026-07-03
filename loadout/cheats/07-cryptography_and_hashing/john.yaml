@@ -1,0 +1,18 @@
+tool: john
+tags: [post, crypto, cracking, m08]
+exam_hint: "John the Ripper — offline password hash cracker"
+docs:
+  - https://www.openwall.com/john/
+
+actions:
+  - title: crack hashes file
+    desc: Crack hashes from file with wordlist
+    command: "john --wordlist={{wordlist}} {{output|hashes.txt}}"
+
+  - title: show cracked
+    desc: Show cracked passwords
+    command: "john --show {{output|hashes.txt}}"
+
+  - title: NT hash format
+    desc: Crack Windows NT hashes
+    command: "john --format=NT --wordlist={{wordlist}} {{output|ntlm.txt}}"
