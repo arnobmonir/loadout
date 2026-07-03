@@ -1,0 +1,11 @@
+# Cheat template — copy to cheats/<category>/<tool>.yaml
+
+tool: TOOL_NAME
+tags: []
+exam_hint: ""
+docs: []
+
+actions:
+  - title: short label
+    desc: Authorized lab only.
+    command: "TOOL_NAME {{ip}}"
