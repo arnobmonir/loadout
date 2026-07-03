@@ -1,0 +1,26 @@
+tool: od
+tags: [recon, linux, m01]
+exam_hint: "od (octal dump) shows the raw bytes inside a file in hex or ASCII. Use it to identify file types, spot hidden data, and examine suspicious files without opening them."
+docs:
+  - "man:od"
+
+actions:
+  - title: Show the first bytes in hex to identify file type
+    desc: Displays the first 16 bytes of a file in hexadecimal. Every file type has a unique signature — ELF executables start with 7f454c46, Windows EXE with 4d5a, JPEG with ffd8.
+    command: "od -tx1 -N 16 {{file|/usr/bin/ls}}"
+
+  - title: View file contents as readable text
+    desc: Shows the file as ASCII characters with escape codes for non-printable bytes. Useful for reading binary files that contain embedded text.
+    command: "od -c -N 64 {{file|sample.bin}}"
+
+  - title: Read bytes starting at a specific offset
+    desc: Skips the first 1024 bytes and then shows the next 256 bytes. Useful for examining specific sections of large files or disk images.
+    command: "od -tx1 -j 1024 -N 256 {{file|firmware.bin}}"
+
+  - title: Compare two files byte by byte
+    desc: Dumps two files to hex and compares them with diff — shows exactly which bytes differ between two versions of a file.
+    command: "od -tx1 {{file|file1.bin}} > /tmp/dump1 && od -tx1 {{file|file2.bin}} > /tmp/dump2 && diff /tmp/dump1 /tmp/dump2"
+
+  - title: Search a disk image for a file signature
+    desc: Dumps a disk image in hex and searches for a JPEG file signature (ffd8) — used in digital forensics to find hidden or deleted images.
+    command: "od -tx1 {{file|disk.img}} | grep 'ff d8'"

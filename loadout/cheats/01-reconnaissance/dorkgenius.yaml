@@ -1,0 +1,22 @@
+tool: dorkgenius
+tags: [recon, osint, dorking, m01]
+exam_hint: "DorkGenius uses AI to generate advanced Google search queries that find exposed files, admin panels, database dumps, and other sensitive content indexed by Google."
+docs:
+  - https://dorkgenius.com
+
+actions:
+  - title: Open DorkGenius to create search queries
+    desc: Opens DorkGenius in your browser. Describe what you are looking for in plain English and it generates precise Google dorks. Lab targets only.
+    command: "xdg-open https://dorkgenius.com"
+
+  - title: Find admin and login pages on a domain
+    desc: Searches Google for admin panels, login pages, and control panels indexed for the target domain.
+    command: "xdg-open 'https://www.google.com/search?q=site%3A{{domain}}+inurl%3Aadmin+OR+inurl%3Alogin'"
+
+  - title: Find exposed spreadsheets and documents
+    desc: Searches Google for Excel, Word, and CSV files belonging to the target that may contain sensitive data.
+    command: "xdg-open 'https://www.google.com/search?q=site%3A{{domain}}+filetype%3Axls+OR+filetype%3Axlsx+OR+filetype%3Acsv'"
+
+  - title: Find error pages that leak information
+    desc: Searches Google for error pages (404, 500) on the target that may reveal server paths, software versions, or internal details.
+    command: "xdg-open 'https://www.google.com/search?q=site%3A{{domain}}+%22error%22+OR+%22exception%22+OR+%22stack+trace%22'"

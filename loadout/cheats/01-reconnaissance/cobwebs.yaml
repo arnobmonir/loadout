@@ -1,0 +1,10 @@
+tool: cobwebs
+tags: [recon, osint, m01]
+exam_hint: "PenLink Cobwebs is an enterprise AI OSINT platform used by law enforcement — automatically collects and links data from hundreds of online sources."
+docs:
+  - https://cobwebs.com
+
+actions:
+  - title: Open Cobwebs platform information
+    desc: Opens the Cobwebs website to learn about the enterprise OSINT platform. Requires a licensed account for full access.
+    command: "xdg-open https://cobwebs.com"

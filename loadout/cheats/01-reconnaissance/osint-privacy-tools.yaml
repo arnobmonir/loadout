@@ -1,0 +1,18 @@
+tool: osint-privacy-tools
+tags: [recon, osint, m01]
+exam_hint: "A reference guide to privacy and OSINT tools — OpenCorporates for company research, Tor/Orbot for anonymous browsing, and awareness of pod-slurping attacks."
+docs:
+  - https://opencorporates.com/
+
+actions:
+  - title: Search OpenCorporates for a company
+    desc: Opens the global open corporate database to look up company registration, directors, and subsidiaries. Lab targets only.
+    command: "xdg-open https://opencorporates.com/companies?q={{keyword|example}}"
+
+  - title: Download Tor Browser for anonymous research
+    desc: Opens the Tor Project download page. Tor Browser routes your traffic through multiple relays so websites cannot see your real IP.
+    command: "xdg-open https://www.torproject.org/download/"
+
+  - title: Download Orbot for Android anonymous browsing
+    desc: Opens the Tor Project Android page for Orbot — a Tor proxy app for mobile OSINT investigations.
+    command: "xdg-open https://www.torproject.org/download/#android"

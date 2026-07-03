@@ -1,0 +1,14 @@
+tool: viewdns-reverse-ip
+tags: [recon, passive, dns, m01]
+exam_hint: "Reverse IP lookup finds every website hosted on the same server as your target IP. Useful for discovering related sites on shared hosting or finding other companies on the same server."
+docs:
+  - https://viewdns.info/reverseip/
+
+actions:
+  - title: Find all websites on the same IP
+    desc: Opens ViewDNS in your browser showing every domain name pointing to this IP address. Reveals co-hosted sites and shared infrastructure. Lab targets only.
+    command: "xdg-open https://viewdns.info/reverseip/?host={{ip}}&t=1"
+
+  - title: Save the reverse IP results page
+    desc: Downloads the ViewDNS results as an HTML file so you can review the domain list offline.
+    command: "curl -sL 'https://viewdns.info/reverseip/?host={{ip}}&t=1' -o {{output|reverse-ip.html}}"

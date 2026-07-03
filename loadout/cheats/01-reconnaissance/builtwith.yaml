@@ -1,0 +1,18 @@
+tool: builtwith
+tags: [recon, passive, osint, m01]
+exam_hint: "BuiltWith shows what technologies a website uses — content management system (WordPress, Drupal), analytics, hosting provider, JavaScript frameworks, and more. Completely passive."
+docs:
+  - https://builtwith.com
+
+actions:
+  - title: Open the technology profile in your browser
+    desc: Opens BuiltWith in your browser showing every technology detected on the target website — CMS, analytics, CDN, frameworks. No install needed. Lab targets only.
+    command: "xdg-open https://builtwith.com/{{domain}}"
+
+  - title: Download the profile page for offline review
+    desc: Saves the BuiltWith results page as an HTML file you can read later without revisiting the site.
+    command: "curl -sL https://builtwith.com/{{domain}} -o {{output|builtwith.html}}"
+
+  - title: Check what payment systems the site uses
+    desc: Opens BuiltWith filtered to show payment processors, shopping cart systems, and checkout technologies.
+    command: "xdg-open https://builtwith.com/{{domain}}"

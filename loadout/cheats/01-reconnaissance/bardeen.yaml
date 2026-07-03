@@ -1,0 +1,10 @@
+tool: bardeen
+tags: [recon, osint, m01]
+exam_hint: "Bardeen is a browser automation tool that can scrape LinkedIn, directories, and websites on a schedule — saving results directly to Google Sheets without writing code."
+docs:
+  - https://www.bardeen.ai
+
+actions:
+  - title: Open Bardeen automation platform
+    desc: Opens Bardeen.ai where you can install the browser extension and set up automated OSINT scraping workflows. Lab targets only.
+    command: "xdg-open https://www.bardeen.ai"

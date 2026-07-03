@@ -1,0 +1,34 @@
+tool: dnsrecon
+tags: [recon, dns, m01]
+exam_hint: "dnsrecon is a full DNS investigation tool. It lists DNS records, guesses hidden subdomains from a wordlist, and checks if the DNS server accidentally leaks its entire zone."
+docs:
+  - https://github.com/darkoperator/dnsrecon
+
+actions:
+  - title: List all DNS records for a domain
+    desc: Collects A, AAAA, MX, NS, TXT, and SOA records in one go. Run this first to understand how the target's DNS is configured. Lab targets only.
+    command: "dnsrecon -d {{domain}}"
+
+  - title: Guess hidden subdomains from a wordlist
+    desc: Tries thousands of common subdomain names (like admin, mail, dev) against the target domain to find ones that actually exist. Generates DNS traffic — lab only.
+    command: "dnsrecon -d {{domain}} -D {{wordlist|/usr/share/wordlists/dnsmap.txt}} -t brt"
+
+  - title: Check if DNS zone transfer is allowed
+    desc: Tests whether the DNS server will hand over its entire zone file (AXFR). A misconfigured server leaks every subdomain and IP at once. Lab only.
+    command: "dnsrecon -d {{domain}} -t axfr"
+
+  - title: Reverse lookup all IPs in a range
+    desc: Takes a network range and does reverse DNS on every IP to find hostnames. Useful for mapping an entire subnet.
+    command: "dnsrecon -r {{ip}}/24"
+
+  - title: Find subdomains using Google
+    desc: Searches Google for subdomains indexed for this domain — completely passive, no direct contact with the target DNS.
+    command: "dnsrecon -d {{domain}} -t goo"
+
+  - title: Save results as an XML report
+    desc: Runs enumeration and writes a structured XML report file you can open later or import into other tools.
+    command: "dnsrecon -d {{domain}} -x {{output|dnsrecon.xml}}"
+
+  - title: Save results as a CSV spreadsheet
+    desc: Exports findings to a CSV file — easy to open in Excel or Google Sheets for sorting and filtering.
+    command: "dnsrecon -d {{domain}} -c {{output|dnsrecon.csv}}"

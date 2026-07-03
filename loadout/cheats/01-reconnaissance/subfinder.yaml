@@ -1,18 +1,30 @@
 tool: subfinder
-tags: [recon, dns, m02]
-exam_hint: "Passive subdomain discovery using OSINT sources"
+tags: [recon, dns, m01]
+exam_hint: "subfinder finds subdomains (like mail.example.com, dev.example.com) by searching public databases and certificate logs — without sending any traffic directly to the target."
 docs:
   - https://github.com/projectdiscovery/subfinder
 
 actions:
-  - title: passive subdomains
-    desc: Enumerate subdomains for domain
+  - title: Find all known subdomains passively
+    desc: Searches public sources (certificate logs, DNS archives, search engines) for subdomains of your target. Safe and quiet — no direct contact with the target. Lab targets only.
     command: "subfinder -d {{domain}} -silent"
 
-  - title: save output
-    desc: Write subdomains to file
+  - title: Save subdomain list to a file
+    desc: Finds subdomains and writes them to a text file, one per line. Feed this file into nmap or httpx for the next scanning step.
     command: "subfinder -d {{domain}} -o {{output|subs.txt}}"
 
-  - title: with resolvers
-    desc: Use custom DNS resolvers
+  - title: Scan multiple domains at once
+    desc: Reads a list of domains from a file and finds subdomains for all of them. Useful when you have several related targets.
+    command: "subfinder -dL {{file|domains.txt}} -o {{output|all-subs.txt}}"
+
+  - title: Use all available data sources
+    desc: Queries every passive source subfinder knows about for maximum coverage. Takes longer but finds more subdomains.
+    command: "subfinder -d {{domain}} -all -v"
+
+  - title: Use a custom DNS resolver
+    desc: Resolves found subdomains through a specific DNS server instead of the default. Useful when you want to verify against a particular resolver.
     command: "subfinder -d {{domain}} -r {{ip}} -silent"
+
+  - title: Only show live subdomains
+    desc: Finds subdomains and immediately checks which ones actually resolve to an IP. Filters out dead or expired names.
+    command: "subfinder -d {{domain}} -nW -silent"

@@ -1,0 +1,22 @@
+tool: falco
+tags: [recon, monitoring, m01]
+exam_hint: "Falco watches a Linux system or Kubernetes cluster and alerts you when suspicious activity happens — like a shell opening inside a container or a privilege escalation attempt."
+docs:
+  - https://falco.org/
+
+actions:
+  - title: Start monitoring with default rules
+    desc: Runs Falco with built-in rules that detect common attack patterns — shells in containers, sensitive file access, and privilege changes. Authorized lab hosts only.
+    command: "sudo falco"
+
+  - title: Monitor with your own custom rules
+    desc: Runs Falco using a custom rules file you wrote — define exactly which activities should trigger an alert for your environment.
+    command: "sudo falco -r {{file|custom_rules.yaml}}"
+
+  - title: Check Falco is installed correctly
+    desc: Prints the installed Falco version to confirm it is set up and ready to use.
+    command: "falco --version"
+
+  - title: List all available detection rules
+    desc: Shows every detection rule Falco will use — helpful for understanding what activities it monitors before starting.
+    command: "falco --list"

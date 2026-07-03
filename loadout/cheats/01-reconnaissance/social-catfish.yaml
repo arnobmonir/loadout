@@ -1,0 +1,18 @@
+tool: social-catfish
+tags: [recon, osint, m01]
+exam_hint: "Social Catfish is a people-search tool that does reverse lookups on email addresses, phone numbers, and images to find associated social profiles and public records."
+docs:
+  - https://socialcatfish.com
+
+actions:
+  - title: Open Social Catfish people search
+    desc: Opens Social Catfish in your browser. Enter a name, email, phone number, or image to find associated social profiles. Lab targets only.
+    command: "xdg-open https://socialcatfish.com"
+
+  - title: Reverse email lookup reminder
+    desc: Prints a reminder to search the target email address in Social Catfish to find linked social media accounts and profiles.
+    command: "echo 'Social Catfish: search email {{email|target@example.com}} to find linked social profiles'"
+
+  - title: Reverse phone number lookup reminder
+    desc: Prints a reminder to search a phone number in Social Catfish to find the owner's name and social profiles.
+    command: "echo 'Social Catfish: search phone number to find owner name and social profiles'"

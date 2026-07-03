@@ -1,0 +1,14 @@
+tool: corporationwiki
+tags: [recon, osint, m01]
+exam_hint: "CorporationWiki maps corporate relationships — executives, subsidiaries, board members, and business connections — useful for understanding who is behind a company."
+docs:
+  - https://www.corporationwiki.com
+
+actions:
+  - title: Search for a company
+    desc: Opens CorporationWiki to search for a company — shows executives, subsidiaries, and business relationships. Lab targets only.
+    command: "xdg-open https://www.corporationwiki.com/search?query={{keyword|example+corp}}"
+
+  - title: Look up a specific executive or director
+    desc: Searches for a person by name to see all companies they are connected to as executive, director, or board member.
+    command: "xdg-open https://www.corporationwiki.com/search?query={{keyword|John+Smith}}"

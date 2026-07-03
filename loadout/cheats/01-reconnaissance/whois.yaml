@@ -1,14 +1,26 @@
 tool: whois
-tags: [recon, osint, m02]
-exam_hint: "Domain/IP registration and ownership records"
+tags: [recon, osint, m01]
+exam_hint: "whois tells you who registered a domain or owns an IP address block — registrar name, creation date, expiry date, and name servers. Often the first step in any investigation."
 docs:
   - "man:whois"
 
 actions:
-  - title: domain whois
-    desc: Registration info for domain
+  - title: Look up who owns a domain
+    desc: Shows registration details for a domain — who registered it, when it was created, when it expires, and which name servers it uses. Personal details may be hidden due to privacy laws.
     command: "whois {{domain}}"
 
-  - title: IP whois
-    desc: Network block registration for IP
+  - title: Look up who owns an IP address
+    desc: Shows which organization or ISP owns an IP address block. Helps identify the hosting provider or company behind a server.
     command: "whois {{ip}}"
+
+  - title: Save results to a file
+    desc: Runs whois and saves the full output to a text file so you can review it later or include it in your report.
+    command: "whois {{domain}} > {{output|whois.txt}}"
+
+  - title: Check the top-level domain registry
+    desc: Queries IANA (the global domain authority) to find which registry manages this TLD — useful when normal whois returns incomplete data.
+    command: "whois -h whois.iana.org {{domain}}"
+
+  - title: Query a specific whois server
+    desc: Sends the query directly to a named whois server (e.g. whois.verisign-grs.com for .com domains) when the default lookup fails.
+    command: "whois -h whois.verisign-grs.com {{domain}}"

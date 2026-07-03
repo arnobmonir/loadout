@@ -1,0 +1,14 @@
+tool: dnsdumpster
+tags: [recon, passive, dns, m01]
+exam_hint: "DNSdumpster is a free website that maps out a domain's entire DNS structure — subdomains, mail servers, and name servers — with a visual diagram. No install needed."
+docs:
+  - https://dnsdumpster.com
+
+actions:
+  - title: Open DNSdumpster in your browser
+    desc: Opens the DNSdumpster website. Type your target domain, solve the CAPTCHA, and get a visual map of all DNS records and subdomains. Lab targets only.
+    command: "xdg-open https://dnsdumpster.com"
+
+  - title: Reminder of what to do on the site
+    desc: Prints a reminder — go to dnsdumpster.com, search your domain, and export the subdomain map for your notes.
+    command: "echo 'Go to https://dnsdumpster.com — search {{domain}}, solve CAPTCHA, export subdomain map'"

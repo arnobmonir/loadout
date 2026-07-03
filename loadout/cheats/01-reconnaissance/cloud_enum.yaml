@@ -1,0 +1,26 @@
+tool: cloud_enum
+tags: [recon, cloud, m01]
+exam_hint: "cloud_enum searches AWS, Azure, and Google Cloud for storage buckets and services that match your target company name — often finds accidentally public files."
+docs:
+  - https://github.com/initstring/cloud_enum
+
+actions:
+  - title: Search all clouds by company keyword
+    desc: Tries common naming patterns (like examplecorp-backup, examplecorp-data) across AWS S3, Azure Blob, and GCP Storage. Lab targets only.
+    command: "python3 cloud_enum.py -k {{keyword|examplecorp}}"
+
+  - title: Use a custom wordlist for better coverage
+    desc: Adds your own list of naming variations to try — finds buckets with non-obvious names that the default list misses.
+    command: "python3 cloud_enum.py -k {{keyword|examplecorp}} -w {{wordlist|words.txt}}"
+
+  - title: Save the full report to a file
+    desc: Writes all discovered cloud resources (buckets, endpoints, services) to a text report file.
+    command: "python3 cloud_enum.py -k {{keyword|examplecorp}} -l {{output|cloud-enum.txt}}"
+
+  - title: Search only AWS
+    desc: Limits the search to Amazon Web Services only — faster when you know the target uses AWS.
+    command: "python3 cloud_enum.py -k {{keyword|examplecorp}} --disable-azure --disable-gcp"
+
+  - title: Search only Azure
+    desc: Limits the search to Microsoft Azure storage and services only.
+    command: "python3 cloud_enum.py -k {{keyword|examplecorp}} --disable-aws --disable-gcp"

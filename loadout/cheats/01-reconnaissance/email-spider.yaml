@@ -1,0 +1,22 @@
+tool: email-spider
+tags: [recon, osint, m01]
+exam_hint: "Email Spider visits a website and collects every email address it finds — useful for building a contact list or planning social engineering tests."
+docs:
+  - https://github.com/needforspeed/emailspider
+
+actions:
+  - title: Collect emails from a single page
+    desc: Visits one webpage and extracts every email address visible in the HTML. Quick and quiet. Lab targets only.
+    command: "email-spider {{url|https://example.com}}"
+
+  - title: Save emails to a file
+    desc: Crawls the page, collects emails, and writes them to a text file — one email per line.
+    command: "email-spider {{url|https://example.com}} -o {{output|emails.txt}}"
+
+  - title: Crawl multiple pages deep
+    desc: Follows links up to 3 levels deep across the site to find emails on contact pages, about pages, and team directories.
+    command: "email-spider {{url|https://example.com}} --depth 3 -o {{output|emails.txt}}"
+
+  - title: Only collect emails from specific domains
+    desc: Filters results to only keep email addresses ending in a specific domain (like @example.com).
+    command: "email-spider {{url|https://example.com}} --pattern '*.com' -o {{output|filtered-emails.txt}}"

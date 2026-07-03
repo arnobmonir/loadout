@@ -1,0 +1,38 @@
+tool: photon
+tags: [recon, web, m01]
+exam_hint: "Photon crawls a website like a spider, following every link to find hidden pages, email addresses, JavaScript files, and exposed database files."
+docs:
+  - https://github.com/s0md3v/Photon
+
+actions:
+  - title: Crawl a website and map all pages
+    desc: Starts at the target URL and follows every link it finds, building a map of the entire site. Lab targets only.
+    command: "python3 photon.py -u {{url|https://example.com}}"
+
+  - title: Extract email addresses from the site
+    desc: Crawls the website and collects every email address it finds — useful for social engineering or contact mapping.
+    command: "python3 photon.py -u {{url|https://example.com}} --extract-emails"
+
+  - title: Find all JavaScript files
+    desc: Collects every JavaScript file linked on the site. JS files often reveal API endpoints, keys, and internal paths.
+    command: "python3 photon.py -u {{url|https://example.com}} --extract-js"
+
+  - title: Crawl deeper into the site
+    desc: Sets crawl depth to 2 — follows links two levels deep instead of just the homepage. Finds more hidden pages.
+    command: "python3 photon.py -u {{url|https://example.com}} --level 2"
+
+  - title: Crawl faster with more threads
+    desc: Uses 20 parallel threads to crawl the site faster. Be careful — too fast can trigger rate limits or WAF blocks.
+    command: "python3 photon.py -u {{url|https://example.com}} -t 20"
+
+  - title: Search for custom patterns
+    desc: Crawls the site and extracts anything matching your regex — like API keys, phone numbers, or internal URLs.
+    command: "python3 photon.py -u {{url|https://example.com}} --regex '[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,}'"
+
+  - title: Include links to external sites
+    desc: Also follows links pointing to other domains — reveals third-party services and integrations the site uses.
+    command: "python3 photon.py -u {{url|https://example.com}} --external"
+
+  - title: Run quietly without verbose output
+    desc: Crawls silently — only shows results, not progress messages. Good for scripting and automation.
+    command: "python3 photon.py -u {{url|https://example.com}} -s"

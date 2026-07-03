@@ -1,0 +1,14 @@
+tool: oss-insight
+tags: [recon, osint, m01]
+exam_hint: "OSS Insight lets you ask questions about open-source software trends in plain English — useful for researching what tools and exploits are popular in the security community."
+docs:
+  - https://ossinsight.io
+
+actions:
+  - title: Open OSS Insight analytics
+    desc: Opens OSS Insight in your browser. Ask natural-language questions about GitHub trends, popular security tools, and open-source project activity. Lab targets only.
+    command: "xdg-open https://ossinsight.io"
+
+  - title: Analyze a specific GitHub repository
+    desc: Opens the analytics page for a specific GitHub project — shows stars, contributors, activity trends, and related projects.
+    command: "xdg-open https://ossinsight.io/analyze/{{keyword|nmap}}"

@@ -1,0 +1,18 @@
+tool: social-searcher
+tags: [recon, osint, m01]
+exam_hint: "Social Searcher monitors mentions of a company or keyword across Twitter, Facebook, Instagram, and LinkedIn in real time — useful for tracking what people say about a target."
+docs:
+  - https://www.social-searcher.com
+
+actions:
+  - title: Search social media for a keyword
+    desc: Opens Social Searcher to find recent posts mentioning your keyword across Twitter, Facebook, Instagram, and LinkedIn. Lab targets only.
+    command: "xdg-open https://www.social-searcher.com/social-buzz/?q={{keyword|example}}"
+
+  - title: Monitor mentions of a domain or company
+    desc: Searches social media for posts mentioning the target domain or company name — reveals public sentiment and employee posts.
+    command: "xdg-open https://www.social-searcher.com/social-buzz/?q={{domain}}"
+
+  - title: Search for a specific hashtag
+    desc: Finds social media posts using a specific hashtag — useful for tracking campaigns or events related to the target.
+    command: "xdg-open https://www.social-searcher.com/social-buzz/?q=%23{{keyword|example}}"

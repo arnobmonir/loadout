@@ -1,0 +1,18 @@
+tool: darkgpt
+tags: [recon, osint, m01]
+exam_hint: "DarkGPT is a self-hosted AI assistant that helps search breach databases and leaked data collections to check if a company or email has been exposed in past data breaches."
+docs:
+  - https://github.com/luijait/DarkGPT
+
+actions:
+  - title: Download and install DarkGPT
+    desc: Clones the DarkGPT repository and installs its Python dependencies. You need an OpenAI API key to use it. Authorized defensive use only.
+    command: "git clone https://github.com/luijait/DarkGPT && cd DarkGPT && pip install -r requirements.txt"
+
+  - title: Set up your API keys
+    desc: Copies the example environment file so you can add your OpenAI API key and database credentials.
+    command: "cp .env.example .env"
+
+  - title: Start the DarkGPT assistant
+    desc: Launches the interactive DarkGPT assistant. Ask it questions about breach data in plain English.
+    command: "python main.py"

@@ -1,0 +1,14 @@
+tool: exonerator
+tags: [recon, osint, m01]
+exam_hint: "ExoneraTor checks whether an IP address was used as a Tor exit node on a specific date — helps determine if suspicious traffic came through the Tor anonymity network."
+docs:
+  - https://metrics.torproject.org/exonerator.html
+
+actions:
+  - title: Open ExoneraTor in your browser
+    desc: Opens the Tor Project ExoneraTor tool. Enter an IP address and date range to check if it was a Tor exit node during that period. Lab targets only.
+    command: "xdg-open https://metrics.torproject.org/exonerator.html"
+
+  - title: Check if an IP was a Tor exit node
+    desc: Prints a reminder to enter the IP and date in ExoneraTor — useful when investigating whether traffic came through Tor.
+    command: "echo 'ExoneraTor: check if {{ip}} was a Tor exit node — enter IP and date at https://metrics.torproject.org/exonerator.html'"

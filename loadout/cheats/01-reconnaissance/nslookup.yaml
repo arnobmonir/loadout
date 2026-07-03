@@ -1,0 +1,34 @@
+tool: nslookup
+tags: [recon, dns, m01]
+exam_hint: "nslookup is a built-in DNS lookup tool available on Windows and Linux. Use it for quick domain-to-IP checks and finding mail servers — no install needed."
+docs:
+  - "man:nslookup"
+
+actions:
+  - title: Find a website IP address
+    desc: Resolves a domain name to its IP address. Works on both Windows and Linux without installing anything extra.
+    command: "nslookup {{domain}}"
+
+  - title: Find the mail servers
+    desc: Shows MX records — tells you which servers handle email for this domain. Common first step in email infrastructure mapping.
+    command: "nslookup -type=mx {{domain}}"
+
+  - title: Find the name servers
+    desc: Lists the DNS servers responsible for this domain. You need these before trying a zone transfer.
+    command: "nslookup -type=ns {{domain}}"
+
+  - title: Read TXT and SPF records
+    desc: Shows TXT records which often contain email security settings (SPF, DKIM) or domain verification codes.
+    command: "nslookup -type=txt {{domain}}"
+
+  - title: Find IPv6 address
+    desc: Looks up AAAA records to find the IPv6 address for a domain, if one exists.
+    command: "nslookup -type=aaaa {{domain}}"
+
+  - title: Use a specific DNS server
+    desc: Sends your query to a chosen DNS server (like Google's 8.8.8.8) instead of the system default.
+    command: "nslookup {{domain}} {{ip}}"
+
+  - title: Reverse lookup from IP
+    desc: Given an IP address, finds the hostname associated with it — helps identify who runs a server.
+    command: "nslookup {{ip}}"

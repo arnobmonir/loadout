@@ -1,0 +1,22 @@
+tool: scout-suite
+tags: [recon, cloud, m01]
+exam_hint: "Scout Suite audits your cloud account settings (AWS, Azure, or GCP) and finds security mistakes — like public storage buckets, weak passwords, and missing encryption."
+docs:
+  - https://github.com/nccgroup/ScoutSuite
+
+actions:
+  - title: Audit an AWS account for security issues
+    desc: Scans your AWS account and generates an HTML report showing misconfigurations — public S3 buckets, weak IAM policies, unencrypted databases. Requires AWS credentials. Lab only.
+    command: "scout aws --report-dir {{output|scout-aws}}"
+
+  - title: Audit an Azure subscription
+    desc: Reviews Azure resources for security problems — exposed storage, weak access controls, missing logging. Requires Azure credentials.
+    command: "scout azure --report-dir {{output|scout-azure}}"
+
+  - title: Audit a Google Cloud project
+    desc: Checks GCP project settings for security gaps — public buckets, overly permissive IAM, missing encryption. Requires GCP credentials.
+    command: "scout gcp --report-dir {{output|scout-gcp}}"
+
+  - title: Audit AWS and save as JSON
+    desc: Same AWS audit but exports raw findings as JSON for integration with other security tools.
+    command: "scout aws --report-dir {{output|scout-aws}} --result-format json"

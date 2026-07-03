@@ -1,0 +1,18 @@
+tool: google-reverse-image
+tags: [recon, osint, m01]
+exam_hint: "Google Reverse Image Search lets you upload a photo or paste an image URL to find where else that image appears online — useful for verifying profile pictures or tracking image sources."
+docs:
+  - https://images.google.com/
+
+actions:
+  - title: Open Google reverse image search
+    desc: Opens Google Images. Click the camera icon to upload a photo or paste an image URL to find all pages using that image. Lab targets only.
+    command: "xdg-open https://images.google.com/"
+
+  - title: Search by image URL directly
+    desc: Opens Google reverse image search pre-loaded with a specific image URL — finds every website that uses or links to that image.
+    command: "xdg-open 'https://www.google.com/searchbyimage?image_url={{url|https://example.com/image.jpg}}'"
+
+  - title: Download an image then search locally
+    desc: Downloads an image from a URL and opens it so you can drag it into Google reverse image search manually.
+    command: "curl -sL '{{url|https://example.com/image.jpg}}' -o {{output|image.jpg}} && xdg-open {{output|image.jpg}}"

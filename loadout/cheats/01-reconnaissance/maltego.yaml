@@ -1,0 +1,18 @@
+tool: maltego
+tags: [recon, osint, m01]
+exam_hint: "Maltego draws visual graphs showing how people, domains, IP addresses, and email addresses are connected. Start with one piece of information and pivot to discover the full picture."
+docs:
+  - https://www.maltego.com
+
+actions:
+  - title: Launch Maltego on your computer
+    desc: Opens the Maltego desktop application. Create a new graph, add your target domain as a seed entity, then run transforms to discover connected assets. Lab targets only.
+    command: "maltego"
+
+  - title: Step-by-step domain investigation workflow
+    desc: Prints the recommended Maltego workflow — new graph, add domain, run Domain transforms for DNS, WHOIS, and email discovery.
+    command: "echo 'Maltego workflow: 1) New graph  2) Add Domain entity: {{domain}}  3) Run To DNS Name, To IP, To Email transforms  4) Expand each result'"
+
+  - title: Investigate an email address
+    desc: Prints workflow for starting with an email address and discovering associated domains, social profiles, and phone numbers.
+    command: "echo 'Maltego workflow: 1) Add Email entity  2) Run To Person, To Phone Number, To Website transforms'"

@@ -1,0 +1,22 @@
+tool: dorkgpt
+tags: [recon, osint, dorking, m01]
+exam_hint: "DorkGPT converts plain English questions into Google search queries (dorks) that find sensitive files, login pages, and exposed data indexed by Google."
+docs:
+  - https://dorkgpt.com
+
+actions:
+  - title: Open DorkGPT to generate search queries
+    desc: Opens DorkGPT in your browser. Type a plain English question like 'find PDF files for example.com' and it generates the exact Google dork to use. Lab targets only.
+    command: "xdg-open https://dorkgpt.com"
+
+  - title: Find PDF files indexed for a domain
+    desc: Runs a Google search for PDF documents belonging to the target domain that are publicly indexed.
+    command: "xdg-open 'https://www.google.com/search?q=site%3A{{domain}}+filetype%3Apdf'"
+
+  - title: Find login and admin pages
+    desc: Searches Google for login pages, admin panels, and dashboards associated with the target domain.
+    command: "xdg-open 'https://www.google.com/search?q=site%3A{{domain}}+inurl%3Alogin'"
+
+  - title: Find exposed configuration files
+    desc: Searches Google for config files, .env files, and backup files accidentally indexed for the target.
+    command: "xdg-open 'https://www.google.com/search?q=site%3A{{domain}}+filetype%3Aenv+OR+filetype%3Aconfig'"

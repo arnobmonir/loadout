@@ -1,0 +1,22 @@
+tool: web-check
+tags: [recon, passive, web, m01]
+exam_hint: "Web Check analyzes a website in one click — shows DNS records, SSL certificate details, security headers, technology stack, open ports, and more. No scanning needed."
+docs:
+  - https://web-check.xyz
+
+actions:
+  - title: Analyze a website in your browser
+    desc: Opens Web Check with your target URL pre-filled. Shows DNS, SSL, headers, tech stack, and security grade in one dashboard. Lab targets only.
+    command: "xdg-open https://web-check.xyz/?url=https://{{domain}}"
+
+  - title: Run Web Check on your own machine
+    desc: Starts a local copy of Web Check using Docker — useful when you cannot use the online version or want to keep results private.
+    command: "docker run -p 3000:3000 lissy93/web-check"
+
+  - title: Quick check of HTTP response headers
+    desc: Fetches just the HTTP headers from the target — shows server type, security headers, and caching settings without a full scan.
+    command: "curl -sI https://{{domain}}"
+
+  - title: Check SSL certificate expiry date
+    desc: Shows when the target's SSL certificate expires and who issued it — expired certs are a common security finding.
+    command: "echo | openssl s_client -connect {{domain}}:443 2>/dev/null | openssl x509 -noout -dates"

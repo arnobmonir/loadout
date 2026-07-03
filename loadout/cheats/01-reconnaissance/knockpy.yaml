@@ -1,0 +1,26 @@
+tool: knockpy
+tags: [recon, dns, m01]
+exam_hint: "knockpy guesses subdomain names by trying a wordlist against the target DNS. When a name resolves to an IP, it confirms that subdomain exists."
+docs:
+  - https://github.com/guelfoweb/knock
+
+actions:
+  - title: Guess subdomains with built-in wordlist
+    desc: Tries thousands of common subdomain names (admin, mail, dev, staging, etc.) and reports which ones actually exist. Lab targets only.
+    command: "knockpy {{domain}}"
+
+  - title: Use your own wordlist
+    desc: Brute-forces subdomains using a custom wordlist file. Use a targeted list for better results on specific industries.
+    command: "knockpy -w {{wordlist|/usr/share/wordlists/dnsmap.txt}} {{domain}}"
+
+  - title: Save results as JSON
+    desc: Exports found subdomains with their IP addresses to a JSON file — easy to process with scripts.
+    command: "knockpy {{domain}} --json {{output|knockpy.json}}"
+
+  - title: Show only subdomains that resolve
+    desc: Filters results to show only subdomains that successfully resolve to an IP address — skips dead names.
+    command: "knockpy {{domain}} --recon"
+
+  - title: Scan multiple domains from a file
+    desc: Reads a list of domains and brute-forces subdomains for each one. Useful for batch assessments.
+    command: "knockpy -f {{file|domains.txt}}"

@@ -1,0 +1,22 @@
+tool: searchdiggity
+tags: [recon, osint, dorking, m01]
+exam_hint: "SearchDiggity is a Windows GUI tool from Bishop Fox that runs pre-built Google and Bing search queries (dorks) to find exposed files, error pages, and sensitive data."
+docs:
+  - https://www.bishopfox.com/tools/
+
+actions:
+  - title: SearchDiggity workflow reminder
+    desc: SearchDiggity is a GUI tool. Set your target domain, choose a dork pack (files, logins, errors), run the search, and export results for validation. Lab targets only.
+    command: "echo 'SearchDiggity workflow: 1) Set target domain: {{domain}}  2) Select dork pack  3) Run search  4) Export and validate results'"
+
+  - title: Manual Google dork for exposed PDFs
+    desc: Runs a Google search for PDF files indexed on the target domain — a manual alternative when SearchDiggity is not available.
+    command: "xdg-open 'https://www.google.com/search?q=site%3A{{domain}}+filetype%3Apdf'"
+
+  - title: Manual Google dork for error pages
+    desc: Searches Google for error pages on the target that may reveal server software, paths, or stack traces.
+    command: "xdg-open 'https://www.google.com/search?q=site%3A{{domain}}+%22error%22+OR+%22warning%22+OR+%22exception%22'"
+
+  - title: Manual Google dork for login pages
+    desc: Searches Google for login and authentication pages indexed on the target domain.
+    command: "xdg-open 'https://www.google.com/search?q=site%3A{{domain}}+inurl%3Alogin+OR+inurl%3Asignin'"

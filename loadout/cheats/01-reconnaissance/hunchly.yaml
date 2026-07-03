@@ -1,0 +1,14 @@
+tool: hunchly
+tags: [recon, osint, m01]
+exam_hint: "Hunchly is a browser extension that automatically saves every webpage you visit during an investigation — with timestamps and hashes — creating court-admissible evidence."
+docs:
+  - https://www.hunch.ly/
+
+actions:
+  - title: Open Hunchly website to install
+    desc: Opens the Hunchly website where you can download and install the Chrome extension for automatic OSINT evidence capture.
+    command: "xdg-open https://www.hunch.ly/"
+
+  - title: Investigation workflow reminder
+    desc: Prints the recommended workflow — install the extension, start a capture session before browsing, and export the report when done.
+    command: "echo 'Hunchly workflow: 1) Install Chrome extension  2) Start capture before OSINT session on {{domain}}  3) Browse normally  4) Export report when done'"

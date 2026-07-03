@@ -1,0 +1,26 @@
+tool: message-digester
+tags: [recon, hashing, m01]
+exam_hint: "Hashing tools create a unique fingerprint of a file. Compare the hash against VirusTotal or threat databases to check if a file is known malware without opening it."
+docs:
+  - https://csrc.nist.gov/projects/hash-functions
+
+actions:
+  - title: Create a SHA-256 fingerprint of a file
+    desc: Computes the SHA-256 hash — a unique 64-character fingerprint of the file. Compare this on VirusTotal to check if the file is known malware. Lab targets only.
+    command: "sha256sum {{file|sample.bin}}"
+
+  - title: Create a SHA-1 fingerprint of a file
+    desc: Computes the SHA-1 hash of a file. Still used by some threat intelligence feeds and legacy systems for file identification.
+    command: "sha1sum {{file|sample.bin}}"
+
+  - title: Create an MD5 fingerprint of a file
+    desc: Computes the MD5 hash — older but still widely used in malware databases and VirusTotal for quick file lookups.
+    command: "md5sum {{file|sample.bin}}"
+
+  - title: Hash a file and save the result
+    desc: Computes SHA-256 and saves the hash to a text file — attach this to your report as proof of file integrity.
+    command: "sha256sum {{file|sample.bin}} > {{output|hash.txt}}"
+
+  - title: Check a hash on VirusTotal
+    desc: Opens VirusTotal in your browser to look up a known file hash — shows if antivirus engines flag it as malware.
+    command: "xdg-open https://www.virustotal.com/gui/file/HASH_HERE"

@@ -1,18 +1,34 @@
 tool: theHarvester
-tags: [recon, osint, m02]
-exam_hint: "OSINT harvester — emails, hosts, subdomains from public sources"
+tags: [recon, osint, m01]
+exam_hint: "theHarvester collects publicly available information about a company — email addresses, employee names, subdomains, and hostnames — from search engines and public databases."
 docs:
   - https://github.com/laramies/theHarvester
 
 actions:
-  - title: all sources
-    desc: Harvest from all sources for domain
+  - title: Collect everything from all sources
+    desc: Searches Google, Bing, LinkedIn, and other public sources for emails, subdomains, and hosts related to your target domain. Lab targets only.
     command: "theHarvester -d {{domain}} -b all"
 
-  - title: google and bing
-    desc: Search engine source harvest
+  - title: Search Google and Bing only
+    desc: Limits the search to Google and Bing — faster than all sources, good for a quick first pass at finding emails and subdomains.
     command: "theHarvester -d {{domain}} -b google,bing"
 
-  - title: save to file
-    desc: Harvest and write results to file
+  - title: Search Bing only
+    desc: Uses just Bing to find emails, hosts, and subdomains. Useful when you want to avoid Google rate limits.
+    command: "theHarvester -d {{domain}} -b bing"
+
+  - title: Search LinkedIn for employee names
+    desc: Looks up people associated with the target organization on LinkedIn. Useful for social engineering reconnaissance planning.
+    command: "theHarvester -d {{domain}} -b linkedin"
+
+  - title: Limit the number of results
+    desc: Collects from all sources but caps results at 200 items. Keeps output manageable on large targets.
+    command: "theHarvester -d {{domain}} -b all -l 200"
+
+  - title: Save results to an HTML report
+    desc: Runs the harvest and saves findings to an HTML file you can open in a browser and include in your assessment report.
     command: "theHarvester -d {{domain}} -b all -f {{output|harvest}}"
+
+  - title: Save results to a JSON file
+    desc: Exports findings as structured JSON — easy to parse with scripts or import into other tools.
+    command: "theHarvester -d {{domain}} -b all -f {{output|harvest}} -o json"

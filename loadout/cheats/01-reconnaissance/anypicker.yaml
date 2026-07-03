@@ -1,0 +1,10 @@
+tool: anypicker
+tags: [recon, osint, m01]
+exam_hint: "AnyPicker is a visual web scraper — point and click on parts of a webpage to extract data without writing any code. Good for collecting OSINT from public directories and listings."
+docs:
+  - https://app.anypicker.com
+
+actions:
+  - title: Open AnyPicker web scraper
+    desc: Opens AnyPicker in your browser. Point and click on webpage elements to build a scraper that extracts names, emails, or data from public pages. Lab targets only.
+    command: "xdg-open https://app.anypicker.com"

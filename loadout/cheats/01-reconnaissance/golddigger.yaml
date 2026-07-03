@@ -1,0 +1,22 @@
+tool: golddigger
+tags: [recon, osint, dorking, m01]
+exam_hint: "GoldDigger automates Google searches (called dorks) to find sensitive files, login pages, and exposed documents that are accidentally indexed by Google."
+docs:
+  - https://www.exploit-db.com/google-hacking-database
+
+actions:
+  - title: Find exposed files indexed by Google
+    desc: Searches Google for PDFs, spreadsheets, and config files belonging to the target that should not be public. Lab targets only.
+    command: "golddigger --domain {{domain}} --preset files"
+
+  - title: Find admin and login pages
+    desc: Searches Google for admin panels, login pages, and control panels associated with the target domain.
+    command: "golddigger --domain {{domain}} --preset admin"
+
+  - title: Find exposed database backups
+    desc: Searches for SQL dumps, database backups, and .env files that may have been accidentally uploaded and indexed.
+    command: "golddigger --domain {{domain}} --preset database"
+
+  - title: Save all dork results to a file
+    desc: Runs the searches and exports every URL found to a text file for manual review.
+    command: "golddigger --domain {{domain}} --export {{output|golddigger.txt}}"

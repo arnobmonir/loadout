@@ -1,18 +1,38 @@
 tool: amass
-tags: [recon, dns, m02]
-exam_hint: "Attack surface mapping — subdomains, ASNs, netblocks"
+tags: [recon, dns, m01]
+exam_hint: "OWASP Amass is one of the most powerful subdomain finders. It maps the full external attack surface — subdomains, IP ranges, and network blocks — using public data sources."
 docs:
   - https://github.com/owasp-amass/amass
 
 actions:
-  - title: enum passive
-    desc: Passive subdomain enumeration
+  - title: Find subdomains without touching the target
+    desc: Searches certificate logs, DNS archives, and other public sources for subdomains. Completely passive — the target never knows you looked. Lab targets only.
     command: "amass enum -passive -d {{domain}}"
 
-  - title: enum active
-    desc: Active DNS brute force (authorized lab)
+  - title: Actively query the target DNS servers
+    desc: Sends DNS queries directly to the target's name servers to discover subdomains. More thorough but the target may see your traffic. Lab only.
     command: "amass enum -active -d {{domain}}"
 
-  - title: intel ASN
-    desc: ASN and network intel for domain
+  - title: Brute-force subdomains with a wordlist
+    desc: Tries thousands of common subdomain names against the target DNS. Finds hidden dev, staging, and admin servers. Noisy — lab only.
+    command: "amass enum -brute -d {{domain}}"
+
+  - title: Find the network and ASN behind a domain
+    desc: Looks up which Autonomous System Number (ASN) and IP ranges belong to the organization behind this domain. Maps their full network footprint.
     command: "amass intel -whois -d {{domain}}"
+
+  - title: Find related domains by organization name
+    desc: Searches for other domains registered by the same company. Reveals sister sites, acquisitions, and related brands.
+    command: "amass intel -org {{keyword|Example Corp}}"
+
+  - title: Review past scan results from database
+    desc: Shows all subdomains and assets previously found for this domain, stored in Amass's local database from earlier runs.
+    command: "amass db -show -d {{domain}}"
+
+  - title: Save results to a file
+    desc: Runs passive enumeration and writes all discovered subdomains and IPs to a text file for your report.
+    command: "amass enum -passive -d {{domain}} -o {{output|amass.txt}}"
+
+  - title: Draw a visual map of discovered assets
+    desc: Creates a graph showing how subdomains, IPs, and networks connect to each other. Great for understanding the target's structure.
+    command: "amass enum -passive -d {{domain}} -dir {{output|amass-out}}"

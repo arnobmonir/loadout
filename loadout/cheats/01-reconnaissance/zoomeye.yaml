@@ -1,0 +1,22 @@
+tool: zoomeye
+tags: [recon, osint, m01]
+exam_hint: "ZoomEye is a Chinese search engine for internet-connected devices — similar to Shodan but with stronger coverage in Asia. Shows open ports, services, and vulnerabilities."
+docs:
+  - https://www.zoomeye.org
+
+actions:
+  - title: Search for all hosts related to a domain
+    desc: Opens ZoomEye to find every internet-connected device associated with your target domain. Lab targets only.
+    command: "xdg-open https://www.zoomeye.org/search?q={{domain}}"
+
+  - title: Look up a specific IP address
+    desc: Shows all services, ports, and banners found on a single IP address in ZoomEye's database.
+    command: "xdg-open https://www.zoomeye.org/search?q=ip%3A{{ip}}"
+
+  - title: Find web servers running a specific technology
+    desc: Searches for hosts running a specific web technology — like Apache, nginx, or IIS — on your target's network.
+    command: "xdg-open https://www.zoomeye.org/search?q=site%3A{{domain}}+app%3Anginx"
+
+  - title: Search from the command line
+    desc: Runs a ZoomEye search from your terminal. Requires a free API key from zoomeye.org.
+    command: "zoomeye search '{{domain}}'"

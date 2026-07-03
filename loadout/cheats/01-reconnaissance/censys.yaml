@@ -1,0 +1,26 @@
+tool: censys
+tags: [recon, osint, m01]
+exam_hint: "Censys scans the entire internet and indexes SSL certificates, open ports, and services. Great for finding all servers belonging to a company or checking certificate details."
+docs:
+  - https://search.censys.io
+
+actions:
+  - title: Find all hosts belonging to a domain
+    desc: Searches Censys for every server and IP address associated with your target domain. Shows open ports and services. Lab targets only.
+    command: "xdg-open https://search.censys.io/search?resource=hosts&q={{domain}}"
+
+  - title: Find SSL certificates for a domain
+    desc: Searches certificate transparency logs for every SSL certificate issued to the target — reveals subdomains and related infrastructure.
+    command: "xdg-open https://search.censys.io/search?resource=certificates&q=parsed.names%3A{{domain}}"
+
+  - title: Look up a specific IP address
+    desc: Shows everything Censys knows about one IP — open ports, services, SSL certificates, and software versions.
+    command: "xdg-open https://search.censys.io/hosts/{{ip}}"
+
+  - title: Search from the command line
+    desc: Runs a Censys host search from your terminal. Requires a free API key from search.censys.io.
+    command: "censys search '{{domain}}' --index hosts"
+
+  - title: View certificate details from CLI
+    desc: Shows full SSL certificate information for certificates matching your domain.
+    command: "censys search 'parsed.names: {{domain}}' --index certificates"
