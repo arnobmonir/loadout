@@ -1,0 +1,40 @@
+tool: eset-sysinspector
+tags:
+- m11
+- network
+- cli
+exam_hint: 'ESET SysInspector is a free Windows diagnostic and forensic tool from ESET that performs a comprehensive snapshot of a running system, capturing processes, network connections, registry entries, services, drivers, startup items, and loaded files—each assigned a risk score based on ESET''s threat intelligence. It helps analysts quickly identify suspicious items on a potentially infected system by hi Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.eset.com/us/support/sysinspector/
+- https://help.eset.com/sysinspector/
+actions:
+- title: 1. Open SysInspector.exe
+  desc: Runs `1.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 1. Open SysInspector.exe
+- title: 2. It automatically
+  desc: Runs `2.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 2. It automatically runs a full system scan and risk-scores all entries
+- title: 3. Review items
+  desc: Runs `3.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 3. Review items marked AMBER (caution) or RED (risk)
+- title: '- Running processes:'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Running processes: look for unsigned or suspicious parent-child chains'
+- title: '- Network connections:'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Network connections: unexpected ESTABLISHED or LISTENING entries'
+- title: '- Startup items:'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Startup items: HKLM Run, Scheduled Tasks, Services'
+- title: '- Drivers: unsigned'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Drivers: unsigned or recently modified kernel drivers'
+- title: 'SysInspector.exe /gen=report.xml #'
+  desc: Runs `SysInspector.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'SysInspector.exe /gen=report.xml # generate XML report'
+- title: 'SysInspector.exe /gen=report.html #'
+  desc: Runs `SysInspector.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'SysInspector.exe /gen=report.html # HTML report'
+- title: File > Compare
+  desc: Runs `File` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: File > Compare > Select two .xml snapshot files

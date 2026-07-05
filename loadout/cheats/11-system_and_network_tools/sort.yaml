@@ -1,0 +1,38 @@
+tool: sort
+tags:
+- m11
+- network
+- cli
+exam_hint: 'sort is a command-line utility that sorts lines in text files. It arranges data alphabetically, numerically, or by custom criteria. Essential for organizing log data, processing CSV files, and preparing data for analysis. Supports multiple sort keys, reverse ordering, and field-based sorting. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Sort --version
+  desc: Runs `sort` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sort --version
+- title: Apt install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'sudo apt install coreutils # Debian/Ubuntu'
+- title: Yum install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'sudo yum install coreutils # CentOS/RHEL'
+- title: Sort [OPTIONS] [FILE]
+  desc: Runs `sort` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sort [OPTIONS] [FILE]
+- title: 'Key Options:'
+  desc: Runs `Key` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Key Options:'
+- title: -n = Numeric
+  desc: Runs `-n` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -n = Numeric sort
+- title: -r = Reverse
+  desc: Runs `-r` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -r = Reverse order
+- title: -u = Unique
+  desc: Runs `-u` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -u = Unique (remove duplicates)
+- title: -f = Case
+  desc: Runs `-f` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -f = Case insensitive
+- title: -k = Sort
+  desc: Runs `-k` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -k = Sort key (field)

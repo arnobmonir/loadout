@@ -1,0 +1,14 @@
+tool: psiphon
+tags:
+- m12
+- wireless
+- attack
+exam_hint: 'Psiphon is a free, open-source VPN and proxy tool specifically designed for circumventing internet censorship and access restrictions. It provides secure tunneling through a network of proxy servers, useful for accessing information in restrictive environments and understanding bypass techniques. Strategy: Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.'
+docs: []
+actions:
+- title: Client ←→ Psiphon
+  desc: Runs `Client` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: Client ←→ Psiphon VPN Server ←→ Target Website
+- title: (Encrypted) (Tunneled) (Unencrypted)
+  desc: Runs `(Encrypted)` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: (Encrypted) (Tunneled) (Unencrypted)

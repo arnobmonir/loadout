@@ -1,0 +1,11 @@
+tool: trojan-horse-construction-kit
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Trojan Horse Construction Kit — CEH 11 module tool. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Echo 'Open Trojan
+  desc: Runs `echo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: echo 'Open Trojan Horse Construction Kit per CEH lab procedure — configure target {ip} in isolated environment.'

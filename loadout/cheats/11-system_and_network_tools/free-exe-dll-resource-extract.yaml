@@ -1,0 +1,13 @@
+tool: free-exe-dll-resource-extract
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Free EXE DLL Resource Extract is a tool for extracting resources (icons, images, strings, etc.) from Windows executable and DLL files, useful in post-exploitation and malware analysis. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://www.nirsoft.net/utils/resources_extract.html
+- https://www.heaventools.com/pe-explorer.htm
+actions:
+- title: Echo 'Open Free
+  desc: Runs `echo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: echo 'Open Free EXE DLL Resource Extract per CEH lab procedure — configure target {ip} in isolated environment.'

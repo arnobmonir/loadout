@@ -1,0 +1,12 @@
+tool: netwrix-event-log-manager
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Netwrix Event Log Manager is a free Windows Event Log monitoring and management tool that collects, filters, archives, and alerts on Windows Security, System, and Application logs from multiple computers simultaneously. It provides centralised event log collection without the cost of a full SIEM, making it accessible for small to medium enterprises. Security teams use it to monitor for critical se Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.netwrix.com/windows_event_log_manager.html
+actions:
+- title: Get-WinEvent -ComputerName remote-host
+  desc: Runs `Get-WinEvent` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-WinEvent -ComputerName remote-host -FilterHashtable @{LogName='Security'; Id=1102}

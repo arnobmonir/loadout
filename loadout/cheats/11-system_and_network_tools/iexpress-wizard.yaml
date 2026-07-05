@@ -1,0 +1,16 @@
+tool: iexpress-wizard
+tags:
+- m11
+- network
+- cli
+exam_hint: 'IExpress is a built-in Windows utility (iexpress.exe) that creates self-extracting archive packages with automated installation scripts, originally designed for software distribution and Windows updates. It can bundle multiple files into a single executable that runs a specified command after extraction. Threat actors abuse IExpress to package Trojan droppers and RATs into seemingly legitimate sel Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://lolbas-project.github.io/lolbas/Binaries/Iexpress/
+- https://attack.mitre.org/techniques/T1218/
+actions:
+- title: Iexpress-wizard --help
+  desc: Runs `iexpress-wizard` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: iexpress-wizard --help
+- title: Iexpress-wizard -h
+  desc: Runs `iexpress-wizard` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: iexpress-wizard -h

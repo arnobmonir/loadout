@@ -1,0 +1,12 @@
+tool: iproyal-residential-proxy
+tags:
+- m12
+- wireless
+- attack
+exam_hint: 'IPRoyal Residential Proxy is a commercial residential proxy network that routes traffic through real end-user IP addresses assigned by ISPs worldwide. Because traffic appears to originate from legitimate residential addresses, it is highly effective at bypassing IP reputation filters, CAPTCHAs, and geo-blocking used by firewalls and IDS systems. Strategy: Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.'
+docs:
+- https://iproyal.com
+actions:
+- title: Echo 'Open IPRoyal
+  desc: Runs `echo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: echo 'Open IPRoyal Residential Proxy per CEH lab procedure — configure target {ip} in isolated environment.'

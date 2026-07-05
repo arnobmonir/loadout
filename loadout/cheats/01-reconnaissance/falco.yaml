@@ -1,22 +1,32 @@
 tool: falco
-tags: [recon, monitoring, m01]
-exam_hint: "Falco watches a Linux system or Kubernetes cluster and alerts you when suspicious activity happens — like a shell opening inside a container or a privilege escalation attempt."
+tags:
+- recon
+- monitoring
+- m01
+- m06
+- defense
+exam_hint: Falco watches a Linux system or Kubernetes cluster and alerts you when suspicious activity happens — like a shell opening inside a container or a privilege escalation attempt. Falco is an open-source container and host runtime security tool that provides real-time threat detection and response. It monitors system calls, container behavior, and application activities to iden
 docs:
-  - https://falco.org/
-
+- https://falco.org/
 actions:
-  - title: Start monitoring with default rules
-    desc: Runs Falco with built-in rules that detect common attack patterns — shells in containers, sensitive file access, and privilege changes. Authorized lab hosts only.
-    command: "sudo falco"
-
-  - title: Monitor with your own custom rules
-    desc: Runs Falco using a custom rules file you wrote — define exactly which activities should trigger an alert for your environment.
-    command: "sudo falco -r {{file|custom_rules.yaml}}"
-
-  - title: Check Falco is installed correctly
-    desc: Prints the installed Falco version to confirm it is set up and ready to use.
-    command: "falco --version"
-
-  - title: List all available detection rules
-    desc: Shows every detection rule Falco will use — helpful for understanding what activities it monitors before starting.
-    command: "falco --list"
+- title: Start monitoring with default rules
+  desc: Runs Falco with built-in rules that detect common attack patterns — shells in containers, sensitive file access, and privilege changes. Authorized lab hosts only.
+  command: sudo falco
+- title: Monitor with your own custom rules
+  desc: Runs Falco using a custom rules file you wrote — define exactly which activities should trigger an alert for your environment.
+  command: sudo falco -r {{file|custom_rules.yaml}}
+- title: Check Falco is installed correctly
+  desc: Prints the installed Falco version to confirm it is set up and ready to use.
+  command: falco --version
+- title: List all available detection rules
+  desc: Shows every detection rule Falco will use — helpful for understanding what activities it monitors before starting.
+  command: falco --list
+- title: Docker run --privileged
+  desc: Runs `docker` as part of the CEH workflow. Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation. Authorized lab targets only.
+  command: docker run --privileged -it falcosecurity/falco
+- title: Kubectl apply -f
+  desc: Runs `kubectl` as part of the CEH workflow. Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation. Authorized lab targets only.
+  command: kubectl apply -f https://k8s.helm.sh/...
+- title: Falco --engine ebpf
+  desc: Runs `falco` as part of the CEH workflow. Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation. Authorized lab targets only.
+  command: falco --engine ebpf -o file_output=falco.log

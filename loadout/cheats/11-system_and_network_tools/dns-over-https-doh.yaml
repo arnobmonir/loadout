@@ -1,0 +1,16 @@
+tool: dns-over-https-doh
+tags:
+- m11
+- network
+- cli
+exam_hint: 'DNS-over-HTTPS (DoH) is a protocol for performing remote Domain Name System (DNS) resolution via the HTTPS protocol, improving privacy and security by encrypting DNS queries. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://developers.cloudflare.com/1.1.1.1/encryption/dns-over-https/
+- https://en.wikipedia.org/wiki/DNS_over_HTTPS
+actions:
+- title: Dns-over-https-doh --help
+  desc: Runs `dns-over-https-doh` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: dns-over-https-doh --help
+- title: Dns-over-https-doh -h
+  desc: Runs `dns-over-https-doh` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: dns-over-https-doh -h

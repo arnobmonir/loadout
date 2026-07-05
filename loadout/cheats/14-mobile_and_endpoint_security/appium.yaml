@@ -1,0 +1,41 @@
+tool: appium
+tags:
+- m14
+- mobile
+- endpoint
+exam_hint: 'Appium is an open-source test automation framework for mobile apps. It allows testers to write automated tests for Android and iOS applications using standard protocols. Appium is useful for security testing of mobile applications, identifying vulnerabilities through automated interaction testing. Strategy: Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.'
+docs:
+- http://localhost:4723/wd/hub
+- http://appium.io/
+- http://appium.io/docs/
+actions:
+- title: Npm install -g
+  desc: Runs `npm` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: npm install -g appium
+- title: Appium
+  desc: Runs `appium` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: appium
+- title: From appium import
+  desc: Runs `from` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: from appium import webdriver
+- title: Desired_capabilities = {
+  desc: Runs `desired_capabilities` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: desired_capabilities = {
+- title: '"platformName": "Android",'
+  desc: Runs `"platformName":` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: '"platformName": "Android",'
+- title: '"deviceName": "emulator",'
+  desc: Runs `"deviceName":` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: '"deviceName": "emulator",'
+- title: '"appPackage": "com.example.app",'
+  desc: Runs `"appPackage":` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: '"appPackage": "com.example.app",'
+- title: '"appActivity": "MainActivity"'
+  desc: Runs `"appActivity":` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: '"appActivity": "MainActivity"'
+- title: '}'
+  desc: Runs `}` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: '}'
+- title: Driver = webdriver.Remote("http://localhost:4723/wd/hub",
+  desc: Runs `driver` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)

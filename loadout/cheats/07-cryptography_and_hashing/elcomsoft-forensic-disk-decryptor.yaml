@@ -1,0 +1,13 @@
+tool: elcomsoft-forensic-disk-decryptor
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'Elcomsoft Forensic Disk Decryptor is a forensic tool for decrypting BitLocker, FileVault 2, PGP, and TrueCrypt disk volumes, supporting digital investigations and data recovery. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://www.elcomsoft.com/efdd.html
+- https://en.wikipedia.org/wiki/Disk_encryption
+actions:
+- title: Echo 'Open Elcomsoft
+  desc: Runs `echo` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: echo 'Open Elcomsoft Forensic Disk Decryptor per CEH lab procedure — configure target {ip} in isolated environment.'

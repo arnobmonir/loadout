@@ -1,0 +1,38 @@
+tool: tar
+tags:
+- m11
+- network
+- cli
+exam_hint: 'tar (tape archive) is a command-line utility for creating and extracting archive files. Originally designed for tape backup, tar bundles multiple files and directories into a single archive while preserving file structure, permissions, and ownership. It''s essential for backups, software distribution, and file management in Linux/Unix systems. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Tar --version
+  desc: Runs `tar` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: tar --version
+- title: Apt install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'sudo apt install tar # Debian/Ubuntu'
+- title: Yum install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'sudo yum install tar # CentOS/RHEL'
+- title: Tar [OPERATION] [OPTIONS]
+  desc: Runs `tar` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: tar [OPERATION] [OPTIONS] [ARCHIVE] [FILES/DIRECTORIES]
+- title: 'Operations:'
+  desc: Runs `Operations:` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Operations:'
+- title: -c = Create
+  desc: Runs `-c` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -c = Create archive
+- title: -x = Extract
+  desc: Runs `-x` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -x = Extract archive
+- title: -t = List
+  desc: Runs `-t` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -t = List contents
+- title: -r = Append
+  desc: Runs `-r` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -r = Append files
+- title: -u = Update
+  desc: Runs `-u` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -u = Update files

@@ -1,0 +1,14 @@
+tool: wipe
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A secure file deletion utility that overwrites files with multiple patterns to prevent forensic recovery. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Wipe --help
+  desc: Runs `wipe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: wipe --help
+- title: Man wipe
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man wipe

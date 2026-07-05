@@ -1,0 +1,14 @@
+tool: free-usb-analyzer
+tags:
+- m09
+- social
+- phishing
+exam_hint: 'Free USB protocol analyzer for monitoring USB communication and device data on Windows. Strategy: Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.'
+docs: []
+actions:
+- title: Free-usb-analyzer --help
+  desc: Runs `free-usb-analyzer` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: free-usb-analyzer --help
+- title: Free-usb-analyzer -h
+  desc: Runs `free-usb-analyzer` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: free-usb-analyzer -h

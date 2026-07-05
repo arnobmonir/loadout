@@ -1,0 +1,14 @@
+tool: total-wipeout
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A bootable secure data erasure solution that completely and permanently destroys data on hard drives. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Total-wipeout --help
+  desc: Runs `total-wipeout` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: total-wipeout --help
+- title: Total-wipeout -h
+  desc: Runs `total-wipeout` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: total-wipeout -h

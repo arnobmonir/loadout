@@ -1,0 +1,14 @@
+tool: lads
+tags:
+- m11
+- network
+- cli
+exam_hint: 'List Alternate Data Streams — a Windows command-line utility that scans NTFS volumes for files containing hidden Alternate Data Streams. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Lads --help
+  desc: Runs `lads` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: lads --help
+- title: Man lads
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man lads

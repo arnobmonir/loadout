@@ -1,0 +1,16 @@
+tool: zenmap
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Zenmap is the official graphical user interface for Nmap. It helps users run scans, save profiles, compare results, and visualize discovered hosts and services. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://nmap.org/zenmap/
+- https://nmap.org/book/zenmap.html
+actions:
+- title: Zenmap --help
+  desc: Runs `zenmap` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: zenmap --help
+- title: Man zenmap
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man zenmap

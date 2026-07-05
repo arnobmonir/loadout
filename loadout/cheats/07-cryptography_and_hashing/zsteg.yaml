@@ -1,0 +1,14 @@
+tool: zsteg
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'A steganalysis tool for detecting hidden data in PNG and BMP image files using statistical analysis of bit planes. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Zsteg --help
+  desc: Runs `zsteg` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: zsteg --help
+- title: Man zsteg
+  desc: Runs `man` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: man zsteg

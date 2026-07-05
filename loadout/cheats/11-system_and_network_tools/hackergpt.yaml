@@ -1,0 +1,38 @@
+tool: hackergpt
+tags:
+- m11
+- network
+- cli
+exam_hint: 'HackerGPT is a specialized GPT variant optimized for cybersecurity tasks and penetration testing. It''s fine-tuned with security research, vulnerability analysis, and hacking technique datasets. HackerGPT provides security-focused responses for reconnaissance, exploitation, and vulnerability research while maintaining ethical guidelines (theory/authorized use only). Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: 'Query: "How do'
+  desc: Runs `Query:` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Query: "How do I enumerate SMB shares?"'
+- title: 'Response: [Explains enum4linux,'
+  desc: Runs `Response:` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Response: [Explains enum4linux, nbtscan usage, etc.]'
+- title: 'Query: "Explain SQL'
+  desc: Runs `Query:` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Query: "Explain SQL injection techniques"'
+- title: 'Response: [Detailed SQLi'
+  desc: Runs `Response:` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Response: [Detailed SQLi vectors, payloads, detection evasion]'
+- title: 'Query: "Generate Metasploit'
+  desc: Runs `Query:` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Query: "Generate Metasploit exploitation strategy for Apache 2.4.49"'
+- title: 'Response: [Recommends frameworks,'
+  desc: Runs `Response:` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Response: [Recommends frameworks, modules, methodology]'
+- title: 'Penetration Test Workflow:'
+  desc: Runs `Penetration` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Penetration Test Workflow:'
+- title: '├── Phase 01:'
+  desc: Runs `├──` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '├── Phase 01: HackerGPT helps plan reconnaissance'
+- title: '├── Phase 02:'
+  desc: Runs `├──` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '├── Phase 02: Guidance on enumeration tools'
+- title: '├── Phase 03:'
+  desc: Runs `├──` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '├── Phase 03: Vulnerability assessment assistance'

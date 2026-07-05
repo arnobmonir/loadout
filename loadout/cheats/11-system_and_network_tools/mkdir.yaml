@@ -1,0 +1,38 @@
+tool: mkdir
+tags:
+- m11
+- network
+- cli
+exam_hint: 'mkdir (make directory) is a command-line utility that creates new directories. Can create single or multiple directories with specific permissions. Essential for file system organization, project setup, and directory structure creation. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Mkdir --version
+  desc: Runs `mkdir` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mkdir --version
+- title: Mkdir documents
+  desc: Runs `mkdir` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mkdir documents
+- title: Mkdir folder1 folder2
+  desc: Runs `mkdir` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mkdir folder1 folder2 folder3
+- title: Mkdir path/to/directory
+  desc: Runs `mkdir` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mkdir path/to/directory
+- title: Mkdir test_dir
+  desc: Runs `mkdir` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mkdir test_dir
+- title: Mkdir /tmp/new_folder
+  desc: Runs `mkdir` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mkdir /tmp/new_folder
+- title: Mkdir -p /home/user/projects/python/app
+  desc: Runs `mkdir` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mkdir -p /home/user/projects/python/app
+- title: Mkdir -p dir1/dir2/dir3/dir4
+  desc: Runs `mkdir` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mkdir -p dir1/dir2/dir3/dir4
+- title: Mkdir -p existing_dir
+  desc: Runs `mkdir` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'mkdir -p existing_dir # No error if exists'
+- title: Mkdir -p project/src
+  desc: Runs `mkdir` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mkdir -p project/src && cd project/src

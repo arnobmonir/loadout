@@ -1,0 +1,16 @@
+tool: pgp-desktop
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'PGP Desktop is an encrypted email and file protection solution, supporting strong encryption and digital signatures for secure communication and data storage. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://www.symantec.com/products/encryption
+- https://en.wikipedia.org/wiki/Pretty_Good_Privacy
+actions:
+- title: Pgp-desktop --help
+  desc: Runs `pgp-desktop` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: pgp-desktop --help
+- title: Pgp-desktop -h
+  desc: Runs `pgp-desktop` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: pgp-desktop -h

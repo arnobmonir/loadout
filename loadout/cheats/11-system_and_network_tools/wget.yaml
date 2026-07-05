@@ -1,18 +1,49 @@
 tool: wget
-tags: [network, web, m11]
-exam_hint: "Non-interactive file downloader — HTTP/HTTPS/FTP"
+tags:
+- network
+- web
+- m11
+- cli
+exam_hint: Non-interactive file downloader — HTTP/HTTPS/FTP wget is a command-line utility for downloading files from the internet using HTTP, HTTPS, and FTP protocols. It supports recursive downloads, resumable transfers, bandwidth limiting, and can continue
 docs:
-  - "man:wget"
-
+- man:wget
 actions:
-  - title: download file
-    desc: Download file from URL
-    command: "wget http://{{ip}}/{{target|file.txt}}"
-
-  - title: mirror site
-    desc: Recursive mirror (authorized lab, limited depth)
-    command: "wget -r -l 1 http://{{domain}}/"
-
-  - title: spider only
-    desc: Spider without downloading
-    command: "wget --spider -r -l 1 http://{{ip}}/"
+- title: download file
+  desc: Download file from URL
+  command: wget http://{{ip}}/{{target|file.txt}}
+- title: mirror site
+  desc: Recursive mirror (authorized lab, limited depth)
+  command: wget -r -l 1 http://{{domain}}/
+- title: spider only
+  desc: Spider without downloading
+  command: wget --spider -r -l 1 http://{{ip}}/
+- title: Apt-get update
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo apt-get update
+- title: Apt-get install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo apt-get install wget
+- title: Yum install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo yum install wget
+- title: Brew install wget
+  desc: Runs `brew` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: brew install wget
+- title: Wget --version
+  desc: Runs `wget` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: wget --version
+- title: 'Download:'
+  desc: Runs `Download:` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Download:'
+- title: '- Official: https://www.gnu.org/software/wget/'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Official: https://www.gnu.org/software/wget/'
+- title: '- Windows binary'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Windows binary available'
+- title: '- Or use'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Or use Windows Subsystem for Linux (WSL)'
+- title: '- Or use (2)'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Or use Git Bash'

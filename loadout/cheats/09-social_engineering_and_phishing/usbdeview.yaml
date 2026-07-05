@@ -1,0 +1,14 @@
+tool: usbdeview
+tags:
+- m09
+- social
+- phishing
+exam_hint: 'Sysinternals-style utility that lists all USB devices connected to a computer including currently and previously connected devices. Strategy: Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.'
+docs: []
+actions:
+- title: Usbdeview --help
+  desc: Runs `usbdeview` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: usbdeview --help
+- title: Man usbdeview
+  desc: Runs `man` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: man usbdeview

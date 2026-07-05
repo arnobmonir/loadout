@@ -1,0 +1,14 @@
+tool: orbot-proxy
+tags:
+- m14
+- mobile
+- endpoint
+exam_hint: 'Orbot Proxy — CEH 14 module tool. Strategy: Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.'
+docs: []
+actions:
+- title: Orbot-proxy --help
+  desc: Runs `orbot-proxy` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: orbot-proxy --help
+- title: Orbot-proxy -h
+  desc: Runs `orbot-proxy` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: orbot-proxy -h

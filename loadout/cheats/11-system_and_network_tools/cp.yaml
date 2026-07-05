@@ -1,0 +1,38 @@
+tool: cp
+tags:
+- m11
+- network
+- cli
+exam_hint: 'cp (copy) is a fundamental utility for copying files and directories. Creates duplicate files with optional permission preservation and recursive directory copying. Essential for file management, backups, and system administration. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Cp --version
+  desc: Runs `cp` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cp --version
+- title: Cp [OPTIONS] SOURCE
+  desc: Runs `cp` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cp [OPTIONS] SOURCE DEST
+- title: 'Key Options:'
+  desc: Runs `Key` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Key Options:'
+- title: -r = Recursive
+  desc: Runs `-r` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -r = Recursive (directories)
+- title: -i = Interactive
+  desc: Runs `-i` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -i = Interactive (prompt)
+- title: -f = Force
+  desc: Runs `-f` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -f = Force overwrite
+- title: -v = Verbose
+  desc: Runs `-v` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -v = Verbose
+- title: -p = Preserve
+  desc: Runs `-p` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -p = Preserve attributes
+- title: -d = Preserve
+  desc: Runs `-d` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -d = Preserve links
+- title: -a = Archive
+  desc: Runs `-a` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -a = Archive (combine -dpR)

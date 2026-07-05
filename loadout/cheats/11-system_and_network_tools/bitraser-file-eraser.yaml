@@ -1,0 +1,11 @@
+tool: bitraser-file-eraser
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A data erasure software for permanently deleting files and digital traces from Windows systems to prevent recovery. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Echo 'Open BitRaser
+  desc: Runs `echo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: echo 'Open BitRaser File Eraser per CEH lab procedure — configure target {ip} in isolated environment.'

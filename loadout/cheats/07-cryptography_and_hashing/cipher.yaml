@@ -1,0 +1,16 @@
+tool: cipher
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'Cipher.exe is a built-in Windows command-line tool for managing file and folder encryption using the Encrypting File System (EFS). Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cipher
+- https://en.wikipedia.org/wiki/Encrypting_File_System
+actions:
+- title: Cipher /e /s:C:\SensitiveFolder
+  desc: Runs `cipher` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: cipher /e /s:C:\SensitiveFolder
+- title: 'Cipher /w:C:'
+  desc: Runs `cipher` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: 'cipher /w:C:'

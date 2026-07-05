@@ -1,0 +1,14 @@
+tool: ikeymonitor
+tags:
+- m14
+- mobile
+- endpoint
+exam_hint: 'Parental control and employee monitoring app that records keystrokes, screenshots, and GPS on iOS and Android. Strategy: Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.'
+docs: []
+actions:
+- title: Ikeymonitor --help
+  desc: Runs `ikeymonitor` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: ikeymonitor --help
+- title: Man ikeymonitor
+  desc: Runs `man` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: man ikeymonitor

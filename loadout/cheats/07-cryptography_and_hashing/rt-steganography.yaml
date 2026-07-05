@@ -1,0 +1,14 @@
+tool: rt-steganography
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'Real-time steganography software for embedding hidden messages in image and audio files. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Rt-steganography --help
+  desc: Runs `rt-steganography` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: rt-steganography --help
+- title: Rt-steganography -h
+  desc: Runs `rt-steganography` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: rt-steganography -h

@@ -1,0 +1,41 @@
+tool: top
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'top is a command-line utility for real-time process monitoring and system performance analysis. Displays dynamic information about running processes, CPU usage, memory consumption, and system load. Essential for troubleshooting performance issues and system health monitoring. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Top --version
+  desc: Runs `top` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: top --version
+- title: Apt install
+  desc: Runs `sudo` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: sudo apt install procps
+- title: Yum install
+  desc: Runs `sudo` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: sudo yum install procps-ng
+- title: Top
+  desc: Runs `top` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: top
+- title: Top -n 3
+  desc: Runs `top` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: top -n 3
+- title: Top -d 2
+  desc: Runs `top` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: top -d 2
+- title: Top -u username
+  desc: Runs `top` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: top -u username
+- title: Top -b -n
+  desc: Runs `top` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: top -b -n 1
+- title: PID - Process
+  desc: Runs `PID` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: PID - Process ID
+- title: USER - Process
+  desc: Runs `USER` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: USER - Process owner
+- title: PR - Priority
+  desc: Runs `PR` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: PR - Priority

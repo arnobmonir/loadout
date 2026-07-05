@@ -1,0 +1,12 @@
+tool: caspa-network-analyzer
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Caspa Network Analyzer (part of Colasoft''s product line; also written "Capsa") is a Windows-based network protocol analyser and packet sniffer that provides real-time packet capture, protocol analysis, and network traffic statistics. It supports full-duplex capture, multi-adapter monitoring, and advanced protocol decoding for over 1,800 protocols. Security teams use Caspa/Capsa during malware inve Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.colasoft.com/capsa/
+actions:
+- title: Echo 'Open Caspa
+  desc: Runs `echo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: echo 'Open Caspa Network Analyzer per CEH lab procedure — configure target {ip} in isolated environment.'

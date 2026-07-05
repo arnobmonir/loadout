@@ -1,0 +1,24 @@
+tool: winpatrol
+tags:
+- m11
+- network
+- cli
+exam_hint: 'WinPatrol is a Windows security utility by BillP Studios that monitors and alerts users to changes in startup programs, scheduled tasks, browser helper objects (BHOs), services, and other system locations commonly targeted by malware for persistence. It uses a behaviour-based "Scotty the dog" guard that watches for unauthorised additions or changes to these locations in real-time and alerts the us Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.winpatrol.com/
+actions:
+- title: 1. WinPatrol runs
+  desc: Runs `1.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 1. WinPatrol runs in the background monitoring startup, BHOs, and task changes
+- title: 2. When new
+  desc: Runs `2.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '2. When new startup entry is detected: dialog asks "Allow or Block?"'
+- title: 3. Startup Manager
+  desc: Runs `3.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '3. Startup Manager tab: review all registered startup items'
+- title: 4. IE Helpers
+  desc: Runs `4.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '4. IE Helpers tab: browser helper objects and toolbars'
+- title: '5. Scheduled Tasks:'
+  desc: Runs `5.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '5. Scheduled Tasks: view and disable task scheduler entries'

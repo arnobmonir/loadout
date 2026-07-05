@@ -1,0 +1,14 @@
+tool: highster-mobile
+tags:
+- m14
+- mobile
+- endpoint
+exam_hint: 'Stealth mobile monitoring app for tracking texts, calls, emails, and GPS without physical access (iOS). Strategy: Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.'
+docs: []
+actions:
+- title: Highster-mobile --help
+  desc: Runs `highster-mobile` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: highster-mobile --help
+- title: Highster-mobile -h
+  desc: Runs `highster-mobile` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: highster-mobile -h

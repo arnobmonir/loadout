@@ -1,0 +1,14 @@
+tool: hotspot-shield
+tags:
+- m12
+- wireless
+- attack
+exam_hint: 'Hotspot Shield is a freemium VPN client offering both free and premium versions with worldwide server locations. It provides encryption for network traffic and IP masking for privacy and security during reconnaissance activities and network testing. Strategy: Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.'
+docs: []
+actions:
+- title: 'Free Tier: Limited'
+  desc: Runs `Free` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: 'Free Tier: Limited servers, ads'
+- title: 'Premium: $12.99/month or'
+  desc: Runs `Premium:` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: 'Premium: $12.99/month or $2.99/month (annual)'

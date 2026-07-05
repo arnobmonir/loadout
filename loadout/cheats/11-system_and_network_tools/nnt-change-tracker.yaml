@@ -1,0 +1,16 @@
+tool: nnt-change-tracker
+tags:
+- m11
+- network
+- cli
+exam_hint: 'NNT Change Tracker (by New Net Technologies) is an enterprise-grade File Integrity Monitoring (FIM) and system change detection solution that detects, logs, and alerts on all changes to files, directories, registry entries, and system configurations. It is a primary tool for PCI DSS Requirement 11.5 FIM compliance and cybersecurity hardening. NNT Change Tracker distinguishes between planned/author Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.newnettechnologies.com/change-tracker.html
+- https://www.pcisecuritystandards.org/
+actions:
+- title: Nnt-change-tracker --help
+  desc: Runs `nnt-change-tracker` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nnt-change-tracker --help
+- title: Nnt-change-tracker -h
+  desc: Runs `nnt-change-tracker` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nnt-change-tracker -h

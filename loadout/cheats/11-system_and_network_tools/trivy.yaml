@@ -1,0 +1,35 @@
+tool: trivy
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Trivy is a simple and comprehensive vulnerability scanner for containers and other artifacts. It scans container images, binary files, and infrastructure-as-code (IaC) configurations to identify OS package vulnerabilities, application dependencies with known CVEs, and security misconfigurations in the environment. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://github.com/aquasecurity/trivy
+- https://vuln.aquasec.com/
+- https://owasp.org/
+actions:
+- title: Trivy image nginx:latest
+  desc: Runs `trivy` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: trivy image nginx:latest
+- title: Trivy image --severity
+  desc: Runs `trivy` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: trivy image --severity HIGH,CRITICAL nginx:latest
+- title: Trivy fs /path/to/filesystem
+  desc: Runs `trivy` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: trivy fs /path/to/filesystem
+- title: Trivy rootfs /
+  desc: Runs `trivy` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: trivy rootfs /
+- title: Trivy config /path/to/terraform/
+  desc: Runs `trivy` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: trivy config /path/to/terraform/
+- title: Trivy k8s --all-namespaces
+  desc: Runs `trivy` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'trivy k8s --all-namespaces # Kubernetes scan'
+- title: Trivy image --format
+  desc: Runs `trivy` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: trivy image --format json --output results.json nginx:latest
+- title: Trivy image --registry-token
+  desc: Runs `trivy` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: trivy image --registry-token TOKEN image-registry-url/image:tag

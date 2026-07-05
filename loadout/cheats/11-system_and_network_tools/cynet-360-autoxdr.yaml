@@ -1,0 +1,15 @@
+tool: cynet-360-autoxdr
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Cynet 360 AutoXDR is Cynet''s unified detection and response platform that combines endpoint, network, user, and deception telemetry with automated investigation and response. It is designed to reduce SOC workload by automating triage and containment actions. In scanning countermeasure scenarios, Cynet can surface reconnaissance and anomalous probing behavior, correlate it with endpoint activity, a Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.cynet.com/platform/
+actions:
+- title: Nmap -sS -T3
+  desc: Runs `nmap` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nmap -sS -T3 -p 1-1000 <target-subnet>
+- title: Nmap -sn <target-subnet>
+  desc: Runs `nmap` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nmap -sn <target-subnet>

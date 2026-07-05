@@ -1,0 +1,13 @@
+tool: sophos-intercept-x-for-mobile
+tags:
+- m14
+- mobile
+- endpoint
+exam_hint: 'Sophos Intercept X for Mobile is a mobile security solution that protects Android and iOS devices from malware, exploits, and network attacks, supporting post-exploitation defense and incident response. Strategy: Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.'
+docs:
+- https://www.sophos.com/en-us/products/intercept-x-mobile.aspx
+- https://docs.sophos.com/esg/ixm/help/en-us/index.html
+actions:
+- title: Echo 'Open Sophos
+  desc: Runs `echo` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: echo 'Open Sophos Intercept X for Mobile per CEH lab procedure — configure target {ip} in isolated environment.'

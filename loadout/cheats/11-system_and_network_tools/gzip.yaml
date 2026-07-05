@@ -1,0 +1,38 @@
+tool: gzip
+tags:
+- m11
+- network
+- cli
+exam_hint: 'gzip (GNU zip) is a compression utility that reduces file size using zlib compression algorithm. Essential for file compression, disk space optimization, and creating compressed archives. Works with individual files and integrates with other tools via pipes. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Gzip --version
+  desc: Runs `gzip` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: gzip --version
+- title: Apt install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo apt install gzip
+- title: Gzip [OPTIONS] [FILE]
+  desc: Runs `gzip` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: gzip [OPTIONS] [FILE]
+- title: 'Key Options:'
+  desc: Runs `Key` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Key Options:'
+- title: -d = Decompress
+  desc: Runs `-d` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -d = Decompress
+- title: -1 = Fastest
+  desc: Runs `-1` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -1 = Fastest (poorest compression)
+- title: -9 = Best
+  desc: Runs `-9` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -9 = Best compression (slowest)
+- title: -6 = Default
+  desc: Runs `-6` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -6 = Default balance
+- title: -k = Keep
+  desc: Runs `-k` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -k = Keep original
+- title: -f = Force
+  desc: Runs `-f` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -f = Force overwrite

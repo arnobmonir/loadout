@@ -1,0 +1,14 @@
+tool: bleachbit
+tags:
+- m11
+- network
+- cli
+exam_hint: 'An open-source system cleaner and privacy tool for Windows and Linux that securely deletes files and clears system traces. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Bleachbit --help
+  desc: Runs `bleachbit` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: bleachbit --help
+- title: Man bleachbit
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man bleachbit

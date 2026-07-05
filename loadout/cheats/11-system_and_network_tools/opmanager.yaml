@@ -1,0 +1,16 @@
+tool: opmanager
+tags:
+- m11
+- network
+- cli
+exam_hint: 'OpManager (by ManageEngine) is a comprehensive IT infrastructure monitoring tool that monitors network devices, servers, virtual machines, and applications. It uses SNMP, WMI, CLI, and REST APIs to collect performance metrics and alert on threshold violations. In a security context, OpManager provides network visibility to detect malware-induced performance anomalies (bandwidth spikes, device rebo Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- http://<server
+- https://www.manageengine.com/network-monitoring/
+actions:
+- title: Snmp-server community public
+  desc: Runs `snmp-server` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: snmp-server community public RO
+- title: Snmp-server host <OpManager-IP>
+  desc: Runs `snmp-server` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: snmp-server host <OpManager-IP> version 2c public

@@ -1,0 +1,15 @@
+tool: vectra-detect
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Vectra Detect is an AI-driven network detection and response capability within the Vectra AI platform. It analyzes network and cloud telemetry to identify attacker behaviors, including reconnaissance, lateral movement, command-and-control, and privilege escalation patterns. For scanning countermeasures, Vectra Detect helps identify stealthy recon behavior that may bypass simple signature-only cont Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.vectra.ai/platform
+actions:
+- title: Nmap -sS -T4
+  desc: Runs `nmap` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nmap -sS -T4 -p 1-2000 10.0.0.0/24
+- title: Nmap -sn 10.0.0.0/24
+  desc: Runs `nmap` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nmap -sn 10.0.0.0/24

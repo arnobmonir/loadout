@@ -1,0 +1,14 @@
+tool: optiview-vms
+tags:
+- m09
+- social
+- phishing
+exam_hint: 'Video Management System for monitoring and managing IP camera networks and surveillance footage. Strategy: Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.'
+docs: []
+actions:
+- title: Optiview-vms --help
+  desc: Runs `optiview-vms` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: optiview-vms --help
+- title: Optiview-vms -h
+  desc: Runs `optiview-vms` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: optiview-vms -h

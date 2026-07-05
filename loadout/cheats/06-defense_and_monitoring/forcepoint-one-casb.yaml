@@ -1,0 +1,16 @@
+tool: forcepoint-one-casb
+tags:
+- m06
+- defense
+- monitoring
+exam_hint: 'Forcepoint ONE CASB (Cloud Access Security Broker) is a cloud security solution that provides visibility and control over cloud applications and data, supporting post-exploitation and data exfiltration prevention. Strategy: Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation.'
+docs:
+- https://www.forcepoint.com/product/one/casb
+- https://www.gartner.com/reviews/market/cloud-access-security-brokers/vendor/forcepoint
+actions:
+- title: Forcepoint-one-casb --help
+  desc: Runs `forcepoint-one-casb` as part of the CEH workflow. Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation. Authorized lab targets only.
+  command: forcepoint-one-casb --help
+- title: Forcepoint-one-casb -h
+  desc: Runs `forcepoint-one-casb` as part of the CEH workflow. Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation. Authorized lab targets only.
+  command: forcepoint-one-casb -h

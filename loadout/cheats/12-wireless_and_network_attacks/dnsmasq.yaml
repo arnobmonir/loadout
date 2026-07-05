@@ -1,0 +1,41 @@
+tool: dnsmasq
+tags:
+- m12
+- wireless
+- attack
+exam_hint: 'Dnsmasq is a lightweight DNS and DHCP server for small networks. It''s commonly used on embedded systems, routers, and is popular for local domain resolution and DHCP assignment. In penetration testing, it can be weaponized for DNS spoofing and DHCP attacks. Strategy: Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.'
+docs: []
+actions:
+- title: Apt-get install
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: sudo apt-get install dnsmasq
+- title: Dnf install
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: sudo dnf install dnsmasq
+- title: Brew install dnsmasq
+  desc: Runs `brew` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: brew install dnsmasq
+- title: Git clone git://thekelleys.org.uk/dnsmasq.git
+  desc: Runs `git` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: git clone git://thekelleys.org.uk/dnsmasq.git
+- title: Cd dnsmasq
+  desc: Runs `cd` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: cd dnsmasq
+- title: Make
+  desc: Runs `make` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: make
+- title: Make install
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: sudo make install
+- title: Listen-address=192.168.1.100
+  desc: Runs `listen-address=192.168.1.100` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: listen-address=192.168.1.100
+- title: Dhcp-range=192.168.1.150,192.168.1.200,12h
+  desc: Runs `dhcp-range=192.168.1.150,192.168.1.200,12h` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: dhcp-range=192.168.1.150,192.168.1.200,12h
+- title: Server=8.8.8.8
+  desc: Runs `server=8.8.8.8` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: server=8.8.8.8
+- title: Server=8.8.4.4
+  desc: Runs `server=8.8.4.4` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: server=8.8.4.4

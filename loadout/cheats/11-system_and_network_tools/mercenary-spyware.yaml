@@ -1,0 +1,16 @@
+tool: mercenary-spyware
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Mercenary Spyware refers to commercial spyware tools and platforms used for targeted surveillance, data exfiltration, and monitoring, often sold to governments and organizations. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://citizenlab.ca/tag/mercenary-spyware/
+- https://www.amnesty.org/en/latest/news/2022/07/mercenary-spyware-report/
+actions:
+- title: Mercenary-spyware --help
+  desc: Runs `mercenary-spyware` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mercenary-spyware --help
+- title: Mercenary-spyware -h
+  desc: Runs `mercenary-spyware` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mercenary-spyware -h

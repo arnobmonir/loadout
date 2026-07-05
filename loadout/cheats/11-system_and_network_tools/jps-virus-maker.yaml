@@ -1,0 +1,14 @@
+tool: jps-virus-maker
+tags:
+- m11
+- network
+- cli
+exam_hint: 'The JPS Virus Maker is a controversial tool designed to create computer viruses, trojans, or other malicious programs. It is often used by cybercriminals and script kiddies (inexperienced hackers) to generate harmful executables without advanced coding knowledge. ### Key Features of JPS Virus Maker: - User-Friendly Interface – Allows users to create viruses with simple clicks. - Customizable Paylo Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs: []
+actions:
+- title: Jps-virus-maker --help
+  desc: Runs `jps-virus-maker` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: jps-virus-maker --help
+- title: Jps-virus-maker -h
+  desc: Runs `jps-virus-maker` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: jps-virus-maker -h

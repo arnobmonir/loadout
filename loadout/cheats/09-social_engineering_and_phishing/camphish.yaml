@@ -1,0 +1,14 @@
+tool: camphish
+tags:
+- m09
+- social
+- phishing
+exam_hint: 'CamPhish is a phishing framework specifically designed to trick users into enabling their webcam access. It uses a deceptive page that mimics legitimate services and prompts users to allow camera permissions, allowing attackers to secretly access webcam feeds. Strategy: Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.'
+docs: []
+actions:
+- title: Camphish --help
+  desc: Runs `camphish` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: camphish --help
+- title: Man camphish
+  desc: Runs `man` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: man camphish

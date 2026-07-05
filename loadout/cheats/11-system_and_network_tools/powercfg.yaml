@@ -1,0 +1,11 @@
+tool: powercfg
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A Windows utility for managing power configuration. Used by attackers to disable hibernation files that may contain evidence. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Wevtutil cl Security
+  desc: Runs `wevtutil` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: wevtutil cl Security

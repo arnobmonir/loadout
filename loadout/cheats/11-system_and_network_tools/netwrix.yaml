@@ -1,0 +1,12 @@
+tool: netwrix
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Netwrix Auditor is a comprehensive IT change auditing and access governance platform that provides visibility into changes, configurations, and access events across Active Directory, Windows Server, file servers, databases, Exchange, SharePoint, and cloud environments. It enables "who did what, when, and where" visibility for all changes in the IT infrastructure, which is critical for detecting ma Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.netwrix.com/auditor.html
+actions:
+- title: Get-ADUser -Filter *
+  desc: Runs `Get-ADUser` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-ADUser -Filter * -Properties LastLogonDate | Where {$_.LastLogonDate -gt (Get-Date).AddDays(-1)}

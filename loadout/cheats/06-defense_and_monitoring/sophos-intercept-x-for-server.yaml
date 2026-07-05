@@ -1,0 +1,13 @@
+tool: sophos-intercept-x-for-server
+tags:
+- m06
+- defense
+- monitoring
+exam_hint: 'Sophos Intercept X for Server is a server security solution that protects Windows and Linux servers from malware, exploits, and advanced attacks, supporting post-exploitation defense and incident response. Strategy: Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation.'
+docs:
+- https://www.sophos.com/en-us/products/intercept-x-server.aspx
+- https://docs.sophos.com/esg/ixs/help/en-us/index.html
+actions:
+- title: Echo 'Open Sophos
+  desc: Runs `echo` as part of the CEH workflow. Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation. Authorized lab targets only.
+  command: echo 'Open Sophos Intercept X for Server per CEH lab procedure — configure target {ip} in isolated environment.'

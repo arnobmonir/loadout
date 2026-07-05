@@ -1,0 +1,13 @@
+tool: s3-buckets-bruteforcer
+tags:
+- m10
+- cloud
+- iot
+exam_hint: 's3-buckets-bruteforcer is a tool for discovering misconfigured or publicly accessible Amazon S3 buckets by brute-forcing bucket names, supporting cloud exploitation and data exposure research. Strategy: Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs.'
+docs:
+- https://github.com/sa7mon/S3Scanner
+- https://github.com/eth0izzle/bucket_finder
+actions:
+- title: Echo 'Open s3-buckets-bruteforcer
+  desc: Runs `echo` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: echo 'Open s3-buckets-bruteforcer per CEH lab procedure — configure target {ip} in isolated environment.'

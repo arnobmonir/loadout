@@ -1,0 +1,38 @@
+tool: icmp-flood
+tags:
+- m11
+- network
+- cli
+exam_hint: 'ICMP Flood is a basic denial-of-service attack that sends massive quantities of ICMP Echo Request packets (ping) to the target without waiting for responses. The target''s internet connection becomes saturated with incoming ICMP traffic, consuming bandwidth and causing legitimate traffic to be dropped. ICMP floods are among the simplest yet effective volumetric DDoS attacks. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to lim'
+docs: []
+actions:
+- title: Internet Control Message
+  desc: Runs `Internet` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Internet Control Message Protocol:'
+- title: '- OSI Layer'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- OSI Layer 3: Network layer'
+- title: '- Used for:'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Used for: Error reporting, diagnostics'
+- title: '- Common types:'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Common types: Echo Request, Echo Reply, Unreachable'
+- title: '- Port-less: Operates'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Port-less: Operates at network layer'
+- title: '- Protocol number:'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Protocol number: 1'
+- title: 'ICMP Echo Request:'
+  desc: Runs `ICMP` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'ICMP Echo Request:'
+- title: '- Type: 8'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Type: 8'
+- title: '- Code: 0'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Code: 0'
+- title: '- Contains: Sequence'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Contains: Sequence number, Timestamp, Data'

@@ -1,0 +1,14 @@
+tool: ads-scanner
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A graphical tool for scanning Windows NTFS drives for files containing Alternate Data Streams. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Ads-scanner --help
+  desc: Runs `ads-scanner` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: ads-scanner --help
+- title: Ads-scanner -h
+  desc: Runs `ads-scanner` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: ads-scanner -h

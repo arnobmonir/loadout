@@ -1,0 +1,38 @@
+tool: cut
+tags:
+- m11
+- network
+- cli
+exam_hint: 'cut is a command-line utility for extracting columns or fields from text lines. It selects specific portions of each input line, either by character position, byte position, or delimited field. cut is essential for processing structured text data like CSV files, logs, and configuration files. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Cut --version
+  desc: Runs `cut` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cut --version
+- title: Cut -f 1
+  desc: Runs `cut` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'cut -f 1 file.txt # First field'
+- title: Cut -f 3
+  desc: Runs `cut` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'cut -f 3 file.txt # Third field'
+- title: Cut -f 1,3,5
+  desc: Runs `cut` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'cut -f 1,3,5 file.txt # Fields 1, 3, 5'
+- title: Cut -f 2-4
+  desc: Runs `cut` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'cut -f 2-4 file.txt # Fields 2, 3, 4'
+- title: Cut -f 3-
+  desc: Runs `cut` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'cut -f 3- file.txt # Field 3 to end'
+- title: Cut -d, -f
+  desc: Runs `cut` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cut -d, -f 1,2 data.csv
+- title: 'Cut -d: -f'
+  desc: Runs `cut` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'cut -d: -f 1,3 /etc/passwd'
+- title: Cut -d'
+  desc: Runs `cut` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cut -d'|' -f 2 data.txt
+- title: Cut -d' '
+  desc: Runs `cut` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cut -d' ' -f 1 file.txt

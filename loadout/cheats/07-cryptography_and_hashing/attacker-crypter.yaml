@@ -1,0 +1,16 @@
+tool: attacker-crypter
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'Attacker-Crypter is a tool for encrypting and obfuscating payloads to evade detection by security software, often used in penetration testing and red teaming. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://github.com/Attacker-cry/Crypter
+- https://en.wikipedia.org/wiki/Crypter
+actions:
+- title: Attacker-crypter --help
+  desc: Runs `attacker-crypter` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: attacker-crypter --help
+- title: Attacker-crypter -h
+  desc: Runs `attacker-crypter` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: attacker-crypter -h

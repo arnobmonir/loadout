@@ -1,0 +1,38 @@
+tool: csp-file-integrity-checker
+tags:
+- m11
+- network
+- cli
+exam_hint: 'CSP File Integrity Checker is a file integrity monitoring (FIM) tool that detects unauthorised changes to files and directories by comparing current file hashes against a baseline snapshot. FIM is a fundamental malware countermeasure—malware typically modifies existing system files (DLL hijacking, file patching) or creates new files (droppers, persistence files). CSP File Integrity Checker provide Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.pcisecuritystandards.org/
+- https://aide.github.io/
+- https://github.com/Tripwire/tripwire-open-source
+actions:
+- title: Certutil -hashfile C:\Windows\System32\ntdll.dll
+  desc: Runs `certutil` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: certutil -hashfile C:\Windows\System32\ntdll.dll SHA256
+- title: Get-FileHash C:\Windows\System32\ntdll.dll -Algorithm
+  desc: Runs `Get-FileHash` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-FileHash C:\Windows\System32\ntdll.dll -Algorithm SHA256
+- title: Sha256sum /bin/* /lib/*
+  desc: Runs `sha256sum` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sha256sum /bin/* /lib/* > baseline.txt
+- title: Sha256sum --check baseline.txt
+  desc: Runs `sha256sum` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sha256sum --check baseline.txt
+- title: 'Tripwire --init #'
+  desc: Runs `tripwire` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'tripwire --init # create baseline database'
+- title: 'Tripwire --check #'
+  desc: Runs `tripwire` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'tripwire --check # compare current state to baseline'
+- title: 'Aide --init #'
+  desc: Runs `aide` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'aide --init # create AIDE database'
+- title: 'Aide --check #'
+  desc: Runs `aide` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'aide --check # compare current state'
+- title: Certutil -hashfile
+  desc: Runs `certutil` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: certutil -hashfile

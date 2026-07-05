@@ -1,0 +1,21 @@
+tool: zphisher
+tags:
+- m09
+- social
+- phishing
+exam_hint: 'Zphisher is a lightweight, automated phishing framework built with Python and Bash. It''s designed for simplicity and speed, providing quick phishing page deployment with minimal configuration required. Strategy: Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.'
+docs:
+- https://github.com/htr-tech/zphisher.git
+actions:
+- title: Git clone https://github.com/htr-tech/zphisher.git
+  desc: Runs `git` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: git clone https://github.com/htr-tech/zphisher.git
+- title: Cd zphisher
+  desc: Runs `cd` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: cd zphisher
+- title: Chmod +x zphisher.sh
+  desc: Runs `chmod` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: chmod +x zphisher.sh
+- title: Zphisher.sh
+  desc: Runs `./zphisher.sh` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: ./zphisher.sh

@@ -1,0 +1,16 @@
+tool: axcrypt
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'AxCrypt is a file encryption software for Windows, providing strong AES encryption for individual files and folders. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://www.axcrypt.net/
+- https://en.wikipedia.org/wiki/AxCrypt
+actions:
+- title: Axcrypt --help
+  desc: Runs `axcrypt` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: axcrypt --help
+- title: Man axcrypt
+  desc: Runs `man` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: man axcrypt

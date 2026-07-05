@@ -1,0 +1,11 @@
+tool: batch-worm-generator
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Batch Worm Generator refers to tools or scripts that create self-replicating worms using Windows Batch (.bat) scripting. These worms spread through basic system vulnerabilities, such as USB drives, network shares, and email attachments, often causing file corruption, system crashes, or backdoor installations. ### Key Characteristics - No advanced coding needed – Uses simple cmd.exe commands. - Lig Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs: []
+actions:
+- title: Echo 'Open Batch
+  desc: Runs `echo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: echo 'Open Batch Worm Generator per CEH lab procedure — configure target {ip} in isolated environment.'

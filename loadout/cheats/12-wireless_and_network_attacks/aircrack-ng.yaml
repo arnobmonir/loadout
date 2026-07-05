@@ -1,15 +1,41 @@
 tool: aircrack-ng
-tags: [wireless, wifi, m12]
-exam_hint: "Wi-Fi security suite — capture handshakes and crack WPA/WEP (authorized lab)"
+tags:
+- wireless
+- wifi
+- m12
+- attack
+exam_hint: Wi-Fi security suite — capture handshakes and crack WPA/WEP (authorized lab) aircrack-ng is a complete suite for assessing WiFi network security. It focuses on different areas of WiFi security including WEP/WPA-PSK cracking, password cracking via dictionary attacks, and packet
 docs:
-  - https://www.aircrack-ng.org/
-  - "man:aircrack-ng"
-
+- https://www.aircrack-ng.org/
+- man:aircrack-ng
 actions:
-  - title: crack wpa handshake
-    desc: Dictionary attack on captured WPA handshake pcap
-    command: "aircrack-ng -w {{wordlist}} {{output|capture.cap}}"
-
-  - title: verify capture
-    desc: Show networks and handshakes found in capture file
-    command: "aircrack-ng {{output|capture.cap}}"
+- title: crack wpa handshake
+  desc: Dictionary attack on captured WPA handshake pcap
+  command: aircrack-ng -w {{wordlist}} {{output|capture.cap}}
+- title: verify capture
+  desc: Show networks and handshakes found in capture file
+  command: aircrack-ng {{output|capture.cap}}
+- title: Capture WPA handshake
+  desc: Monitor mode capture until handshake from lab AP — authorized test network only.
+  command: sudo airodump-ng -c {{channel|6}} --bssid {{bssid|AA:BB:CC:DD:EE:FF}} -w {{output|capture}} {{interface|wlan0mon}}
+- title: Crack WPA key from capture
+  desc: Dictionary attack on .cap file after handshake collected.
+  command: aircrack-ng -w {{wordlist|/usr/share/wordlists/rockyou.txt}} -b {{bssid|AA:BB:CC:DD:EE:FF}} {{capture|capture-01.cap}}
+- title: Apt-get install
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: sudo apt-get install aircrack-ng
+- title: Airmon-ng start
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: sudo airmon-ng start wlan0
+- title: Airmon-ng check
+  desc: Runs `airmon-ng` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: airmon-ng check
+- title: Airodump-ng mon0
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: sudo airodump-ng mon0
+- title: Aircrack-ng capture.cap
+  desc: Runs `aircrack-ng` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: aircrack-ng capture.cap
+- title: Aircrack-ng -w wordlist.txt
+  desc: Runs `aircrack-ng` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: aircrack-ng -w wordlist.txt -b <BSSID> capture.cap

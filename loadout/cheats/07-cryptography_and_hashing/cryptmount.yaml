@@ -1,0 +1,19 @@
+tool: cryptmount
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'Cryptmount is a Linux utility for managing encrypted file systems, allowing users to mount and unmount encrypted storage on demand. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://cryptmount.sourceforge.io/
+- https://wiki.archlinux.org/title/cryptmount
+actions:
+- title: Cryptmount -c <config>
+  desc: Runs `cryptmount` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: cryptmount -c <config>
+- title: Cryptmount -m <name>
+  desc: Runs `cryptmount` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: cryptmount -m <name>
+- title: Cryptmount -u <name>
+  desc: Runs `cryptmount` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: cryptmount -u <name>

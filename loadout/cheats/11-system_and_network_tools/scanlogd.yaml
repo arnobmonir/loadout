@@ -1,0 +1,27 @@
+tool: scanlogd
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Scanlogd is a lightweight Linux daemon designed to detect and log TCP port scans by monitoring packets and identifying suspicious connection patterns. It is commonly used on Unix/Linux systems as a simple scan detector that can forward events to syslog for central analysis. In CEH countermeasure labs, Scanlogd is useful for demonstrating baseline port-scan detection on hardened hosts. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot inter'
+docs:
+- https://www.openwall.com/scanlogd/
+actions:
+- title: Apt update
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo apt update
+- title: Apt install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo apt install scanlogd
+- title: Systemctl enable
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo systemctl enable --now scanlogd
+- title: Journalctl -u
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo journalctl -u scanlogd -f
+- title: Grep -i
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo grep -i scan /var/log/syslog
+- title: Nmap -sS -p
+  desc: Runs `nmap` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nmap -sS -p 1-1024 <target-ip>

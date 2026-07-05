@@ -1,0 +1,40 @@
+tool: advanced-windows-service-manager
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Advanced Windows Service Manager is a Windows utility that provides enhanced management and visibility into Windows services beyond the default Services MMC snap-in. It allows viewing, starting, stopping, modifying, and deleting Windows services, including those hidden or protected by malware. Key security features include displaying the full executable path of each service, identifying services w Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://attack.mitre.org/techniques/T1543/003/
+- https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/sc
+actions:
+- title: Sc query type=
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc query type= all state= all | findstr /i "SERVICE_NAME"
+- title: Get-WmiObject Win32_Service
+  desc: Runs `Get-WmiObject` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-WmiObject Win32_Service | Select Name, PathName, State, StartMode | Format-Table -AutoSize
+- title: Get-WmiObject Win32_Service (2)
+  desc: Runs `Get-WmiObject` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-WmiObject Win32_Service | Where {$_.PathName -like "*Temp*" -or $_.PathName -like "*AppData*"}
+- title: Sc stop SuspiciousService
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc stop SuspiciousService
+- title: Sc config SuspiciousService
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc config SuspiciousService start= disabled
+- title: Sc delete SuspiciousService
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc delete SuspiciousService
+- title: Sc qc ServiceName
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc qc ServiceName
+- title: Get-WinEvent -FilterHashtable @{LogName='System';
+  desc: Runs `Get-WinEvent` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-WinEvent -FilterHashtable @{LogName='System'; Id=7045} | Select TimeCreated, Message
+- title: Sc delete
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc delete
+- title: Sc config start=
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc config start= disabled

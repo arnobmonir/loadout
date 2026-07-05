@@ -1,0 +1,35 @@
+tool: dnscheck
+tags:
+- m11
+- network
+- cli
+exam_hint: 'DNSCheck.co (formerly by Zonemaster or IIS.se tools) is an online DNS analysis and health checking tool that tests the configuration and integrity of a domain''s DNS setup. It validates DNS records (A, MX, NS, SOA, TXT, DKIM, SPF, DMARC), checks DNSSEC configuration, detects common DNS misconfigurations, and verifies that DNS propagation is correct. From a security perspective, it is used to audit  Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.dnscheck.co/
+- https://mxtoolbox.com/
+- https://www.intodns.com/
+actions:
+- title: Nslookup -type=TXT example.com
+  desc: Runs `nslookup` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nslookup -type=TXT example.com | findstr /i "spf"
+- title: Dig TXT example.com
+  desc: Runs `dig` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: dig TXT example.com | grep -i spf
+- title: Nslookup -type=TXT _dmarc.example.com
+  desc: Runs `nslookup` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nslookup -type=TXT _dmarc.example.com
+- title: Dig TXT _dmarc.example.com
+  desc: Runs `dig` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: dig TXT _dmarc.example.com
+- title: Nslookup -type=TXT selector._domainkey.example.com
+  desc: Runs `nslookup` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nslookup -type=TXT selector._domainkey.example.com
+- title: Dig TXT default._domainkey.example.com
+  desc: Runs `dig` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: dig TXT default._domainkey.example.com
+- title: Dig +dnssec A
+  desc: Runs `dig` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: dig +dnssec A example.com
+- title: Dig DS example.com
+  desc: Runs `dig` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: dig DS example.com

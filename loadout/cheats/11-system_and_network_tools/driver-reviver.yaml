@@ -1,0 +1,13 @@
+tool: driver-reviver
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Driver Reviver (by ReviverSoft) is a Windows driver update and management tool that scans installed hardware for outdated or missing drivers and provides one-click updates from a verified driver database. Like other driver management tools in this category (Driver Booster, Driver Easy, Driver Genius), it helps maintain driver hygiene as a security hardening measure. Updated and verified drivers re Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.loldrivers.io/
+- https://www.reviversoft.com/driver-reviver/
+actions:
+- title: Get-WmiObject Win32_PnPSignedDriver
+  desc: Runs `Get-WmiObject` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-WmiObject Win32_PnPSignedDriver | Sort DriverDate | Select DeviceName, DriverVersion, DriverDate | Format-Table

@@ -1,0 +1,15 @@
+tool: psshutdown
+tags:
+- m11
+- network
+- cli
+exam_hint: 'PsShutdown is a command-line utility from Sysinternals'' PsTools suite that enables remote shutdown, restart, logoff, suspend, and hibernate of local or remote Windows systems without requiring Terminal Services. In CEH contexts it is referenced as part of the PsTools enumeration and remote administration toolkit. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://docs.microsoft.com/en-us/sysinternals/downloads/psshutdown
+actions:
+- title: Psshutdown --help
+  desc: Runs `psshutdown` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: psshutdown --help
+- title: Man psshutdown
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man psshutdown

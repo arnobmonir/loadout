@@ -1,0 +1,16 @@
+tool: httport
+tags:
+- m11
+- network
+- cli
+exam_hint: 'HTTPort is a proxy tool that enables tunneling of network connections through HTTP proxies, often used to bypass network restrictions or firewalls. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://www.htthost.com/
+- https://en.wikipedia.org/wiki/HTTP_tunnel
+actions:
+- title: Httport --help
+  desc: Runs `httport` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: httport --help
+- title: Man httport
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man httport

@@ -1,0 +1,14 @@
+tool: stegoveritas
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'A comprehensive steganography analysis tool that runs multiple detection methods on images to find hidden data. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Stegoveritas --help
+  desc: Runs `stegoveritas` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: stegoveritas --help
+- title: Man stegoveritas
+  desc: Runs `man` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: man stegoveritas

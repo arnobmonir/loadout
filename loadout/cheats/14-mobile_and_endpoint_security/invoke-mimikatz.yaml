@@ -1,0 +1,16 @@
+tool: invoke-mimikatz
+tags:
+- m14
+- mobile
+- endpoint
+exam_hint: 'Invoke-Mimikatz is a PowerShell script that runs Mimikatz, a tool for extracting plaintext passwords, hashes, and credentials from Windows systems. Strategy: Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.'
+docs:
+- https://github.com/PowerShellMafia/PowerSploit/blob/master/Exfiltration/Invoke-Mimikatz.ps1
+- https://attack.mitre.org/techniques/T1003/001/
+actions:
+- title: Invoke-mimikatz --help
+  desc: Runs `invoke-mimikatz` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: invoke-mimikatz --help
+- title: Invoke-mimikatz -h
+  desc: Runs `invoke-mimikatz` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: invoke-mimikatz -h

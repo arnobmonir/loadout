@@ -1,0 +1,14 @@
+tool: the-attacker-crypter
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'The Attacker-Crypter is an educational/conceptual crypter tool name used in cybersecurity training to represent the class of tools that encrypt and obfuscate malware binaries to evade antivirus detection. In the CEH context, it serves as an example of how attackers use crypter utilities to wrap known malware samples (RATs, stealers) in an encrypted stub, rendering them undetectable by signature-ba Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack '
+docs:
+- https://www.unpac.me
+- https://www.sans.org/reading-room/whitepapers/malicious/malware-crypters-antivirus-evasion-34294
+- https://www.unpac.me/
+actions:
+- title: 'Diec.exe encrypted_payload.exe #'
+  desc: Runs `diec.exe` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: 'diec.exe encrypted_payload.exe # shows Unknown packer'

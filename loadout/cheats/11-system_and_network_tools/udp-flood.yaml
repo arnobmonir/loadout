@@ -1,0 +1,38 @@
+tool: udp-flood
+tags:
+- m11
+- network
+- cli
+exam_hint: 'UDP Flood is a volumetric denial-of-service attack that sends massive quantities of User Datagram Protocol (UDP) packets to the target host or network. Unlike amplification-based attacks, UDP floods rely on raw volume to consume bandwidth and exhaust resources. The attacker generates high-rate UDP traffic targeting a specific port, overwhelming the target''s ability to process incoming packets. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pi'
+docs: []
+actions:
+- title: 'UDP Characteristics:'
+  desc: Runs `UDP` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'UDP Characteristics:'
+- title: '- Connectionless: No'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Connectionless: No handshake required'
+- title: '- Stateless: No'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Stateless: No connection tracking'
+- title: '- Fast: Minimal'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Fast: Minimal processing'
+- title: '- Unreliable: No'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Unreliable: No delivery guarantee'
+- title: '- Port-based: Target'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Port-based: Target specific services'
+- title: 'Attack Advantage:'
+  desc: Runs `Attack` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Attack Advantage:'
+- title: '- No state'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- No state to track or manage'
+- title: '- Minimal resources'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Minimal resources per packet'
+- title: '- High-rate generation'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- High-rate generation possible'

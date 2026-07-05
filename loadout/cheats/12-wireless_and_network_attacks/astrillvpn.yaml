@@ -1,0 +1,15 @@
+tool: astrillvpn
+tags:
+- m12
+- wireless
+- attack
+exam_hint: 'AstrillVPN is a commercial VPN service known for its strong obfuscation capabilities, making it particularly effective at bypassing deep packet inspection (DPI) and firewall-based VPN blocking in restrictive network environments. It supports multiple protocols including WireGuard, OpenVPN, and its proprietary StealthVPN protocol. Strategy: Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.'
+docs:
+- https://www.astrill.com
+actions:
+- title: Astrillvpn --help
+  desc: Runs `astrillvpn` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: astrillvpn --help
+- title: Man astrillvpn
+  desc: Runs `man` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: man astrillvpn

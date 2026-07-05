@@ -1,0 +1,14 @@
+tool: utility-defensive-tools
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Utility_Defensive_Tools — CEH 11 module tool. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://gchq.github.io/CyberChef/
+- https://github.com/gchq/CyberChef
+- https://metrics.torproject.org/exonerator.html
+actions:
+- title: Echo 'Open Utility_Defensive_Tools
+  desc: Runs `echo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: echo 'Open Utility_Defensive_Tools per CEH lab procedure — configure target {ip} in isolated environment.'

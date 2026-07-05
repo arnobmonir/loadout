@@ -1,0 +1,16 @@
+tool: pgp-utility
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'PGP Utility is a command-line or GUI tool for managing PGP encryption, decryption, and digital signatures, supporting secure communication and data protection. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://www.pgp.com/
+- https://en.wikipedia.org/wiki/Pretty_Good_Privacy
+actions:
+- title: Pgp-utility --help
+  desc: Runs `pgp-utility` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: pgp-utility --help
+- title: Pgp-utility -h
+  desc: Runs `pgp-utility` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: pgp-utility -h

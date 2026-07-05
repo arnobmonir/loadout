@@ -1,0 +1,11 @@
+tool: cisco-adaptive-wireless-ips
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Cisco Adaptive Wireless IPS (Intrusion Prevention System) is a security solution designed to detect and prevent wireless network attacks and intrusions. It''s integrated into Cisco wireless infrastructure to provide real-time threat detection and response in WiFi environments. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Echo 'Open Cisco
+  desc: Runs `echo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: echo 'Open Cisco Adaptive Wireless IPS per CEH lab procedure — configure target {ip} in isolated environment.'

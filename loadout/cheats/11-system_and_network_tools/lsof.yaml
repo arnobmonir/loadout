@@ -1,0 +1,38 @@
+tool: lsof
+tags:
+- m11
+- network
+- cli
+exam_hint: 'lsof (list open files) is a command-line utility that displays information about files opened by processes. Shows TCP/UDP network connections, regular files, directories, sockets, and pipes. Essential for troubleshooting, security auditing, and understanding process dependencies. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Lsof --version
+  desc: Runs `lsof` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: lsof --version
+- title: Apt install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'sudo apt install lsof # Debian/Ubuntu'
+- title: Yum install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'sudo yum install lsof # CentOS/RHEL'
+- title: Lsof [OPTIONS] [NAME]
+  desc: Runs `lsof` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: lsof [OPTIONS] [NAME]
+- title: 'Key Options:'
+  desc: Runs `Key` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Key Options:'
+- title: -p = Process
+  desc: Runs `-p` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -p = Process ID
+- title: -u = User
+  desc: Runs `-u` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -u = User name
+- title: -i = Internet
+  desc: Runs `-i` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -i = Internet socket
+- title: +D = Directory
+  desc: Runs `+D` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: +D = Directory recursively
+- title: -c = Command
+  desc: Runs `-c` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -c = Command name

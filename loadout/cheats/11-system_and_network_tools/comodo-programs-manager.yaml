@@ -1,0 +1,12 @@
+tool: comodo-programs-manager
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Comodo Programs Manager is a free Windows application lifecycle management tool by Comodo Security that provides comprehensive installation monitoring, uninstallation, startup management, and file/registry change tracking. Its installation monitoring feature captures everything an application changes on the system (files, registry, services), making it useful for analysing what malware installs an Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.comodo.com/home/support/programs_manager.php
+actions:
+- title: Echo 'Open Comodo
+  desc: Runs `echo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: echo 'Open Comodo Programs Manager per CEH lab procedure — configure target {ip} in isolated environment.'

@@ -1,0 +1,38 @@
+tool: netstat
+tags:
+- m11
+- network
+- cli
+exam_hint: 'netstat (network statistics) is a command-line utility for displaying network connections, routing tables, interface statistics, and socket information. Essential for network troubleshooting, security auditing, and monitoring active connections. Shows protocol statistics and port listening information. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Netstat --version
+  desc: Runs `netstat` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: netstat --version
+- title: Apt install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'sudo apt install net-tools # Debian/Ubuntu'
+- title: Yum install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'sudo yum install net-tools # CentOS/RHEL'
+- title: Netstat [OPTIONS]
+  desc: Runs `netstat` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: netstat [OPTIONS]
+- title: 'Key Options:'
+  desc: Runs `Key` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Key Options:'
+- title: -t = TCP
+  desc: Runs `-t` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -t = TCP connections
+- title: -u = UDP
+  desc: Runs `-u` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -u = UDP connections
+- title: -a = All
+  desc: Runs `-a` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -a = All sockets
+- title: -l = Listening
+  desc: Runs `-l` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -l = Listening sockets
+- title: -n = Numeric
+  desc: Runs `-n` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -n = Numeric output

@@ -1,0 +1,13 @@
+tool: pretty-good-privacy-pgp
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Pretty Good Privacy (PGP) is a cryptographic software providing encryption for emails, files, and communications, supporting strong encryption and digital signatures for secure data protection. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://en.wikipedia.org/wiki/Pretty_Good_Privacy
+- https://www.pgp.com/
+actions:
+- title: Echo 'Open Pretty
+  desc: Runs `echo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: echo 'Open Pretty Good Privacy (PGP) per CEH lab procedure — configure target {ip} in isolated environment.'

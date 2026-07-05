@@ -1,0 +1,34 @@
+tool: regscanner
+tags:
+- m11
+- network
+- cli
+exam_hint: 'RegScanner is a free Windows registry search utility from NirSoft that allows analysts to perform advanced searches across the entire Windows Registry, saving results for offline review and comparison. Unlike the built-in Registry Editor (regedit) which finds only the first match, RegScanner displays all matches simultaneously and supports regex patterns, value data types, and date-range filtering Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.nirsoft.net/
+- https://www.nirsoft.net/utils/regscanner.html
+actions:
+- title: 1. Open RegScanner.exe
+  desc: Runs `1.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 1. Open RegScanner.exe
+- title: 2. Enter search
+  desc: Runs `2.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 2. Enter search string (e.g., malware name, suspicious path, mutex)
+- title: 3. Select root
+  desc: Runs `3.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 3. Select root key(s) to search (HKLM, HKCU, etc.)
+- title: 4. Choose value
+  desc: Runs `4.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 4. Choose value type filter (string, binary, DWORD, etc.)
+- title: 5. Click "Scan"
+  desc: Runs `5.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 5. Click "Scan" and review all matches simultaneously
+- title: File > Save
+  desc: Runs `File` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: File > Save Selected Items > HTML/Text/CSV
+- title: RegScanner.exe /stext regscanner_results.txt
+  desc: Runs `RegScanner.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: RegScanner.exe /stext regscanner_results.txt /search "malware.exe"
+- title: Enable "Find only
+  desc: Runs `Enable` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Enable "Find only items modified in the last X days"

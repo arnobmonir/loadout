@@ -1,0 +1,14 @@
+tool: dark-phish
+tags:
+- m09
+- social
+- phishing
+exam_hint: 'Dark-Phish is an automated phishing framework that leverages advanced evasion techniques and social engineering tactics. It combines phishing page creation with credential harvesting and supports various attack vectors for comprehensive social engineering campaigns. Strategy: Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.'
+docs: []
+actions:
+- title: Dark-phish --help
+  desc: Runs `dark-phish` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: dark-phish --help
+- title: Dark-phish -h
+  desc: Runs `dark-phish` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: dark-phish -h

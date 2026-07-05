@@ -1,0 +1,16 @@
+tool: deslock
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'DESlock+ is a file and disk encryption tool for Windows, supporting strong encryption algorithms and flexible data protection for files, folders, and removable media. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://www.deslock.com/
+- https://en.wikipedia.org/wiki/Disk_encryption
+actions:
+- title: Deslock --help
+  desc: Runs `deslock` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: deslock --help
+- title: Man deslock
+  desc: Runs `man` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: man deslock

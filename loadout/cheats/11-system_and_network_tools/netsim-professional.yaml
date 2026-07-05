@@ -1,0 +1,16 @@
+tool: netsim-professional
+tags:
+- m11
+- network
+- cli
+exam_hint: 'NetSim Professional (by Tetcos) is a commercial network simulation and emulation software designed for education, training, and research. It simulates a wide range of network protocols and technologies including TCP/IP, Ethernet, Wi-Fi (802.11), LTE/5G, IoT protocols, MANET, and more. It is widely used in academic institutions and corporate training environments to simulate network scenarios witho Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.tetcos.com/netsim.html
+- https://www.tetcos.com/netsim-std.html
+actions:
+- title: Netsim-professional --help
+  desc: Runs `netsim-professional` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: netsim-professional --help
+- title: Netsim-professional -h
+  desc: Runs `netsim-professional` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: netsim-professional -h

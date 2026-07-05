@@ -1,0 +1,14 @@
+tool: currentware
+tags:
+- m09
+- social
+- phishing
+exam_hint: 'Endpoint monitoring suite for tracking web activity, application use, and file movement on corporate networks. Strategy: Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.'
+docs: []
+actions:
+- title: Currentware --help
+  desc: Runs `currentware` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: currentware --help
+- title: Man currentware
+  desc: Runs `man` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: man currentware

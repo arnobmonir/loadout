@@ -1,0 +1,40 @@
+tool: splunk-enterprise-security
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Splunk Enterprise Security (Splunk ES) is Splunk''s premium SIEM and security operations layer that adds correlation searches, risk-based alerting, threat intelligence integration, and SOC workflows on top of Splunk Enterprise. For scanning countermeasures, Splunk ES can correlate firewall, IDS/IPS, NetFlow, and endpoint telemetry to detect recon behaviors such as SYN scans, service enumeration, an Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.splunk.com/en_us/products/enterprise-security.html
+- https://splunkbase.splunk.com/app/3435/
+actions:
+- title: Index=firewall action=blocked
+  desc: Runs `index=firewall` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: index=firewall action=blocked
+- title: Run command 2
+  desc: Runs `|` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '| stats dc(dest_port) as unique_ports values(dest_port) as ports by src_ip dest_ip'
+- title: Run command 3
+  desc: Runs `|` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '| where unique_ports > 25'
+- title: Run command 4
+  desc: Runs `|` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '| sort - unique_ports'
+- title: Index=network
+  desc: Runs `index=network` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: index=network
+- title: Run command 6
+  desc: Runs `|` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '| stats dc(dest_ip) as unique_hosts by src_ip dest_port'
+- title: Run command 7
+  desc: Runs `|` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '| where unique_hosts > 20'
+- title: Index=ids OR index=firewall
+  desc: Runs `index=ids` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: index=ids OR index=firewall protocol=icmp
+- title: Run command 9
+  desc: Runs `|` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '| stats dc(dest_ip) as hosts_contacted count by src_ip'
+- title: Run command 10
+  desc: Runs `|` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '| where hosts_contacted > 30'

@@ -1,0 +1,14 @@
+tool: wmi-persistence
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A PowerShell script that creates WMI event subscription-based persistence mechanisms to maintain access to Windows systems. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Wmi-persistence --help
+  desc: Runs `wmi-persistence` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: wmi-persistence --help
+- title: Wmi-persistence -h
+  desc: Runs `wmi-persistence` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: wmi-persistence -h

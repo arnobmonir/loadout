@@ -1,0 +1,14 @@
+tool: mp3stego
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'A steganography tool that hides information inside MP3 audio files during the compression process. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Mp3stego --help
+  desc: Runs `mp3stego` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: mp3stego --help
+- title: Man mp3stego
+  desc: Runs `man` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: man mp3stego

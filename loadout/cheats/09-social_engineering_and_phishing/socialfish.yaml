@@ -1,0 +1,18 @@
+tool: socialfish
+tags:
+- m09
+- social
+- phishing
+exam_hint: 'SocialFish is an automated phishing framework for social engineering assessments. It simplifies phishing campaign creation and execution with pre-built templates for popular social media platforms and services. Strategy: Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.'
+docs:
+- https://github.com/UndeadSec/SocialFish.git
+actions:
+- title: Git clone https://github.com/UndeadSec/SocialFish.git
+  desc: Runs `git` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: git clone https://github.com/UndeadSec/SocialFish.git
+- title: Cd SocialFish
+  desc: Runs `cd` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: cd SocialFish
+- title: Python3 SocialFish.py
+  desc: Runs `python3` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: python3 SocialFish.py

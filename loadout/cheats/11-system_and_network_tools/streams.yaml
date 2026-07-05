@@ -1,0 +1,14 @@
+tool: streams
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A Sysinternals utility that reveals NTFS alternate streams and allows listing and deleting hidden ADS content. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Streams --help
+  desc: Runs `streams` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: streams --help
+- title: Man streams
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man streams

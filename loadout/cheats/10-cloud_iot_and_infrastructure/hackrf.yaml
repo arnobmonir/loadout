@@ -1,0 +1,14 @@
+tool: hackrf
+tags:
+- m10
+- cloud
+- iot
+exam_hint: 'HackRF is a software-defined radio (SDR) platform that enables transmission and reception of wireless signals across a broad frequency range (1 MHz to 6 GHz). It''s used for wireless security research, RF signal analysis, and protocol development. Strategy: Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs.'
+docs: []
+actions:
+- title: Hackrf --help
+  desc: Runs `hackrf` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: hackrf --help
+- title: Man hackrf
+  desc: Runs `man` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: man hackrf

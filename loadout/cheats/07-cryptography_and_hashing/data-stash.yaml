@@ -1,0 +1,14 @@
+tool: data-stash
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'A steganography tool for hiding sensitive data inside image files to avoid detection by security systems. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Data-stash --help
+  desc: Runs `data-stash` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: data-stash --help
+- title: Data-stash -h
+  desc: Runs `data-stash` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: data-stash -h

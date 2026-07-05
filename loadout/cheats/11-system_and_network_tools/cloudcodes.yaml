@@ -1,0 +1,16 @@
+tool: cloudcodes
+tags:
+- m11
+- network
+- cli
+exam_hint: 'CloudCodes is a cloud security solution that provides encryption, access control, and compliance features for cloud applications and data. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://www.cloudcodes.com/
+- https://www.gartner.com/reviews/market/cloud-access-security-brokers/vendor/cloudcodes
+actions:
+- title: Cloudcodes --help
+  desc: Runs `cloudcodes` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cloudcodes --help
+- title: Man cloudcodes
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man cloudcodes

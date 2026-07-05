@@ -1,0 +1,19 @@
+tool: driver-booster
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Driver Booster (by IObit) is a Windows driver update utility that automatically scans for outdated, missing, or faulty drivers and downloads and installs updated versions from a verified database. From a security perspective, outdated drivers are a known attack vector—malware can exploit vulnerable driver versions (e.g., signed driver exploitation for kernel code execution). Keeping drivers update Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.loldrivers.io/
+- https://www.iobit.com/driver-booster.php
+actions:
+- title: Get-WmiObject Win32_PnPSignedDriver
+  desc: Runs `Get-WmiObject` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-WmiObject Win32_PnPSignedDriver | Select DeviceName, DriverVersion, DriverDate, Manufacturer | Format-Table
+- title: Get-WmiObject Win32_PnPSignedDriver (2)
+  desc: Runs `Get-WmiObject` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-WmiObject Win32_PnPSignedDriver | Where {$_.DeviceName -like "*AMD*"}
+- title: Driverquery /v
+  desc: Runs `driverquery` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: driverquery /v | findstr /i "third party\|non-microsoft"

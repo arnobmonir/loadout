@@ -1,0 +1,14 @@
+tool: powershell
+tags:
+- m11
+- network
+- cli
+exam_hint: 'PowerShell is Microsoft''s powerful command-line shell and scripting language designed for system administration, automation, and security testing. It integrates with .NET Framework and provides direct access to Windows system internals. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Powershell --help
+  desc: Runs `powershell` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: powershell --help
+- title: Man powershell
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man powershell

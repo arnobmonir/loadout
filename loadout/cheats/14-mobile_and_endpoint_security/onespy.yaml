@@ -1,0 +1,14 @@
+tool: onespy
+tags:
+- m14
+- mobile
+- endpoint
+exam_hint: 'Mobile surveillance software for remotely monitoring calls, messages, camera, and GPS on Android and iOS devices. Strategy: Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.'
+docs: []
+actions:
+- title: Onespy --help
+  desc: Runs `onespy` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: onespy --help
+- title: Man onespy
+  desc: Runs `man` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: man onespy

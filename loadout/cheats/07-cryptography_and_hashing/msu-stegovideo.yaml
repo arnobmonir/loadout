@@ -1,0 +1,14 @@
+tool: msu-stegovideo
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'A video steganography tool for embedding hidden data within video files using imperceptible modifications. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Msu-stegovideo --help
+  desc: Runs `msu-stegovideo` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: msu-stegovideo --help
+- title: Msu-stegovideo -h
+  desc: Runs `msu-stegovideo` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: msu-stegovideo -h

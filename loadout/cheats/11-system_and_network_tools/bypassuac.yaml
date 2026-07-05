@@ -1,0 +1,14 @@
+tool: bypassuac
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A collection of Windows UAC bypass techniques and scripts used to escalate from medium to high integrity without triggering UAC prompts. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Bypassuac --help
+  desc: Runs `bypassuac` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: bypassuac --help
+- title: Man bypassuac
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man bypassuac

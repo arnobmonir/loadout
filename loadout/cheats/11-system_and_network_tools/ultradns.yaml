@@ -1,0 +1,23 @@
+tool: ultradns
+tags:
+- m11
+- network
+- cli
+exam_hint: 'UltraDNS (by Vercara, formerly Neustar) is an enterprise-grade, cloud-based authoritative DNS service that provides high-availability DNS hosting with DDoS protection, traffic management, DNSSEC, and DNS security analytics. Organizations use UltraDNS to protect against DNS-based DDoS attacks, DNS hijacking, and cache poisoning. From a security perspective, it provides DNS-layer attack mitigation a Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://portal.ultradns.com/
+- https://ultra-portalservices.ultradns.com/rest/
+- https://vercara.com/ultradns
+actions:
+- title: Dig +dnssec A
+  desc: Runs `dig` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: dig +dnssec A example.com @dns1.ultradns.net
+- title: Dig DS example.com
+  desc: Runs `dig` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'dig DS example.com # check DS record at parent zone'
+- title: Nslookup -type=NS example.com
+  desc: Runs `nslookup` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nslookup -type=NS example.com
+- title: Dig NS example.com
+  desc: Runs `dig` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: dig NS example.com

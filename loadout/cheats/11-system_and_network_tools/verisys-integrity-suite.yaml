@@ -1,0 +1,13 @@
+tool: verisys-integrity-suite
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Verisys Integrity Suite (by Cogmation/Verisys) is an enterprise File Integrity Monitoring (FIM) solution that provides continuous monitoring of files, directories, registry entries, and system configurations to detect and alert on unauthorised changes. Like NNT Change Tracker and Tripwire, it maintains a trusted baseline of all monitored items and triggers alerts whenever deviations occur. Verisys Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.verisys.co.uk/
+- https://www.pcisecuritystandards.org/
+actions:
+- title: Get-FileHash C:\Windows\System32\ntdll.dll -Algorithm
+  desc: Runs `Get-FileHash` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-FileHash C:\Windows\System32\ntdll.dll -Algorithm SHA256

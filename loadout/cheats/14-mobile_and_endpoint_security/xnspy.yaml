@@ -1,0 +1,14 @@
+tool: xnspy
+tags:
+- m14
+- mobile
+- endpoint
+exam_hint: 'Mobile monitoring app for parents and employers to track SMS, calls, emails, GPS, and app activity on smartphones. Strategy: Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.'
+docs: []
+actions:
+- title: Xnspy --help
+  desc: Runs `xnspy` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: xnspy --help
+- title: Man xnspy
+  desc: Runs `man` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: man xnspy

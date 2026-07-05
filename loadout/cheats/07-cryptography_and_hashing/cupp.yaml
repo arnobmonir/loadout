@@ -1,0 +1,20 @@
+tool: cupp
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'CUPP (Common User Passwords Profiler) is a Python tool that generates custom wordlists based on user information (name, birthdate, pets, etc.) for targeted password cracking and dictionary attacks. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://github.com/Mebus/cupp
+- https://www.kali.org/tools/cupp/
+- https://pentestmonkey.net/tools/cupp
+actions:
+- title: Python3 cupp.py -i
+  desc: Runs `python3` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: python3 cupp.py -i
+- title: Python3 cupp.py -l
+  desc: Runs `python3` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: python3 cupp.py -l
+- title: Python3 cupp.py -w
+  desc: Runs `python3` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: python3 cupp.py -w john_doe -n john -d 19900515 -p dog,cat -o wordlist.txt

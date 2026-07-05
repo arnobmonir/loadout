@@ -1,0 +1,38 @@
+tool: ls
+tags:
+- m11
+- network
+- cli
+exam_hint: 'ls (list) is a fundamental command-line utility that displays directory contents with customizable formatting. Shows files, directories, permissions, sizes, and timestamps. Essential for file system navigation and understanding file attributes. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Ls --version
+  desc: Runs `ls` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: ls --version
+- title: Ls [OPTIONS] [PATH]
+  desc: Runs `ls` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: ls [OPTIONS] [PATH]
+- title: 'Key Options:'
+  desc: Runs `Key` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Key Options:'
+- title: -l = Long
+  desc: Runs `-l` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -l = Long format
+- title: -a = Show
+  desc: Runs `-a` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -a = Show all (including hidden)
+- title: -h = Human-readable
+  desc: Runs `-h` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -h = Human-readable sizes
+- title: -S = Sort
+  desc: Runs `-S` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -S = Sort by size
+- title: -t = Sort
+  desc: Runs `-t` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -t = Sort by time
+- title: -r = Reverse
+  desc: Runs `-r` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -r = Reverse sort
+- title: -R = Recursive
+  desc: Runs `-R` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -R = Recursive

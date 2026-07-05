@@ -1,0 +1,26 @@
+tool: netflow-analyzer
+tags:
+- m11
+- network
+- cli
+exam_hint: 'NetFlow Analyzer (by ManageEngine) is a commercial network flow analysis and bandwidth monitoring tool that collects, analyses, and reports on NetFlow, sFlow, J-Flow, IPFIX, and other flow data from routers, switches, and firewalls. It provides visibility into network traffic patterns, bandwidth utilisation, top talkers, application usage, and anomalous flows that may indicate malware C2 beaconing Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- http://<server
+- https://www.manageengine.com/products/netflow/
+- https://tools.ietf.org/html/rfc3954
+actions:
+- title: Ip flow-export destination
+  desc: Runs `ip` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: ip flow-export destination <NetFlow_Analyzer_IP> 9996
+- title: Ip flow-export version
+  desc: Runs `ip` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: ip flow-export version 9
+- title: Interface GigabitEthernet0/0
+  desc: Runs `interface` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: interface GigabitEthernet0/0
+- title: Ip flow ingress
+  desc: Runs `ip` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: ip flow ingress
+- title: Ip flow egress
+  desc: Runs `ip` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: ip flow egress

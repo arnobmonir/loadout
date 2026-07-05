@@ -1,0 +1,13 @@
+tool: unvalidated-redirects-and-forwards
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Unvalidated Redirects and Forwards is a web vulnerability where an application redirects or forwards users to untrusted sites without proper validation, potentially aiding phishing or malware delivery. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://owasp.org/www-community/attacks/Unvalidated_Redirects_and_Forwards
+- https://portswigger.net/web-security/access-control/url-redirection
+actions:
+- title: Echo 'Open Unvalidated
+  desc: Runs `echo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: echo 'Open Unvalidated Redirects and Forwards per CEH lab procedure — configure target {ip} in isolated environment.'

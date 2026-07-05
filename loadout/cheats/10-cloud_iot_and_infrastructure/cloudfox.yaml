@@ -1,0 +1,14 @@
+tool: cloudfox
+tags:
+- m10
+- cloud
+- iot
+exam_hint: 'CloudFox is an AWS-focused cloud security assessment tool that automates enumeration of AWS environments. It provides quick reconnaissance capabilities to identify resources, permissions, and potential security misconfigurations in AWS accounts. Strategy: Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs.'
+docs: []
+actions:
+- title: Go get github.com/BishopFox/CloudFox
+  desc: Runs `go` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: go get github.com/BishopFox/CloudFox
+- title: CloudFox -h
+  desc: Runs `cloudFox` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: cloudFox -h

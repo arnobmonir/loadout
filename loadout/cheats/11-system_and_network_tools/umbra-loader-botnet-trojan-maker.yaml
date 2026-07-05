@@ -1,0 +1,11 @@
+tool: umbra-loader-botnet-trojan-maker
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Umbra Loader - Botnet Trojan Maker — CEH 11 module tool. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Echo 'Open Umbra
+  desc: Runs `echo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: echo 'Open Umbra Loader - Botnet Trojan Maker per CEH lab procedure — configure target {ip} in isolated environment.'

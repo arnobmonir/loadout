@@ -1,0 +1,40 @@
+tool: tcpview
+tags:
+- m11
+- network
+- cli
+exam_hint: 'TCPView is a Sysinternals (Microsoft) utility for Windows that provides a real-time view of all active TCP and UDP endpoints, including remote addresses, ports, connection state, and the owning process. During malware analysis, it is used to detect C2 beaconing (periodic outbound connections), unexpected listening ports opened by malware, and lateral movement connection attempts. It is a lightweig Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://docs.microsoft.com/en-us/sysinternals/downloads/tcpview
+- https://docs.microsoft.com/en-us/sysinternals/
+actions:
+- title: 1. Open TCPView.exe
+  desc: Runs `1.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 1. Open TCPView.exe (as Administrator)
+- title: 2. Observe the
+  desc: Runs `2.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 2. Observe the list of TCP/UDP connections with process names
+- title: 3. New connections
+  desc: Runs `3.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 3. New connections highlight in green; closed connections in red
+- title: View > Filter
+  desc: Runs `View` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: View > Filter > Enter process name or IP address
+- title: Right-click connection >
+  desc: Runs `Right-click` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Right-click connection > Close Connection
+- title: 'Tcpvcon.exe # list'
+  desc: Runs `tcpvcon.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'tcpvcon.exe # list all TCP connections'
+- title: 'Tcpvcon.exe -a #'
+  desc: Runs `tcpvcon.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'tcpvcon.exe -a # all connections and listening ports'
+- title: Tcpvcon.exe -a -c
+  desc: Runs `tcpvcon.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'tcpvcon.exe -a -c # comma-separated output (for scripting)'
+- title: 'Netstat -ano #'
+  desc: Runs `netstat` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'netstat -ano # all connections with PID'
+- title: 'Netstat -b #'
+  desc: Runs `netstat` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'netstat -b # show process names (requires admin)'

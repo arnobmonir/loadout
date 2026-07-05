@@ -1,0 +1,15 @@
+tool: dnscat2
+tags:
+- m11
+- network
+- cli
+exam_hint: 'dnscat2 is a tool for establishing covert DNS tunnels and command-and-control channels. It enables data exfiltration and command execution by encapsulating traffic within legitimate-looking DNS queries, making it difficult to detect by traditional network monitoring. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://github.com/iagox86/dnscat2.git
+actions:
+- title: Git clone https://github.com/iagox86/dnscat2.git
+  desc: Runs `git` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: git clone https://github.com/iagox86/dnscat2.git
+- title: Cd dnscat2/server
+  desc: Runs `cd` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cd dnscat2/server

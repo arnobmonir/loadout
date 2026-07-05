@@ -1,0 +1,38 @@
+tool: uniq
+tags:
+- m11
+- network
+- cli
+exam_hint: 'uniq is a command-line utility that filters and analyzes duplicate consecutive lines in files. It removes, counts, or identifies duplicate entries. Essential for log analysis, data deduplication, and text processing pipelines. Works efficiently with sorted data to remove all duplicates. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Uniq --version
+  desc: Runs `uniq` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: uniq --version
+- title: Apt install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'sudo apt install coreutils # Debian/Ubuntu'
+- title: Uniq [OPTIONS] [INPUT]
+  desc: Runs `uniq` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: uniq [OPTIONS] [INPUT] [OUTPUT]
+- title: 'Key Options:'
+  desc: Runs `Key` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Key Options:'
+- title: -c = Count
+  desc: Runs `-c` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -c = Count occurrences
+- title: -d = Show
+  desc: Runs `-d` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -d = Show duplicates only
+- title: -u = Show
+  desc: Runs `-u` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -u = Show unique lines only
+- title: -i = Case
+  desc: Runs `-i` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -i = Case insensitive
+- title: -f = Skip
+  desc: Runs `-f` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -f = Skip fields
+- title: -s = Skip
+  desc: Runs `-s` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -s = Skip characters

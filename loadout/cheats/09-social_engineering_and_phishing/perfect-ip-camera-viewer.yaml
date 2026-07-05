@@ -1,0 +1,11 @@
+tool: perfect-ip-camera-viewer
+tags:
+- m09
+- social
+- phishing
+exam_hint: 'IP camera viewer software that supports multiple CCTV camera streams for remote surveillance. Strategy: Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.'
+docs: []
+actions:
+- title: Echo 'Open Perfect
+  desc: Runs `echo` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: echo 'Open Perfect IP Camera Viewer per CEH lab procedure — configure target {ip} in isolated environment.'

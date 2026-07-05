@@ -1,0 +1,11 @@
+tool: netiq-secure-configuration-manager
+tags:
+- m06
+- defense
+- monitoring
+exam_hint: 'NetIQ Secure Configuration Manager — CEH 06 module tool. Strategy: Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation.'
+docs: []
+actions:
+- title: Echo 'Open NetIQ
+  desc: Runs `echo` as part of the CEH workflow. Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation. Authorized lab targets only.
+  command: echo 'Open NetIQ Secure Configuration Manager per CEH lab procedure — configure target {ip} in isolated environment.'

@@ -1,0 +1,14 @@
+tool: portable-penetrator
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Portable Penetrator — CEH 11 module tool. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Portable-penetrator --help
+  desc: Runs `portable-penetrator` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: portable-penetrator --help
+- title: Portable-penetrator -h
+  desc: Runs `portable-penetrator` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: portable-penetrator -h

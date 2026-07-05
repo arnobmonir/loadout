@@ -1,0 +1,15 @@
+tool: dotcom-monitor
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Dotcom-Monitor is a commercial cloud-based website, API, and application performance monitoring service that tests web service availability and performance from over 30 monitoring locations globally. It offers synthetic transaction monitoring, real browser testing, API monitoring, and SSL certificate monitoring. In a security context, Dotcom-Monitor can detect website defacement (content change al Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.dotcom-monitor.com/
+actions:
+- title: Dotcom-monitor --help
+  desc: Runs `dotcom-monitor` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: dotcom-monitor --help
+- title: Dotcom-monitor -h
+  desc: Runs `dotcom-monitor` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: dotcom-monitor -h

@@ -1,0 +1,38 @@
+tool: find
+tags:
+- m11
+- network
+- cli
+exam_hint: 'find is a powerful command-line utility for searching and locating files and directories based on various criteria. It recursively traverses directory hierarchies, applies filters, and executes commands on matches. find is essential for system administration, file management, and complex file operations. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Find --version
+  desc: Runs `find` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: find --version
+- title: Apt-get install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo apt-get install findutils
+- title: Yum install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo yum install findutils
+- title: Find /path -name
+  desc: Runs `find` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: find /path -name "filename.txt"
+- title: Find /path -name (2)
+  desc: Runs `find` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: find /path -name "*.log"
+- title: Find /path -name (3)
+  desc: Runs `find` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: find /path -name "test*"
+- title: Find /path -name (4)
+  desc: Runs `find` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'find /path -name "*~" # Backups'
+- title: Find /path -iname
+  desc: Runs `find` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: find /path -iname "FileName.TXT"
+- title: Find . -name
+  desc: Runs `find` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: find . -name "*.txt"
+- title: Find / -name
+  desc: Runs `find` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'find / -name "config.xml" # Slower'

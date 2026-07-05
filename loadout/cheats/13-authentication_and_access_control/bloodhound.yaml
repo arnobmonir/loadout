@@ -1,0 +1,16 @@
+tool: bloodhound
+tags:
+- m13
+- auth
+- ad
+exam_hint: 'Bloodhound is an Active Directory (AD) enumeration and attack path analysis tool that helps identify privilege escalation and lateral movement opportunities in Windows environments. Strategy: Map AD attack paths with BloodHound before spraying; target AS-REP roastable and SPN accounts; respect lockout thresholds.'
+docs:
+- https://bloodhound.readthedocs.io/
+- https://github.com/BloodHoundAD/BloodHound
+actions:
+- title: Ingest SharpHound data
+  desc: Import collection JSON into BloodHound CE/legacy for AD attack path analysis.
+  command: bloodhound --collectionmethod All --domain {{domain|lab.local}}
+- title: Run SharpHound from Windows lab
+  desc: Collects ACLs, sessions, and paths — run on domain-joined lab machine.
+  command: SharpHound.exe -c All -d {{domain|lab.local}}

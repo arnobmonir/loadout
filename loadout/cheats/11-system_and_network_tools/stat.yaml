@@ -1,0 +1,38 @@
+tool: stat
+tags:
+- m11
+- network
+- cli
+exam_hint: 'stat displays detailed file and filesystem metadata including inode information, permissions, ownership, sizes, timestamps, and access patterns. Essential for forensics, permission debugging, and system administration operations. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Stat --version
+  desc: Runs `stat` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: stat --version
+- title: Stat -f file.txt
+  desc: Runs `stat` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'stat -f file.txt # Different format'
+- title: Stat [OPTIONS] FILE
+  desc: Runs `stat` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: stat [OPTIONS] FILE
+- title: 'Key Options:'
+  desc: Runs `Key` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Key Options:'
+- title: -c FORMAT =
+  desc: Runs `-c` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -c FORMAT = Custom format
+- title: -f = Filesystem
+  desc: Runs `-f` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -f = Filesystem info
+- title: -L = Follow
+  desc: Runs `-L` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -L = Follow symlinks
+- title: -t = Terse
+  desc: Runs `-t` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -t = Terse output
+- title: -- = End
+  desc: Runs `--` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: -- = End of options
+- title: Stat file.txt
+  desc: Runs `stat` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: stat file.txt

@@ -1,0 +1,14 @@
+tool: stegohunttm-mp
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'A commercial steganalysis tool for detecting and analyzing steganography in digital media files. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Stegohunttm-mp --help
+  desc: Runs `stegohunttm-mp` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: stegohunttm-mp --help
+- title: Stegohunttm-mp -h
+  desc: Runs `stegohunttm-mp` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: stegohunttm-mp -h

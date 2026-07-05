@@ -1,0 +1,25 @@
+tool: registry-monitoring-tool
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Registry Monitoring Tools are Windows utilities that watch the registry in real-time for changes and alert on new additions, modifications, or deletions. Tools in this category include regmon (legacy Sysinternals), Process Monitor (which includes registry event monitoring), and dedicated tools like RegFromApp (NirSoft). These tools are critical during dynamic malware analysis for capturing every r Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://docs.microsoft.com/en-us/sysinternals/downloads/procmon
+- https://www.nirsoft.net/utils/reg_from_app.html
+actions:
+- title: Procmon.exe
+  desc: Runs `procmon.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: procmon.exe
+- title: RegFromApp.exe /app malware.exe
+  desc: Runs `RegFromApp.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: RegFromApp.exe /app malware.exe /r output.reg
+- title: Autoruns.exe
+  desc: Runs `autoruns.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: autoruns.exe
+- title: Filter > Category
+  desc: Runs `Filter` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Filter > Category > Registry
+- title: Filter > Process
+  desc: Runs `Filter` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Filter > Process Name > malware.exe

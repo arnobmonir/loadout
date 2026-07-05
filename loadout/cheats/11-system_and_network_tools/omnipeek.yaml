@@ -1,0 +1,15 @@
+tool: omnipeek
+tags:
+- m11
+- network
+- cli
+exam_hint: 'OmniPeek (by LiveAction) is a commercial network protocol analyser and packet capture tool for Windows, designed for enterprise network troubleshooting, performance monitoring, and security forensics. It provides real-time packet capture with deep packet inspection across wired and wireless networks, expert analysis panels, flow visualisation, VoIP analysis, and long-term forensic storage (OmniEng Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.liveaction.com/products/omnipeek-network-protocol-analyzer/
+actions:
+- title: Omnipeek --help
+  desc: Runs `omnipeek` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: omnipeek --help
+- title: Man omnipeek
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man omnipeek

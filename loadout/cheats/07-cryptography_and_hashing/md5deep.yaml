@@ -1,0 +1,16 @@
+tool: md5deep
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'MD5deep is a cross-platform set of tools for computing MD5, SHA-1, SHA-256, Tiger, and Whirlpool hashes for files and directories, supporting integrity checks and digital forensics. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://md5deep.sourceforge.net/
+- https://en.wikipedia.org/wiki/MD5
+actions:
+- title: Md5deep <file>
+  desc: Runs `md5deep` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: md5deep <file>
+- title: Sha256deep <file>
+  desc: Runs `sha256deep` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: sha256deep <file>

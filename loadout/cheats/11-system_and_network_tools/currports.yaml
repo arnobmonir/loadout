@@ -1,0 +1,40 @@
+tool: currports
+tags:
+- m11
+- network
+- cli
+exam_hint: 'CurrPorts is a free Windows utility from NirSoft that displays a real-time list of all open TCP/IP and UDP ports along with the processes that opened them, remote addresses, and connection state. Similar to TCPView, it is used during dynamic malware analysis to monitor network connections established by suspicious processes. CurrPorts supports column-based filtering, auto-refresh, and can export r Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.nirsoft.net/utils/cports.html
+- https://www.nirsoft.net/
+actions:
+- title: 1. Open cports.exe
+  desc: Runs `1.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 1. Open cports.exe
+- title: 2. View all
+  desc: Runs `2.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 2. View all open ports with owning process
+- title: 3. Use filter
+  desc: Runs `3.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 3. Use filter box to narrow by process name or IP
+- title: 4. Right-click >
+  desc: Runs `4.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 4. Right-click > Close Selected TCP Connection
+- title: 5. File >
+  desc: Runs `5.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 5. File > HTML Report / CSV Export for documentation
+- title: Cports.exe /shtml cports_output.html
+  desc: Runs `cports.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cports.exe /shtml cports_output.html
+- title: Cports.exe /scsv cports_output.csv
+  desc: Runs `cports.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cports.exe /scsv cports_output.csv
+- title: Cports.exe /filter "Process
+  desc: Runs `cports.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cports.exe /filter "Process Name" "malware.exe"
+- title: Netstat -ano
+  desc: Runs `netstat` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: netstat -ano | findstr "ESTABLISHED"
+- title: Get-NetTCPConnection
+  desc: Runs `Get-NetTCPConnection` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-NetTCPConnection | Where-Object State -eq 'Established'

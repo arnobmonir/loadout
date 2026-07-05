@@ -1,0 +1,16 @@
+tool: cryptool-1-ct1
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'CrypTool 1 (CT1) is the classic Windows version of the CrypTool e-learning platform, offering interactive tools for cryptography and cryptanalysis education. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://www.cryptool.org/en/ct1
+- https://en.wikipedia.org/wiki/CrypTool
+actions:
+- title: Cryptool-1-ct1 --help
+  desc: Runs `cryptool-1-ct1` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: cryptool-1-ct1 --help
+- title: Cryptool-1-ct1 -h
+  desc: Runs `cryptool-1-ct1` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: cryptool-1-ct1 -h

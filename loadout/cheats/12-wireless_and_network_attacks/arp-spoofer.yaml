@@ -1,0 +1,14 @@
+tool: arp-spoofer
+tags:
+- m12
+- wireless
+- attack
+exam_hint: 'ARP Spoofer is a networking utility tool that performs ARP spoofing attacks. It''s commonly used in penetration testing to intercept network traffic between hosts by poisoning ARP caches and redirecting traffic through the attacker''s machine. Strategy: Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.'
+docs: []
+actions:
+- title: Arp-spoofer --help
+  desc: Runs `arp-spoofer` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: arp-spoofer --help
+- title: Arp-spoofer -h
+  desc: Runs `arp-spoofer` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: arp-spoofer -h

@@ -1,0 +1,14 @@
+tool: cowrie
+tags:
+- m06
+- defense
+- monitoring
+exam_hint: 'Cowrie — CEH 06 module tool. Strategy: Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation.'
+docs: []
+actions:
+- title: Cowrie --help
+  desc: Runs `cowrie` as part of the CEH workflow. Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation. Authorized lab targets only.
+  command: cowrie --help
+- title: Man cowrie
+  desc: Runs `man` as part of the CEH workflow. Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation. Authorized lab targets only.
+  command: man cowrie

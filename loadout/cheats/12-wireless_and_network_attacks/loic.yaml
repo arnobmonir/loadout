@@ -1,0 +1,39 @@
+tool: loic
+tags:
+- m12
+- wireless
+- attack
+exam_hint: 'LOIC (Low Orbit Ion Cannon) is a network stress testing and DDoS attack tool. It was popularized by Anonymous hacktivists. LOIC can generate traffic floods against targets, making services unavailable. It''s useful for authorized network stress testing but illegal for unauthorized attacks. Strategy: Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.'
+docs:
+- https://github.com/NewEraCracker/LOIC.git
+actions:
+- title: Download from GitHub
+  desc: Runs `Download` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: Download from GitHub
+- title: Run executable
+  desc: Runs `Run` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: Run executable
+- title: No installation required
+  desc: Runs `No` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: No installation required
+- title: Git clone https://github.com/NewEraCracker/LOIC.git
+  desc: Runs `git` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: git clone https://github.com/NewEraCracker/LOIC.git
+- title: Cd LOIC
+  desc: Runs `cd` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: cd LOIC
+- title: Mono LOIC.exe
+  desc: Runs `mono` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: mono LOIC.exe
+- title: .NET Framework (Windows)
+  desc: Runs `.NET` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: .NET Framework (Windows)
+- title: Mono (Linux)
+  desc: Runs `Mono` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: Mono (Linux)
+- title: Java (.jar version)
+  desc: Runs `Java` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: Java (.jar version)
+- title: '- Layer 7'
+  desc: Runs `-` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: '- Layer 7 attack'

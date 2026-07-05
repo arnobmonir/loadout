@@ -1,0 +1,14 @@
+tool: quickhash-gui
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'QuickHash-GUI — CEH 07 module tool. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Quickhash-gui --help
+  desc: Runs `quickhash-gui` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: quickhash-gui --help
+- title: Quickhash-gui -h
+  desc: Runs `quickhash-gui` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: quickhash-gui -h

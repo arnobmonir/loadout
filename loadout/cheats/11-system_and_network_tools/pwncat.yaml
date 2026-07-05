@@ -1,0 +1,16 @@
+tool: pwncat
+tags:
+- m11
+- network
+- cli
+exam_hint: 'pwncat is a post-exploitation and privilege escalation automation tool that provides an interactive shell, enumeration, and persistence modules for compromised systems. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://github.com/calebstewart/pwncat
+- https://www.kali.org/tools/pwncat/
+actions:
+- title: Pwncat --help
+  desc: Runs `pwncat` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: pwncat --help
+- title: Man pwncat
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man pwncat

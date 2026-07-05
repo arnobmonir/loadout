@@ -1,0 +1,14 @@
+tool: ohphish
+tags:
+- m09
+- social
+- phishing
+exam_hint: 'OhPhish is a web-based phishing campaign management platform designed for security professionals. It provides a user-friendly interface for creating, deploying, and tracking phishing campaigns with minimal technical expertise. Strategy: Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.'
+docs: []
+actions:
+- title: Ohphish --help
+  desc: Runs `ohphish` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: ohphish --help
+- title: Man ohphish
+  desc: Runs `man` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: man ohphish

@@ -1,0 +1,14 @@
+tool: deepsound
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'An audio steganography tool that hides secret data inside audio files (WAV, WMA, FLAC) with optional AES encryption. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Deepsound --help
+  desc: Runs `deepsound` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: deepsound --help
+- title: Man deepsound
+  desc: Runs `man` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: man deepsound

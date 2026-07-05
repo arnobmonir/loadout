@@ -1,0 +1,38 @@
+tool: ln
+tags:
+- m11
+- network
+- cli
+exam_hint: 'ln (link) is a command-line utility that creates links to files or directories. Creates either hard links (direct references to inode) or symbolic links (reference to filename). Essential for file organization, creating shortcuts, and managing file references. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Ln --version
+  desc: Runs `ln` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: ln --version
+- title: '- Direct reference'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Direct reference to inode'
+- title: '- Same file'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Same file (updates reflect everywhere)'
+- title: '- Cannot cross'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Cannot cross filesystems'
+- title: '- Work with'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Work with files only'
+- title: '- Cannot link'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Cannot link directories'
+- title: Ln file.txt file2.txt
+  desc: Runs `ln` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: ln file.txt file2.txt
+- title: '- Reference to'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Reference to filename'
+- title: '- Independent copies'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Independent copies (can diverge)'
+- title: '- Can cross'
+  desc: Runs `-` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '- Can cross filesystems'

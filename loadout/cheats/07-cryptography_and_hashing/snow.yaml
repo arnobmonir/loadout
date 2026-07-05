@@ -1,0 +1,14 @@
+tool: snow
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'A whitespace steganography tool that hides messages in ASCII text files by adding trailing whitespace characters. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Snow --help
+  desc: Runs `snow` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: snow --help
+- title: Man snow
+  desc: Runs `man` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: man snow

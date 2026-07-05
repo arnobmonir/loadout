@@ -1,0 +1,16 @@
+tool: pure-crypter
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'Pure Crypter is a .NET-based crypter and loader that encrypts and obfuscates malware payloads to evade antivirus detection. It gained notoriety in 2022 alongside the PureLogs stealer. Pure Crypter injects the decrypted payload directly into a legitimate Windows process (e.g., aspnet_compiler.exe) using process hollowing, avoiding writing the plaintext payload to disk. It supports persistence mecha Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack '
+docs:
+- https://www.zscaler.com/blogs/security-research/purecrypter
+- https://attack.mitre.org/techniques/T1055/012/
+actions:
+- title: Diec.exe pure_crypter_sample.exe
+  desc: Runs `diec.exe` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: diec.exe pure_crypter_sample.exe
+- title: De4dot.exe pure_crypter_sample.exe -o
+  desc: Runs `de4dot.exe` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: de4dot.exe pure_crypter_sample.exe -o deobfuscated.exe

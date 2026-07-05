@@ -1,0 +1,14 @@
+tool: spytech-spyagent
+tags:
+- m09
+- social
+- phishing
+exam_hint: 'Employee monitoring and spyware tool for Windows. Records keystrokes, screenshots, email, and web activity. Strategy: Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.'
+docs: []
+actions:
+- title: Spytech-spyagent --help
+  desc: Runs `spytech-spyagent` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: spytech-spyagent --help
+- title: Spytech-spyagent -h
+  desc: Runs `spytech-spyagent` as part of the CEH workflow. Scope recipient lists and landing pages; use isolated infra; track opens/clicks only within written authorization.
+  command: spytech-spyagent -h

@@ -16,4 +16,4 @@ def test_every_action_has_description():
     actions = load_cheats([get_builtin_cheats_dir()])
     missing = [(a.tool, a.title) for a in actions if not a.desc.strip()]
     assert missing == []
-    assert len(actions) >= 830
+    assert len(actions) >= 2900

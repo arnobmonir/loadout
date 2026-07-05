@@ -1,0 +1,30 @@
+tool: reg-organizer
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Reg Organizer is a Windows registry management utility by ChemTable Software that provides advanced registry search, cleaning, defragmentation, and editing capabilities. It includes a registry cleaner to remove orphaned and invalid entries (including leftover malware registry artefacts), a registry search tool, a bulk delete function, and a registry backup/restore feature. During malware remediati Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.chemtable.com/organizer.htm
+actions:
+- title: 1. Open RegOrganizer.exe
+  desc: Runs `1.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 1. Open RegOrganizer.exe
+- title: 2. Tools >
+  desc: Runs `2.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '2. Tools > Registry Search: find all entries related to malware name or path'
+- title: 3. Select all
+  desc: Runs `3.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 3. Select all matching results > Delete
+- title: 4. Tools >
+  desc: Runs `4.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '4. Tools > Registry Cleaner: scan for and remove orphaned entries'
+- title: 5. File >
+  desc: Runs `5.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '5. File > Backup Registry: create backup before changes'
+- title: File > Backup
+  desc: Runs `File` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: File > Backup Registry > Save .reg backup
+- title: Tools > Registry
+  desc: Runs `Tools` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Tools > Registry Defragmentation (requires reboot)

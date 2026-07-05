@@ -1,0 +1,41 @@
+tool: syn-flood
+tags:
+- m11
+- network
+- cli
+exam_hint: 'SYN Flood is a network-layer denial-of-service attack that exploits the TCP three-way handshake mechanism. The attacker sends large volumes of TCP SYN packets with spoofed source IP addresses, causing the target server to allocate resources for half-open connections that are never completed, exhausting server capacity and preventing legitimate connections. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: 'Normal Connection:'
+  desc: Runs `Normal` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Normal Connection:'
+- title: Client Server
+  desc: Runs `Client` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Client Server
+- title: Run command 3
+  desc: Runs `|` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '| |'
+- title: Run command 4
+  desc: Runs `|-------` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '|------- SYN (ISN:1000) ------->|'
+- title: Run command 5
+  desc: Runs `|` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '| | (SYN received)'
+- title: Run command 6
+  desc: Runs `|<-----` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '|<----- SYN-ACK (ISN:2000) -----|'
+- title: Run command 7
+  desc: Runs `|` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '| (ACK:1001) |'
+- title: Run command 8
+  desc: Runs `|-------` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '|------- ACK (ACK:2001) ------->|'
+- title: Run command 9
+  desc: Runs `|` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '| (connection established) |'
+- title: Run command 10
+  desc: Runs `|` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '| <--- Data Exchange -----> |'
+- title: 'Attack Scenario:'
+  desc: Runs `Attack` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Attack Scenario:'

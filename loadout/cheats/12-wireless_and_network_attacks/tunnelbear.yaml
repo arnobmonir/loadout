@@ -1,0 +1,15 @@
+tool: tunnelbear
+tags:
+- m12
+- wireless
+- attack
+exam_hint: 'TunnelBear is a consumer VPN service that encrypts internet traffic and routes it through servers in over 40 countries. It masks the user''s real IP address by replacing it with the VPN server''s IP, enabling evasion of geographic restrictions, IP-based firewall rules, and network-level monitoring. Strategy: Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.'
+docs:
+- https://www.tunnelbear.com
+actions:
+- title: Tunnelbear --help
+  desc: Runs `tunnelbear` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: tunnelbear --help
+- title: Man tunnelbear
+  desc: Runs `man` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: man tunnelbear

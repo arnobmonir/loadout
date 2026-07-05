@@ -1,0 +1,39 @@
+tool: psloglist
+tags:
+- m11
+- network
+- cli
+exam_hint: 'PsLogList is a Sysinternals command-line utility that reads the Windows Event Log from local and remote systems, dumping event log entries with filtering and formatting options. Essential for forensics, auditing, and covering tracks during post-exploitation. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://live.sysinternals.com/psloglist.exe
+actions:
+- title: Psloglist.exe
+  desc: Runs `https://live.sysinternals.com/psloglist.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: https://live.sysinternals.com/psloglist.exe
+- title: Cp psloglist.exe /usr/local/bin/
+  desc: Runs `cp` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cp psloglist.exe /usr/local/bin/
+- title: Psloglist -a
+  desc: Runs `psloglist` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: psloglist -a
+- title: Psloglist -s
+  desc: Runs `psloglist` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: psloglist -s
+- title: Psloglist -c 20
+  desc: Runs `psloglist` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'psloglist -c 20 # Last 20 entries'
+- title: Psloglist \\COMPUTERNAME -c
+  desc: Runs `psloglist` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: psloglist \\COMPUTERNAME -c 50 -s
+- title: Psloglist -e 4625
+  desc: Runs `psloglist` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'psloglist -e 4625 # Failed login attempts'
+- title: Psloglist -d 31
+  desc: Runs `psloglist` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'psloglist -d 31 # Last 31 days'
+- title: Psloglist -u domain\user
+  desc: Runs `psloglist` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: psloglist -u domain\user -p password \\TARGET -s
+- title: Psloglist -s \\SERVER01
+  desc: Runs `psloglist` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: psloglist -s \\SERVER01 > security_events.csv

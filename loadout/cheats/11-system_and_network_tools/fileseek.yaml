@@ -1,0 +1,27 @@
+tool: fileseek
+tags:
+- m11
+- network
+- cli
+exam_hint: 'FileSeek (by Binary Fortress Software) is a fast Windows file search tool that can search file names, file contents, and metadata using text or regular expression patterns. During malware analysis and forensic investigation, FileSeek is used to quickly locate malware-dropped files (by searching for unusual file names, extensions, or content patterns), find configuration files containing C2 address Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.binaryfortress.com/FileSeek/
+actions:
+- title: Dir /s /b
+  desc: Runs `dir` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: dir /s /b *malware* 2>nul
+- title: Get-ChildItem -Recurse C:\
+  desc: Runs `Get-ChildItem` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-ChildItem -Recurse C:\ -Filter "*update*.exe" -ErrorAction SilentlyContinue
+- title: Findstr /s /i
+  desc: Runs `findstr` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: findstr /s /i "c2.attacker.com" C:\*.* 2>nul
+- title: Get-ChildItem -Recurse C:\ (2)
+  desc: Runs `Get-ChildItem` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-ChildItem -Recurse C:\ -Include *.txt,*.ini,*.cfg | Select-String -Pattern "attacker.com"
+- title: Get-ChildItem -Recurse C:\Windows\Temp
+  desc: Runs `Get-ChildItem` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-ChildItem -Recurse C:\Windows\Temp | Where {$_.CreationTime -gt (Get-Date).AddDays(-1)}
+- title: Get-ChildItem -Recurse "$env:TEMP"
+  desc: Runs `Get-ChildItem` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-ChildItem -Recurse "$env:TEMP" -Include *.exe,*.dll

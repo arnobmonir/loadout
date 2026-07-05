@@ -1,0 +1,16 @@
+tool: observer-analyzer
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Observer Analyzer (by Viavi Solutions, formerly NetScout Observer) is an enterprise network analysis and protocol decode platform for deep packet inspection, network troubleshooting, and security forensics. It provides full-packet capture with long-term storage, expert analysis panels, VoIP quality analysis, and application performance monitoring. In security contexts, it is used to analyse malwar Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.viavi.com/
+- https://www.viavi.com/en-us/products/network-instruments
+actions:
+- title: Observer-analyzer --help
+  desc: Runs `observer-analyzer` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: observer-analyzer --help
+- title: Observer-analyzer -h
+  desc: Runs `observer-analyzer` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: observer-analyzer -h

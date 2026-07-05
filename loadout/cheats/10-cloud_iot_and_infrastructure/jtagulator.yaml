@@ -1,0 +1,14 @@
+tool: jtagulator
+tags:
+- m10
+- cloud
+- iot
+exam_hint: 'JTAGulator is a hardware hacking tool designed to identify JTAG (Joint Test Action Group) and UART interfaces on electronic devices. It automates the discovery of debug ports on PCBs, enabling security researchers to access device internals for testing and analysis. Strategy: Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs.'
+docs: []
+actions:
+- title: Jtagulator --help
+  desc: Runs `jtagulator` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: jtagulator --help
+- title: Man jtagulator
+  desc: Runs `man` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: man jtagulator

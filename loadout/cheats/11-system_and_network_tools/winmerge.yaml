@@ -1,0 +1,14 @@
+tool: winmerge
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A visual text file differencing and merging tool for Windows. Used to compare files and directories for ADS detection and integrity checking. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Winmerge --help
+  desc: Runs `winmerge` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: winmerge --help
+- title: Man winmerge
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man winmerge

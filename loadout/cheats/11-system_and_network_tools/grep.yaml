@@ -1,0 +1,38 @@
+tool: grep
+tags:
+- m11
+- network
+- cli
+exam_hint: 'grep is a command-line utility for searching text patterns within files and streams. It matches lines containing specified regular expressions or literal strings and outputs matching results. grep is fundamental to Unix/Linux text processing and appears in countless scripts and data analysis workflows. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Grep --version
+  desc: Runs `grep` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: grep --version
+- title: Apt-get install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo apt-get install grep
+- title: Yum install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo yum install grep
+- title: Brew install grep
+  desc: Runs `brew` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'brew install grep # Installs GNU grep'
+- title: 'Options:'
+  desc: Runs `Options:` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'Options:'
+- title: 1. Git Bash
+  desc: Runs `1.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 1. Git Bash (includes grep)
+- title: 2. WSL (Windows
+  desc: Runs `2.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 2. WSL (Windows Subsystem for Linux)
+- title: 3. Cygwin
+  desc: Runs `3.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 3. Cygwin
+- title: 4. GNU grep
+  desc: Runs `4.` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 4. GNU grep for Windows
+- title: Grep "searchterm" filename.txt
+  desc: Runs `grep` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: grep "searchterm" filename.txt

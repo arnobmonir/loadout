@@ -1,0 +1,16 @@
+tool: honeyhttpd
+tags:
+- m06
+- defense
+- monitoring
+exam_hint: 'HoneyHTTPD is a lightweight HTTP honeypot designed to detect, log, and analyze unauthorized or malicious web traffic targeting HTTP servers. Strategy: Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation.'
+docs:
+- https://github.com/foospidy/HoneyHTTPD
+- https://en.wikipedia.org/wiki/Honeypot_(computing
+actions:
+- title: Honeyhttpd --help
+  desc: Runs `honeyhttpd` as part of the CEH workflow. Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation. Authorized lab targets only.
+  command: honeyhttpd --help
+- title: Man honeyhttpd
+  desc: Runs `man` as part of the CEH workflow. Baseline normal traffic before tuning alerts; place honeypots on decoy VLANs; correlate IDS hits with PCAP for validation. Authorized lab targets only.
+  command: man honeyhttpd

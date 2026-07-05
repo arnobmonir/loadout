@@ -1,0 +1,16 @@
+tool: cryptol
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'Cryptol is a domain-specific language for specifying, implementing, and verifying cryptographic algorithms, supporting research and secure software development. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://cryptol.net/
+- https://en.wikipedia.org/wiki/Cryptol
+actions:
+- title: Cryptol --help
+  desc: Runs `cryptol` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: cryptol --help
+- title: Man cryptol
+  desc: Runs `man` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: man cryptol

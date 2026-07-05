@@ -1,0 +1,14 @@
+tool: get-filehash
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A PowerShell cmdlet that computes the hash value of a file. Used for file integrity verification and forensic analysis. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Get-filehash --help
+  desc: Runs `get-filehash` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: get-filehash --help
+- title: Get-filehash -h
+  desc: Runs `get-filehash` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: get-filehash -h

@@ -1,0 +1,16 @@
+tool: nginxpwner
+tags:
+- m11
+- network
+- cli
+exam_hint: 'NginxPwner is a tool for exploiting misconfigurations and vulnerabilities in Nginx web servers, supporting privilege escalation and post-exploitation activities. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://github.com/yassinebridi/nginxpwner
+- https://www.kali.org/tools/nginxpwner/
+actions:
+- title: Nginxpwner --help
+  desc: Runs `nginxpwner` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nginxpwner --help
+- title: Man nginxpwner
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man nginxpwner

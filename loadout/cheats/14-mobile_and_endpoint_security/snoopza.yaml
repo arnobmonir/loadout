@@ -1,0 +1,14 @@
+tool: snoopza
+tags:
+- m14
+- mobile
+- endpoint
+exam_hint: 'Free Android spyware app that logs keystrokes, messages, calls, and screenshots remotely. Strategy: Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.'
+docs: []
+actions:
+- title: Snoopza --help
+  desc: Runs `snoopza` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: snoopza --help
+- title: Man snoopza
+  desc: Runs `man` as part of the CEH workflow. Static APK/IPA analysis before dynamic; use emulators with no prod accounts; endpoint tools only on owned lab devices.
+  command: man snoopza

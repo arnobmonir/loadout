@@ -1,0 +1,13 @@
+tool: online-md5-hashed-validator
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'Online MD5 Hashed Validator is a web-based tool for verifying and comparing MD5 hashes of files or strings, useful for malware analysis and file integrity checks. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://www.md5hashgenerator.com/
+- https://www.onlinehashcrack.com/hash-identification.php
+actions:
+- title: Echo 'Open Online
+  desc: Runs `echo` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: echo 'Open Online MD5 Hashed Validator per CEH lab procedure — configure target {ip} in isolated environment.'

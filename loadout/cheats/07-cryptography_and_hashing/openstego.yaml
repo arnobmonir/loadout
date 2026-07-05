@@ -1,0 +1,14 @@
+tool: openstego
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'An open-source steganography tool for hiding data within image files (PNG, BMP, JPEG) using LSB encoding and watermarking. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Openstego --help
+  desc: Runs `openstego` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: openstego --help
+- title: Man openstego
+  desc: Runs `man` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: man openstego

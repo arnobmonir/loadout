@@ -1,0 +1,14 @@
+tool: flipper-zero
+tags:
+- m12
+- wireless
+- attack
+exam_hint: 'Flipper Zero is a portable multi-tool designed for physical security testing and hardware accessibility research. It''s a pocket-sized device that can interact with wireless protocols, RFID systems, NFC tags, and other wireless systems commonly found in modern devices. Strategy: Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.'
+docs: []
+actions:
+- title: Flipper-zero --help
+  desc: Runs `flipper-zero` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: flipper-zero --help
+- title: Flipper-zero -h
+  desc: Runs `flipper-zero` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: flipper-zero -h

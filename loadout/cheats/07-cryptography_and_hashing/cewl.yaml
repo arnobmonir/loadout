@@ -1,0 +1,26 @@
+tool: cewl
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'CeWL (Custom Wordlist Generator) is a Ruby web application spider that extracts words and patterns from target websites to generate custom, context-specific wordlists for password attacks and brute-forcing operations. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs:
+- https://example.com
+- https://github.com/digininja/CeWL
+- https://www.kali.org/tools/cewl/
+actions:
+- title: Cewl https://example.com -o
+  desc: Runs `cewl` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: cewl https://example.com -o wordlist.txt
+- title: Cewl https://example.com -d
+  desc: Runs `cewl` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: cewl https://example.com -d 3 -m 5 -o wordlist.txt
+- title: Cewl https://example.com -e
+  desc: Runs `cewl` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: cewl https://example.com -e -o wordlist.txt
+- title: Cewl https://example.com --with-numbers
+  desc: Runs `cewl` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: cewl https://example.com --with-numbers -o wordlist.txt
+- title: Cewl --help
+  desc: Runs `cewl` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: cewl --help

@@ -1,0 +1,41 @@
+tool: docker
+tags:
+- m10
+- cloud
+- iot
+exam_hint: 'Docker is a containerization platform that packages applications and dependencies into lightweight, isolated containers. In the context of security assessment, understanding Docker configuration, identifying misconfigurations, and exploiting container vulnerabilities is critical for assessing cloud and microservices-based infrastructure security. Strategy: Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs.'
+docs:
+- https://docs.docker.com/engine/security/
+- https://www.cisecurity.org/
+- https://owasp.org/
+actions:
+- title: Docker ps
+  desc: Runs `docker` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: docker ps
+- title: Docker ps -a
+  desc: Runs `docker` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: 'docker ps -a # All containers including stopped'
+- title: Docker inspect container-id
+  desc: Runs `docker` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: docker inspect container-id
+- title: Docker exec -it
+  desc: Runs `docker` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: 'docker exec -it container-id /bin/bash # Execute command in container'
+- title: Docker scan image-name
+  desc: Runs `docker` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: docker scan image-name
+- title: Trivy image image-name
+  desc: Runs `trivy` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: trivy image image-name
+- title: Docker run --privileged
+  desc: Runs `docker` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: docker run --privileged image-name
+- title: Docker run --read-only
+  desc: Runs `docker` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: docker run --read-only image-name
+- title: Docker run -u
+  desc: Runs `docker` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: docker run -u root image-name
+- title: Docker save image-name
+  desc: Runs `docker` as part of the CEH workflow. Enumerate public buckets and IAM misconfigs first; scan container images for known CVEs; segment IoT devices from corp VLANs. Authorized lab targets only.
+  command: docker save image-name | tar x

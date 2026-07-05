@@ -1,0 +1,14 @@
+tool: disk-wipe
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A free Windows application for permanently and securely deleting all data from a disk or storage device. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Disk-wipe --help
+  desc: Runs `disk-wipe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: disk-wipe --help
+- title: Disk-wipe -h
+  desc: Runs `disk-wipe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: disk-wipe -h

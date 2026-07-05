@@ -1,0 +1,41 @@
+tool: azure-cli
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Azure CLI is Microsoft''s command-line interface for managing Azure cloud resources. In security assessments, Azure CLI is used to enumerate cloud infrastructure, identify misconfigurations, audit access controls, and detect security vulnerabilities in Azure cloud environments. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://learn.microsoft.com/cli/azure/
+- https://cisa.gov/
+- https://learn.microsoft.com/
+actions:
+- title: 'Az login #'
+  desc: Runs `az` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'az login # Interactive login'
+- title: Az login --service-principal
+  desc: Runs `az` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: az login --service-principal -u user -p password --tenant tenant-id
+- title: Az resource list
+  desc: Runs `az` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: az resource list
+- title: Az vm list
+  desc: Runs `az` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'az vm list # Virtual machines'
+- title: Az storage account
+  desc: Runs `az` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'az storage account list # Storage accounts'
+- title: Az network nsg
+  desc: Runs `az` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'az network nsg list # Network security groups'
+- title: Az role assignment
+  desc: Runs `az` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: az role assignment list --all
+- title: Az role assignment (2)
+  desc: Runs `az` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: az role assignment list --assignee <user-id>
+- title: Az storage account (2)
+  desc: Runs `az` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: az storage account show --name <storage-account>
+- title: Az storage account (3)
+  desc: Runs `az` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: az storage account keys list --account-name <storage-account>

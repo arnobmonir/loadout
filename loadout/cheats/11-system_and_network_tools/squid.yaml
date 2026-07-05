@@ -1,0 +1,14 @@
+tool: squid
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Squid is a caching and proxy server that can relay traffic, enforce policy, or in attacker tradecraft provide a proxy hop for covert communications. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Squid --help
+  desc: Runs `squid` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: squid --help
+- title: Man squid
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man squid

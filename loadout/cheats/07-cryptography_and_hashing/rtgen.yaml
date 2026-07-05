@@ -1,0 +1,11 @@
+tool: rtgen
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'rtgen is the rainbow table generator component of RainbowCrack. It generates rainbow tables for use in time-memory trade-off password cracking attacks. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Rtgen md5 loweralpha
+  desc: Runs `rtgen` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: rtgen md5 loweralpha 1 7 0 3800 33554432 0

@@ -1,18 +1,53 @@
 tool: tcpdump
-tags: [network, sniffing, m12]
-exam_hint: "Packet capture and analysis — filter by host, port, protocol"
+tags:
+- network
+- sniffing
+- m12
+- m11
+- cli
+exam_hint: Packet capture and analysis — filter by host, port, protocol tcpdump is a command-line packet analyzer/sniffer that allows users to capture and analyze network traffic. It dumps traffic between network interfaces based on various filters to detect and diagnose
 docs:
-  - "man:tcpdump"
-
+- man:tcpdump
 actions:
-  - title: capture on interface
-    desc: Capture packets on interface
-    command: "tcpdump -i {{interface|eth0}} -w {{output|capture.pcap}}"
-
-  - title: filter host
-    desc: Capture traffic to/from host
-    command: "tcpdump -i {{interface|eth0}} host {{ip}}"
-
-  - title: filter port
-    desc: Capture traffic on port
-    command: "tcpdump -i {{interface|eth0}} port {{port|80}} -nn"
+- title: capture on interface
+  desc: Capture packets on interface
+  command: tcpdump -i {{interface|eth0}} -w {{output|capture.pcap}}
+- title: filter host
+  desc: Capture traffic to/from host
+  command: tcpdump -i {{interface|eth0}} host {{ip}}
+- title: filter port
+  desc: Capture traffic on port
+  command: tcpdump -i {{interface|eth0}} port {{port|80}} -nn
+- title: Capture on interface
+  desc: Record packets on pivot interface during lab attack demo — filter to reduce noise.
+  command: sudo tcpdump -i {{interface|eth0}} -w {{output|capture.pcap}}
+- title: Capture only host traffic
+  desc: BPF filter limits capture to one lab target IP.
+  command: sudo tcpdump -i {{interface|eth0}} host {{ip}} -w {{output|host.pcap}}
+- title: Apt-get install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo apt-get install tcpdump
+- title: Dnf install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo dnf install tcpdump
+- title: Brew install tcpdump
+  desc: Runs `brew` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: brew install tcpdump
+- title: Wget http://www.tcpdump.org/release/tcpdump-latest.tar.gz
+  desc: Runs `wget` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: wget http://www.tcpdump.org/release/tcpdump-latest.tar.gz
+- title: Tar xzf tcpdump-latest.tar.gz
+  desc: Runs `tar` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: tar xzf tcpdump-latest.tar.gz
+- title: Cd tcpdump-*
+  desc: Runs `cd` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cd tcpdump-*
+- title: Configure
+  desc: Runs `./configure` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: ./configure
+- title: Make
+  desc: Runs `make` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: make
+- title: Make install
+  desc: Runs `sudo` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sudo make install

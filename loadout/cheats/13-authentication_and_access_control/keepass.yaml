@@ -1,0 +1,16 @@
+tool: keepass
+tags:
+- m13
+- auth
+- ad
+exam_hint: 'KeePass is a free, open-source password manager that securely stores and manages passwords in an encrypted database, supporting strong password practices and digital security. Strategy: Map AD attack paths with BloodHound before spraying; target AS-REP roastable and SPN accounts; respect lockout thresholds.'
+docs:
+- https://keepass.info/
+- https://en.wikipedia.org/wiki/KeePass
+actions:
+- title: Keepass --help
+  desc: Runs `keepass` as part of the CEH workflow. Map AD attack paths with BloodHound before spraying; target AS-REP roastable and SPN accounts; respect lockout thresholds. Authorized lab targets only.
+  command: keepass --help
+- title: Man keepass
+  desc: Runs `man` as part of the CEH workflow. Map AD attack paths with BloodHound before spraying; target AS-REP roastable and SPN accounts; respect lockout thresholds. Authorized lab targets only.
+  command: man keepass

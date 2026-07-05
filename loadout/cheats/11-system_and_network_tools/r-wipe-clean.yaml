@@ -1,0 +1,14 @@
+tool: r-wipe-clean
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A comprehensive Windows privacy tool for securely erasing files, browser traces, and disk free space. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: R-wipe-clean --help
+  desc: Runs `r-wipe-clean` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: r-wipe-clean --help
+- title: R-wipe-clean -h
+  desc: Runs `r-wipe-clean` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: r-wipe-clean -h

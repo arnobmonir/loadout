@@ -1,0 +1,14 @@
+tool: hashid
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'hashID is a Python tool that identifies the type of hash given as input, based on known hash patterns and regular expressions. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Hashid <hash_value>
+  desc: Runs `hashid` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: hashid <hash_value>
+- title: From hashid import
+  desc: Runs `from` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: from hashid import HashID

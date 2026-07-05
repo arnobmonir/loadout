@@ -1,0 +1,23 @@
+tool: sonar-lite-web-app
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Sonar Lite (or Sonar) is a web-based tool or web app designed to perform lightweight security and configuration scans of web applications and URLs. It checks for common web security misconfigurations, outdated components, broken links, SSL/TLS issues, and basic vulnerability indicators. In the context of malware analysis and countermeasures, it provides quick web security health checks to detect c Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://sonar.js.org/
+- https://example.com
+- https://securityheaders.com/
+actions:
+- title: Curl -I https://example.com
+  desc: Runs `curl` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: curl -I https://example.com
+- title: Openssl s_client -connect
+  desc: Runs `openssl` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: openssl s_client -connect example.com:443 -tls1_2
+- title: Curl https://example.com
+  desc: Runs `curl` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: curl https://example.com | grep -i "<script"
+- title: Nikto -h https://example.com
+  desc: Runs `nikto` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: nikto -h https://example.com

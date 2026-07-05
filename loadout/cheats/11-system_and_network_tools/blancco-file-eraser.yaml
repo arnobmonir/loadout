@@ -1,0 +1,14 @@
+tool: blancco-file-eraser
+tags:
+- m11
+- network
+- cli
+exam_hint: 'An enterprise-grade file erasure software for permanently deleting sensitive data to compliance standards. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Blancco-file-eraser --help
+  desc: Runs `blancco-file-eraser` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: blancco-file-eraser --help
+- title: Blancco-file-eraser -h
+  desc: Runs `blancco-file-eraser` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: blancco-file-eraser -h

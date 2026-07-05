@@ -1,0 +1,11 @@
+tool: steganography-studio
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'A research and learning steganography tool that provides multiple algorithms for hiding and detecting hidden content in images. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Echo 'Open Steganography
+  desc: Runs `echo` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: echo 'Open Steganography Studio per CEH lab procedure — configure target {ip} in isolated environment.'

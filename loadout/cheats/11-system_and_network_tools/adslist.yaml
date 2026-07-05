@@ -1,0 +1,14 @@
+tool: adslist
+tags:
+- m11
+- network
+- cli
+exam_hint: 'adslist.exe is a command-line utility for listing Alternate Data Streams (ADS) in NTFS file systems, helping to identify hidden data streams attached to files. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Adslist --help
+  desc: Runs `adslist` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: adslist --help
+- title: Man adslist
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man adslist

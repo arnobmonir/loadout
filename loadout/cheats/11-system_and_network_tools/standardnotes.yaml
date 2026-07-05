@@ -1,0 +1,15 @@
+tool: standardnotes
+tags:
+- m11
+- network
+- cli
+exam_hint: '[Standard Notes](https://standardnotes.com/) is a secure, privacy-focused note-taking app designed for people who care about protecting their data. It offers a minimalist interface and end-to-end encryption by default, meaning only you can read your notes—not even Standard Notes can access them. --- ### 🔐 Key Features - End-to-End Encryption: All notes are encrypted locally before they leave your  Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://standardnotes.com/
+actions:
+- title: Standardnotes --help
+  desc: Runs `standardnotes` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: standardnotes --help
+- title: Man standardnotes
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man standardnotes

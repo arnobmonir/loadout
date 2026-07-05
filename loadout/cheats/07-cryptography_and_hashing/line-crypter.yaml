@@ -1,0 +1,22 @@
+tool: line-crypter
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'Line Crypter is a Windows-based malware crypter tool that encrypts PE executables and script-based payloads to evade antivirus detection. It is typically sold on underground cybercrime forums as a FUD (Fully UnDetectable) crypter with a simple GUI. The crypter runtime decrypts the payload into memory at execution time, bypassing static signature scanning. Line Crypter has been used to obfuscate nj Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack '
+docs:
+- https://www.sans.org/reading-room/whitepapers/malicious/malware-crypters-antivirus-evasion-34294
+- https://www.unpac.me/
+actions:
+- title: 'Diec.exe line_crypter_sample.exe #'
+  desc: Runs `diec.exe` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: 'diec.exe line_crypter_sample.exe # Unknown or generic crypter'
+- title: 'Strings.exe line_crypter_sample.exe #'
+  desc: Runs `strings.exe` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: 'strings.exe line_crypter_sample.exe # Few meaningful strings = encrypted'
+- title: Diec.exe unpacked.exe
+  desc: Runs `diec.exe` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: diec.exe unpacked.exe
+- title: Floss.exe unpacked.exe
+  desc: Runs `floss.exe` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: floss.exe unpacked.exe

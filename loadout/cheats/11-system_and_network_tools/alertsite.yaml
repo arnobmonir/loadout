@@ -1,0 +1,15 @@
+tool: alertsite
+tags:
+- m11
+- network
+- cli
+exam_hint: 'AlertSite (by SmartBear) is a cloud-based website and API monitoring service that continuously tests websites, web applications, and APIs for availability, performance, and correctness. It monitors from multiple geographic locations to detect outages, performance degradation, and functional failures. In a security context, AlertSite-style monitoring can detect DoS/DDoS impacts on web services, ide Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://smartbear.com/product/alertsite/
+actions:
+- title: Alertsite --help
+  desc: Runs `alertsite` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: alertsite --help
+- title: Man alertsite
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man alertsite

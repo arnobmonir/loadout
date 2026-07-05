@@ -1,0 +1,34 @@
+tool: solarwinds-windows-scheduled-task-monitor
+tags:
+- m11
+- network
+- cli
+exam_hint: 'SolarWinds Windows Scheduled Task Monitor (part of the SolarWinds Engineer''s Toolset or available as a free standalone tool) monitors Windows Scheduled Tasks for changes, new additions, or task failures. Malware frequently uses Windows Scheduled Tasks as a persistence mechanism because tasks survive reboots and run with specified privileges. This tool provides alerts when new tasks are created, ex Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://www.solarwinds.com/free-tools/windows-task-manager
+- https://attack.mitre.org/techniques/T1053/005/
+actions:
+- title: Get-ScheduledTask
+  desc: Runs `Get-ScheduledTask` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-ScheduledTask | Select TaskName, TaskPath, State, @{N="Actions";E={$_.Actions.Execute}}
+- title: Get-ScheduledTask (2)
+  desc: Runs `Get-ScheduledTask` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-ScheduledTask | Where {$_.Actions.Execute -like "*powershell*" -or $_.Actions.Execute -like "*cmd*"}
+- title: Get-ScheduledTask (3)
+  desc: Runs `Get-ScheduledTask` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-ScheduledTask | ForEach-Object {
+- title: $info = Get-ScheduledTaskInfo
+  desc: Runs `$info` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: $info = Get-ScheduledTaskInfo $_.TaskName -TaskPath $_.TaskPath
+- title: '[pscustomobject]@{ Name=$_.TaskName; LastRun=$info.LastRunTi'
+  desc: Runs `[pscustomobject]@{` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '[pscustomobject]@{ Name=$_.TaskName; LastRun=$info.LastRunTime; NextRun=$info.NextRunTime }'
+- title: '}'
+  desc: Runs `}` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: '} | Sort LastRun -Descending | Select -First 20'
+- title: Schtasks /query /fo
+  desc: Runs `schtasks` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: schtasks /query /fo LIST /v | findstr /i "task name\|run as user\|task to run"
+- title: Get-WinEvent -FilterHashtable @{LogName='Security';
+  desc: Runs `Get-WinEvent` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-WinEvent -FilterHashtable @{LogName='Security'; Id=4698} | Select TimeCreated, Message

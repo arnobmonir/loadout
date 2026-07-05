@@ -1,0 +1,14 @@
+tool: bcwipe
+tags:
+- m11
+- network
+- cli
+exam_hint: 'A Jetico data erasure tool for permanently wiping data from HDDs, SSDs, and free disk space on Windows and Linux. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs: []
+actions:
+- title: Bcwipe --help
+  desc: Runs `bcwipe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: bcwipe --help
+- title: Man bcwipe
+  desc: Runs `man` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: man bcwipe

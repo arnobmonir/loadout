@@ -1,0 +1,13 @@
+tool: muck-crypter
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'Muck Crypter is a Windows-based crypter tool used by threat actors to obfuscate and encrypt malware payloads to evade antivirus and EDR detection. Like other crypters, it wraps a malicious executable within an encrypted stub, which at runtime decrypts and executes the original payload in memory. Crypters such as Muck are advertised on underground forums as "FUD" (Fully UnDetectable) tools. Analyst Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack '
+docs:
+- https://www.sans.org/reading-room/whitepapers/malicious/malware-crypters-antivirus-evasion-34294
+- https://www.unpac.me/
+actions:
+- title: 'Diec.exe muck_wrapped_sample.exe #'
+  desc: Runs `diec.exe` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: 'diec.exe muck_wrapped_sample.exe # shows Unknown packer or generic crypter'

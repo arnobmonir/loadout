@@ -1,0 +1,39 @@
+tool: psloggedon
+tags:
+- m11
+- network
+- cli
+exam_hint: 'PsLoggedOn is a Sysinternals command-line utility that lists all currently logged-on users on local and remote Windows systems, showing both interactive and network sessions. Critical for identifying active user accounts for social engineering and lateral movement planning. Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise.'
+docs:
+- https://live.sysinternals.com/psloggedon.exe
+actions:
+- title: Psloggedon.exe
+  desc: Runs `https://live.sysinternals.com/psloggedon.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: https://live.sysinternals.com/psloggedon.exe
+- title: Cp psloggedon.exe /usr/local/bin/
+  desc: Runs `cp` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: cp psloggedon.exe /usr/local/bin/
+- title: Psloggedon
+  desc: Runs `psloggedon` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: psloggedon
+- title: Psloggedon \\COMPUTERNAME
+  desc: Runs `psloggedon` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: psloggedon \\COMPUTERNAME
+- title: Psloggedon -l
+  desc: Runs `psloggedon` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: psloggedon -l
+- title: Psloggedon -u domain\user
+  desc: Runs `psloggedon` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: psloggedon -u domain\user -p password \\REMOTE_PC
+- title: 'Psloggedon \\DC01 #'
+  desc: Runs `psloggedon` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'psloggedon \\DC01 # Domain controller sessions'
+- title: 'Psloggedon \\WORKSTATION-05 #'
+  desc: Runs `psloggedon` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'psloggedon \\WORKSTATION-05 # Workstation active users'
+- title: Psloggedon -l \\SERVER
+  desc: Runs `psloggedon` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: 'psloggedon -l \\SERVER # Include user SIDs'
+- title: Psloggedon > active_users.txt
+  desc: Runs `psloggedon` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: psloggedon > active_users.txt

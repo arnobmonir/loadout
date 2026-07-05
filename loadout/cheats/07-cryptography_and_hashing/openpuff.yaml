@@ -1,0 +1,14 @@
+tool: openpuff
+tags:
+- m07
+- crypto
+- hash
+exam_hint: 'A professional steganography tool that hides data in images, audio, video, and Flash files with multi-carrier support. Strategy: Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins.'
+docs: []
+actions:
+- title: Openpuff --help
+  desc: Runs `openpuff` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: openpuff --help
+- title: Man openpuff
+  desc: Runs `man` as part of the CEH workflow. Identify hash mode (hashcat -m / john format); start targeted wordlists and rules; crack service accounts before domain admins. Authorized lab targets only.
+  command: man openpuff

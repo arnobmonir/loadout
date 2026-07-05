@@ -1,14 +1,43 @@
 tool: wifite
-tags: [wireless, wifi, m12]
-exam_hint: "Automated wireless auditor — monitor, deauth, capture, crack workflow"
+tags:
+- wireless
+- wifi
+- m12
+- attack
+exam_hint: Automated wireless auditor — monitor, deauth, capture, crack workflow Wifite (formerly WiFite) is an automated wireless networks auditing tool designed to simplify the process of discovering and cracking WiFi networks. It uses aircrack-ng suite tools in the background b
 docs:
-  - https://github.com/kimocoder/wifite2
-
+- https://github.com/kimocoder/wifite2
 actions:
-  - title: auto audit
-    desc: Run wifite against nearby APs (monitor mode required, lab only)
-    command: "wifite --kill"
-
-  - title: target channel
-    desc: Lock to channel and attack named ESSID
-    command: "wifite --channel {{port|6}} --essid {{user|labnet}} --kill"
+- title: auto audit
+  desc: Run wifite against nearby APs (monitor mode required, lab only)
+  command: wifite --kill
+- title: target channel
+  desc: Lock to channel and attack named ESSID
+  command: wifite --channel {{port|6}} --essid {{user|labnet}} --kill
+- title: Wifite
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: sudo wifite
+- title: Wifite --wordlist=/usr/share/wordlists/rockyou.txt
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: sudo wifite --wordlist=/usr/share/wordlists/rockyou.txt
+- title: Wifite --bssid
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: sudo wifite --bssid 00:11:22:33:44:55
+- title: Wifite --wpa
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: 'sudo wifite --wpa # WPA/WPA2 only'
+- title: Wifite --wep
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: 'sudo wifite --wep # WEP only'
+- title: Wifite --require-fakeauth
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: sudo wifite --require-fakeauth 2
+- title: Wifite --use-pyrit
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: 'sudo wifite --use-pyrit # Use Pyrit for GPU acceleration'
+- title: Wifite -v
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: sudo wifite -v
+- title: Wifite-crack <handshake_file>
+  desc: Runs `sudo` as part of the CEH workflow. Monitor mode + channel lock before aircrack/wifite; isolate spoofing tools to test VLANs; never run DDoS outside isolated lab nets.
+  command: sudo wifite-crack <handshake_file>

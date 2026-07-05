@@ -1,0 +1,34 @@
+tool: srvman
+tags:
+- m11
+- network
+- cli
+exam_hint: 'SrvMan (Service Manager) is a free lightweight Windows service management utility that provides a simple GUI for viewing, creating, modifying, starting, stopping, and deleting Windows services. Unlike the standard Services MMC snap-in, SrvMan displays service binary paths clearly and allows quick operations without navigating multiple property dialogs. Security analysts use it during malware inves Strategy: nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on th'
+docs:
+- https://attack.mitre.org/techniques/T1543/003/
+- https://docs.microsoft.com/en-us/windows-server/administration/windows-commands/sc
+actions:
+- title: Sc query type=
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc query type= all state= all
+- title: Sc qc ServiceName
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc qc ServiceName
+- title: Sc stop ServiceName
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc stop ServiceName
+- title: Sc delete ServiceName
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc delete ServiceName
+- title: Sc config ServiceName
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc config ServiceName start= disabled
+- title: Get-Service
+  desc: Runs `Get-Service` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Get-Service | Where {$_.Status -eq 'Running'} | Select Name, DisplayName
+- title: Stop-Service -Name ServiceName
+  desc: Runs `Stop-Service` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: Stop-Service -Name ServiceName -Force
+- title: Sc delete
+  desc: Runs `sc` as part of the CEH workflow. nc/socat for relays; curl/wget for payload staging; tcpdump/tshark with BPF filters on the pivot interface to limit noise. Authorized lab targets only.
+  command: sc delete
