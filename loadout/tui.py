@@ -6,7 +6,7 @@ from textual import on, work
 from textual.app import App, ComposeResult
 from textual.binding import Binding
 from textual.containers import Horizontal, ScrollableContainer, Vertical
-from textual.events import Click, Resize
+from textual.events import Click, Key, Resize
 from textual.widgets import Input, Label, ListItem, ListView, Static
 from rich.markup import escape as markup_escape
 
@@ -44,6 +44,19 @@ from loadout.tui_theme import (
     tool_color,
 )
 from loadout.variables import VariableStore
+
+
+class SearchInput(Input):
+    """Search box that delegates bare `v` to the variable editor when empty."""
+
+    @on(Key)
+    def on_search_key(self, event: Key) -> None:
+        if event.key != "v" or self.value:
+            return
+        event.prevent_default()
+        event.stop()
+        if isinstance(self.app, LoadoutApp):
+            self.app.action_show_variables()
 
 
 class LoadoutApp(App[None]):
@@ -233,7 +246,7 @@ class LoadoutApp(App[None]):
         Binding("slash", "focus_search", "Search", show=False),
         Binding("ctrl+f", "focus_search", "Search", show=False),
         Binding("question_mark", "show_help", "Help"),
-        Binding("v", "show_variables", "Vars", show=False),
+        Binding("v", "show_variables", "Vars", priority=True, show=False),
         Binding("ctrl+t", "browse_categories", "Browse"),
         Binding("ctrl+r", "reload", "Reload"),
         Binding("tab", "toggle_focus", "Toggle", priority=True, show=False),
@@ -297,7 +310,7 @@ class LoadoutApp(App[None]):
         yield Static("", id="header-strip", markup=True)
         with Horizontal(id="search-row"):
             yield Static("❯", id="search-prompt")
-            yield Input(
+            yield SearchInput(
                 placeholder="Search tool, tag, command · tag:recon · tool:nmap · empty = browse",
                 id="search",
             )
@@ -329,8 +342,8 @@ class LoadoutApp(App[None]):
         self._apply_layout()
         self.action_focus_search()
 
-    def _search_input(self) -> Input:
-        return self.query_one("#search", Input)
+    def _search_input(self) -> SearchInput:
+        return self.query_one("#search", SearchInput)
 
     @on(Resize)
     def on_resize(self, event: Resize) -> None:
@@ -629,7 +642,12 @@ class LoadoutApp(App[None]):
                 hints.update("")
 
             if raw_query.strip().lower().startswith("set ") and "=" in raw_query:
-                self._set_status("Press Enter to apply variable")
+                hint_markup = hint_for_query(raw_query)
+                if hint_markup:
+                    hints.update(hint_markup)
+                    hints.add_class("visible")
+                self._set_status("Press Enter to save variable")
+                search.focus()
                 return
 
             # Search mode when user types (not empty, not a special-only hint)
@@ -807,7 +825,30 @@ class LoadoutApp(App[None]):
         if lv.children and idx < len(lv.children):
             lv.scroll_to_widget(lv.children[idx], force=True)
 
+    def _pending_special(self) -> str | None:
+        raw = self._search_input().value.strip()
+        if not raw:
+            return None
+        lower = raw.lower()
+        if lower.startswith("set ") and "=" in raw:
+            return raw
+        if lower.startswith("unset "):
+            return raw
+        if lower in {"variables", "tools", "reload", "help", "output clipboard", "output print"}:
+            return raw
+        return None
+
+    def _try_handle_pending_special(self) -> bool:
+        pending = self._pending_special()
+        if pending and self._handle_special(pending):
+            self._search_input().value = ""
+            self._refresh_display("")
+            return True
+        return False
+
     def _activate_index(self, idx: int) -> None:
+        if self._try_handle_pending_special():
+            return
         if self._mode == "search":
             if 0 <= idx < len(self.ranked):
                 action = self.ranked[idx].action
@@ -1145,12 +1186,15 @@ class LoadoutApp(App[None]):
         self.push_screen(HelpScreen())
 
     def action_show_variables(self) -> None:
-        self.push_screen(
-            VariablesScreen(
-                self.var_store.list_all(),
-                set(self.var_store.list_user()),
-            )
-        )
+        def on_done(saved: bool | None) -> None:
+            if saved:
+                self._notify_result("Variables saved")
+                if self._selected:
+                    self._show_detail(self._selected)
+                tool_count = len({a.tool for a in self.actions})
+                self._update_header(tool_count, len(self.actions))
+
+        self.push_screen(VariablesScreen(self.var_store), on_done)
 
     def action_reload(self) -> None:
         self.reload_actions()

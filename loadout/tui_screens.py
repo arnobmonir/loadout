@@ -17,7 +17,9 @@ from loadout.tui_theme import (
     COLOR_PRIMARY,
     COLOR_SECONDARY,
     COLOR_SUCCESS,
+    COMMON_VARIABLES,
 )
+from loadout.variables import VariableStore
 
 
 class ConfirmDestructive(ModalScreen[bool]):
@@ -213,8 +215,8 @@ class PlaceholderForm(ModalScreen[dict[str, str] | None]):
             self.action_cancel()
 
 
-class VariablesScreen(ModalScreen[None]):
-    """Show all session variables."""
+class VariablesScreen(ModalScreen[bool]):
+    """Edit and save global session variables."""
 
     DEFAULT_CSS = """
     VariablesScreen {
@@ -222,46 +224,121 @@ class VariablesScreen(ModalScreen[None]):
     }
     #vars-dialog {
         width: 74;
-        height: 22;
+        height: auto;
+        max-height: 28;
         border: thick #FFE66D;
         background: #1f2335;
         padding: 1 2;
     }
-    #vars-table {
-        height: 1fr;
+    #vars-scroll {
+        height: auto;
+        max-height: 18;
     }
-    DataTable {
-        background: #16161e;
+    .var-label {
+        margin-top: 1;
+        color: #FFE66D;
+    }
+    .var-input {
+        margin-bottom: 0;
+    }
+    #new-row {
+        margin-top: 1;
+        height: auto;
     }
     """
 
     BINDINGS = [
-        Binding("escape", "close", "Close", show=False),
-        Binding("enter", "close", "Close", show=False),
-        Binding("q", "close", "Close", show=False),
+        Binding("escape", "cancel", "Cancel", show=False),
+        Binding("enter", "save", "Save", show=False, priority=True),
     ]
 
-    def __init__(self, variables: dict[str, str], user_keys: set[str]) -> None:
+    def __init__(self, var_store: VariableStore) -> None:
         super().__init__()
-        self._variables = variables
-        self._user_keys = user_keys
+        self._var_store = var_store
+        self._field_keys: list[str] = []
+
+    def _build_field_keys(self) -> list[str]:
+        common = [name for name, _, _ in COMMON_VARIABLES]
+        current = self._var_store.list_all()
+        extra = sorted(k for k in current if k not in common)
+        return common + extra
 
     def compose(self) -> ComposeResult:
+        self._field_keys = self._build_field_keys()
+        all_vars = self._var_store.list_all()
         with Vertical(id="vars-dialog"):
-            yield Label(f"[{COLOR_ACCENT} bold]🌐 Global variables[/]", markup=True)
-            yield DataTable(id="vars-table", zebra_stripes=True, cursor_type="row")
-            yield Static(f"[{COLOR_DIM}]↑↓ browse · Enter/Esc close[/]", markup=True)
+            yield Label(f"[{COLOR_ACCENT} bold]🌐 Variable editor[/]", markup=True)
+            yield Static(
+                f"[{COLOR_DIM}]Edit values · Save with Enter or Save button · Esc cancel[/]",
+                markup=True,
+            )
+            with VerticalScroll(id="vars-scroll"):
+                for name in self._field_keys:
+                    desc = next((d for n, _, d in COMMON_VARIABLES if n == name), "Custom variable")
+                    value = all_vars.get(name, "")
+                    yield Label(f"[{COLOR_SECONDARY}]{name}[/]  [{COLOR_DIM}]{desc}[/]", markup=True, classes="var-label")
+                    yield Input(value=value, placeholder=name, id=f"var-{name}", classes="var-input")
+            with Horizontal(id="new-row"):
+                yield Input(placeholder="new_key", id="new-key")
+                yield Input(placeholder="value", id="new-val")
+                yield Button("Add", id="add-var")
+            with Horizontal():
+                yield Button("Save [Enter]", variant="primary", id="save-vars")
+                yield Button("Cancel [Esc]", id="cancel-vars")
 
     def on_mount(self) -> None:
-        table = self.query_one("#vars-table", DataTable)
-        table.focus()
-        table.add_columns("Key", "Value", "Source")
-        for key in sorted(self._variables):
-            source = "user" if key in self._user_keys else "default"
-            table.add_row(key, self._variables[key], source)
+        if self._field_keys:
+            self.query_one(f"#var-{self._field_keys[0]}", Input).focus()
 
-    def action_close(self) -> None:
-        self.dismiss(None)
+    def action_cancel(self) -> None:
+        self.dismiss(False)
+
+    def action_save(self) -> None:
+        for key in self._field_keys:
+            value = self.query_one(f"#var-{key}", Input).value.strip()
+            if value:
+                self._var_store.set(key, value)
+            elif key in self._var_store.list_user():
+                self._var_store.unset(key)
+
+        new_key = self.query_one("#new-key", Input).value.strip()
+        new_val = self.query_one("#new-val", Input).value.strip()
+        if new_key and new_val:
+            self._var_store.set(new_key, new_val)
+
+        self.dismiss(True)
+
+    def on_button_pressed(self, event: Button.Pressed) -> None:
+        if event.button.id == "save-vars":
+            self.action_save()
+        elif event.button.id == "add-var":
+            self._add_custom_field()
+        else:
+            self.action_cancel()
+
+    def _add_custom_field(self) -> None:
+        new_key = self.query_one("#new-key", Input).value.strip()
+        new_val = self.query_one("#new-val", Input).value.strip()
+        if not new_key:
+            return
+        self._var_store.set(new_key, new_val)
+        self.query_one("#new-key", Input).value = ""
+        self.query_one("#new-val", Input).value = ""
+        self.dismiss(True)
+
+    @on(Input.Submitted, ".var-input")
+    def on_var_submitted(self, event: Input.Submitted) -> None:
+        if not event.input.id or not event.input.id.startswith("var-"):
+            return
+        key = event.input.id.removeprefix("var-")
+        if key not in self._field_keys:
+            return
+        idx = self._field_keys.index(key)
+        if idx < len(self._field_keys) - 1:
+            next_key = self._field_keys[idx + 1]
+            self.query_one(f"#var-{next_key}", Input).focus()
+        else:
+            self.query_one("#new-key", Input).focus()
 
 
 class ToolsScreen(ModalScreen[str | None]):
