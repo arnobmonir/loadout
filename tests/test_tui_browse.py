@@ -91,8 +91,8 @@ async def _search_on_launch() -> None:
         keys = app.query_one("#keys-bar")
         rendered = str(stats.render())
         assert "tools" in rendered
-        assert "pack v6" in rendered
-        assert "569" in rendered or "commands" in rendered
+        assert "pack v7" in rendered
+        assert "709" in rendered or "commands" in rendered
         assert "quit" in str(keys.render())
         assert keys.region.y == stats.region.y + 1
         assert keys.region.y == app.size.height - 1
