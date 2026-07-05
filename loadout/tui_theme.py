@@ -13,6 +13,19 @@ COLOR_BRIGHT = "#FFFFFF"
 COLOR_DESC = "#888888"
 COLOR_SUCCESS = "#98D8C8"
 COLOR_ERROR = "#FF6B6B"
+COLOR_INFO = "#7aa2f7"
+COLOR_PURPLE = "#AA96DA"
+COLOR_CORAL = "#F38181"
+
+# Browse / selection backgrounds
+COLOR_SEL_CATEGORY = "#6A0572"
+COLOR_SEL_TOOL = "#2d6a6a"
+COLOR_SEL_COMMAND = "#4a4e8a"
+
+_CATEGORY_ICONS = (
+    "📁", "🔍", "📡", "🎯", "💥", "🔐", "🛡️", "🔑", "🦠", "🎣",
+    "☁️", "🔧", "📶", "🔒", "📋", "⚡", "🌐", "🧪",
+)
 
 # Command syntax
 COLOR_CMD_TOOL = "#FF6B6B"
@@ -66,6 +79,40 @@ def _hash_color(name: str) -> str:
     for ch in name:
         h = h * 31 + ord(ch)
     return TAG_COLORS[abs(h) % len(TAG_COLORS)]
+
+
+def category_icon(name: str) -> str:
+    h = sum(ord(ch) for ch in name.lower())
+    return _CATEGORY_ICONS[h % len(_CATEGORY_ICONS)]
+
+
+def format_selected(text: str, *, width: int | None = None, level: str = "command") -> str:
+    """Highlight a selected list row with a level-colored background."""
+    bg = {
+        "category": COLOR_SEL_CATEGORY,
+        "tool": COLOR_SEL_TOOL,
+        "command": COLOR_SEL_COMMAND,
+        "search": COLOR_SEL_COMMAND,
+    }.get(level, COLOR_SEL_COMMAND)
+    inner = text if width is None else f"{text:{width}}"
+    return f"[#FFFFFF bold on {bg}] {inner} [/]"
+
+
+def render_welcome_panel() -> tuple[str, str, str]:
+    """Friendly empty-state copy for the detail panel."""
+    title = f"[{COLOR_PRIMARY} bold]👋 Welcome to Loadout[/]"
+    desc = (
+        f"[{COLOR_BRIGHT}]Browse CEH phases on the left, or type to search.[/]\n\n"
+        f"[{COLOR_DIM}]Try [/][{COLOR_SECONDARY} bold]nmap[/]"
+        f"[{COLOR_DIM}] · [/][{COLOR_ACCENT} bold]tag:recon[/]"
+        f"[{COLOR_DIM}] · [/][{COLOR_SUCCESS} bold]set ip=10.0.0.1[/]"
+    )
+    hint = (
+        f"[{COLOR_ACCENT}]💡[/] Press [{COLOR_SECONDARY}]?[/] for help  "
+        f"[{COLOR_DIM}]·[/]  [{COLOR_ACCENT}]v[/] for variables  "
+        f"[{COLOR_DIM}]·[/]  [{COLOR_INFO}]Ctrl+T[/] to browse"
+    )
+    return title, desc, hint
 
 
 def tool_color(tool: str) -> str:
@@ -160,6 +207,11 @@ def render_header_line(
     parts = [
         f"[{COLOR_PRIMARY} bold]◆ LOADOUT[/]",
         f"[{COLOR_DIM}]v{version}[/]",
+        f"[{COLOR_SECONDARY} bold]{tool_count}[/][{COLOR_DIM}] tools[/]",
+        f"[{COLOR_DIM}]·[/]",
+        f"[{COLOR_CORAL} bold]{cmd_count}[/][{COLOR_DIM}] cmds[/]",
+        f"[{COLOR_DIM}]·[/]",
+        f"[{COLOR_ACCENT} bold]{var_count}[/][{COLOR_DIM}] vars[/]",
         f"[{mode_color} bold]▸ {mode}[/]",
     ]
     return "  ".join(parts)
@@ -185,18 +237,18 @@ def render_stats_bar(
     )
     return (
         f"[{COLOR_SECONDARY} bold]📊[/] "
-        f"[{COLOR_BRIGHT}]{tool_count}[/] tools  "
+        f"[{COLOR_SECONDARY}]{tool_count}[/][{COLOR_DIM}] tools[/]  "
         f"[{COLOR_DIM}]·[/] "
-        f"[{COLOR_BRIGHT}]{command_count}[/] commands  "
+        f"[{COLOR_CORAL}]{command_count}[/][{COLOR_DIM}] cmds[/]  "
         f"[{COLOR_DIM}]·[/] "
-        f"[{COLOR_BRIGHT}]{category_count}[/] categories  "
+        f"[{COLOR_PURPLE}]{category_count}[/][{COLOR_DIM}] cats[/]  "
         f"[{COLOR_DIM}]·[/] "
-        f"[{COLOR_BRIGHT}]{tag_count}[/] tags  "
+        f"[{COLOR_INFO}]{tag_count}[/][{COLOR_DIM}] tags[/]  "
         f"[{COLOR_DIM}]·[/] "
         f"[{COLOR_DIM}]pack[/] [{COLOR_ACCENT}]v{pack_version}[/]  "
         f"[{COLOR_DIM}]·[/] "
-        f"[{COLOR_DIM}]updated[/] [{COLOR_ACCENT}]{updated_label}[/]  "
+        f"[{COLOR_DIM}]updated[/] [{COLOR_SUCCESS}]{updated_label}[/]  "
         f"[{COLOR_DIM}]·[/] "
-        f"[{COLOR_BRIGHT}]{var_count}[/] vars"
+        f"[{COLOR_ACCENT}]{var_count}[/][{COLOR_DIM}] vars[/]"
         f"{user_part}"
     )

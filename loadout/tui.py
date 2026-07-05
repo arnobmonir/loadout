@@ -6,7 +6,7 @@ from textual import on, work
 from textual.app import App, ComposeResult
 from textual.binding import Binding
 from textual.containers import Horizontal, ScrollableContainer, Vertical
-from textual.events import Click, Key, Resize
+from textual.events import Click, Focus, Key, Resize
 from textual.widgets import Input, Label, ListItem, ListView, Static
 from rich.markup import escape as markup_escape
 
@@ -31,16 +31,22 @@ from loadout.tui_screens import (
 from loadout.tui_theme import (
     COLOR_ACCENT,
     COLOR_BRIGHT,
+    COLOR_CORAL,
     COLOR_DESC,
     COLOR_DIM,
+    COLOR_INFO,
     COLOR_PRIMARY,
+    COLOR_PURPLE,
     COLOR_SECONDARY,
     COLOR_SUCCESS,
+    category_icon,
+    format_selected,
     highlight_command,
     highlight_match,
     render_header_line,
     render_stats_bar,
     render_tags,
+    render_welcome_panel,
     tool_color,
 )
 from loadout.variables import VariableStore
@@ -76,25 +82,40 @@ class LoadoutApp(App[None]):
         padding: 0 1;
         background: #24283b;
         color: #c0caf5;
+        border-bottom: solid #FF6B6B;
     }
 
     #search-row {
         dock: top;
         height: 3;
         padding: 0 1;
-        background: #24283b;
+        background: #1f2335;
         border-bottom: solid #3b4261;
+    }
+
+    #search-row.row-focused {
+        border-bottom: tall #4ECDC4;
+        background: #24283b;
     }
 
     #search-prompt {
         width: 2;
         content-align: center middle;
-        color: #4ECDC4;
+        color: #FFE66D;
         text-style: bold;
     }
 
     #search {
         width: 1fr;
+        background: #16161e;
+        border: none #3b4261;
+        color: #c0caf5;
+        padding: 0 1;
+    }
+
+    #search:focus {
+        border: tall #4ECDC4;
+        color: #FFFFFF;
     }
 
     #hints-panel {
@@ -103,8 +124,8 @@ class LoadoutApp(App[None]):
         max-height: 6;
         margin: 0 1;
         padding: 0 1;
-        background: #1f2335;
-        border: round #6A0572;
+        background: #24283b;
+        border: round #4ECDC4;
         display: none;
     }
 
@@ -120,16 +141,22 @@ class LoadoutApp(App[None]):
     #left-pane {
         width: 45%;
         min-width: 16;
-        border: solid #3b4261;
+        margin-right: 1;
+        border: solid #AA96DA;
         background: #1a1b26;
+    }
+
+    #left-pane.pane-focused {
+        border: solid #4ECDC4;
     }
 
     #browse-path {
         height: 1;
         padding: 0 1;
-        background: #24283b;
-        color: #7aa2f7;
+        background: #2a2f45;
+        color: #4ECDC4;
         text-style: bold;
+        border-bottom: solid #6A0572;
     }
 
     #results {
@@ -141,8 +168,17 @@ class LoadoutApp(App[None]):
     #right-pane {
         width: 1fr;
         min-width: 16;
-        border: solid #4ECDC4;
+        border: solid #FF6B6B;
         background: #1f2335;
+    }
+
+    #detail-header {
+        height: 1;
+        padding: 0 1;
+        background: #2a2f45;
+        color: #FF6B6B;
+        text-style: bold;
+        border-bottom: solid #FF6B6B;
     }
 
     #info-box {
@@ -156,8 +192,7 @@ class LoadoutApp(App[None]):
     }
 
     #info-desc {
-        color: #888888;
-        text-style: italic;
+        color: #a9b1d6;
         margin-top: 1;
     }
 
@@ -173,14 +208,19 @@ class LoadoutApp(App[None]):
 
     #info-command {
         width: 1fr;
+        min-height: 2;
         padding: 0 1;
         background: #16161e;
+        border: round #3b4261;
         border-left: tall #BB8FCE;
     }
 
     #info-hint {
         color: #FFE66D;
         margin-top: 1;
+        background: #24283b;
+        padding: 0 1;
+        border: round #6A0572;
     }
 
     #info-actions {
@@ -197,19 +237,35 @@ class LoadoutApp(App[None]):
         width: auto;
         height: 1;
         margin-left: 1;
+        padding: 0 1;
+        background: #24283b;
+        border: round #3b4261;
         content-align: center middle;
     }
 
     .info-action:hover {
         text-style: bold;
+        border: round #4ECDC4;
+    }
+
+    #copy-btn {
+        border: round #4ECDC4;
+    }
+
+    #run-btn {
+        border: round #7aa2f7;
     }
 
     ListItem {
         padding: 0 1;
     }
 
+    ListItem:hover {
+        background: #2d3250;
+    }
+
     ListItem.-highlight {
-        background: #3D3D3D;
+        background: #3d4f7c;
     }
 
     #bottom-panel {
@@ -217,22 +273,22 @@ class LoadoutApp(App[None]):
         height: 2;
         width: 100%;
         layout: vertical;
+        background: #16161e;
     }
 
     #stats-bar {
         height: 1;
         padding: 0 1;
-        background: #1f2335;
+        background: #2a2f45;
         color: #4ECDC4;
         text-style: bold;
-        border-top: solid #4ECDC4;
     }
 
     #keys-bar {
         height: 1;
         padding: 0 1;
         background: #16161e;
-        color: #c0caf5;
+        color: #a9b1d6;
     }
 
     .study-mode #info-command-row {
@@ -259,6 +315,8 @@ class LoadoutApp(App[None]):
         Binding("page_up", "page_up", "PgUp", priority=True, show=False),
         Binding("j", "cursor_down", "Down", show=False),
         Binding("k", "cursor_up", "Up", show=False),
+        Binding("c", "copy_selected", "Copy", show=False),
+        Binding("r", "run_selected", "Run", show=False),
         Binding("[", "shrink_left_pane", "List -", show=False),
         Binding("]", "grow_left_pane", "List +", show=False),
     ]
@@ -298,12 +356,18 @@ class LoadoutApp(App[None]):
         self._manifest_slugs: tuple[str, ...] = ()
         self._stats_markup = ""
         self._hint_markup = (
-            f"[{COLOR_SUCCESS}]●[/] Ready — "
-            f"[{COLOR_DIM}]Enter select · Esc back · / search[/]"
+            f"[{COLOR_SUCCESS} bold]✓[/] Ready — "
+            f"[{COLOR_DIM}]type to search · Enter to select · [/]"
+            f"[{COLOR_ACCENT}]?[/][{COLOR_DIM}] for help[/]"
         )
         self._keys_markup = (
-            "[dim]q[/] quit  [dim]esc[/] back  [dim]enter[/] run  "
-            "[dim]?[/] help  [dim]^t[/] browse  [dim]^r[/] reload  [dim]v[/] vars"
+            f"[{COLOR_PRIMARY}]q[/] quit  "
+            f"[{COLOR_SECONDARY}]esc[/] back  "
+            f"[{COLOR_ACCENT}]enter[/] select  "
+            f"[{COLOR_PURPLE}]?[/] help  "
+            f"[{COLOR_INFO}]^t[/] browse  "
+            f"[{COLOR_SUCCESS}]^r[/] reload  "
+            f"[{COLOR_ACCENT}]v[/] vars"
         )
 
     def compose(self) -> ComposeResult:
@@ -311,7 +375,7 @@ class LoadoutApp(App[None]):
         with Horizontal(id="search-row"):
             yield Static("❯", id="search-prompt")
             yield SearchInput(
-                placeholder="Search tool, tag, command · tag:recon · tool:nmap · empty = browse",
+                placeholder="🔎  Search tools, tags, commands…  (tag:recon · tool:nmap · empty = browse)",
                 id="search",
             )
         yield Static("", id="hints-panel", markup=True)
@@ -320,6 +384,7 @@ class LoadoutApp(App[None]):
                 yield Static("Categories", id="browse-path", markup=True)
                 yield ListView(id="results")
             with Vertical(id="right-pane"):
+                yield Static("✨  Command preview", id="detail-header", markup=True)
                 with ScrollableContainer(id="info-box", can_focus=False):
                     yield Static("", id="info-title", markup=True)
                     yield Static("", id="info-desc", markup=True)
@@ -341,6 +406,17 @@ class LoadoutApp(App[None]):
         self.reload_actions()
         self._apply_layout()
         self.action_focus_search()
+        self._sync_focus_styles()
+        self._refresh_bottom_bar()
+
+    @on(Focus)
+    def on_control_focus(self, _event: Focus) -> None:
+        self._sync_focus_styles()
+
+    def _sync_focus_styles(self) -> None:
+        focused_id = getattr(self.focused, "id", None)
+        self.query_one("#left-pane").set_class(focused_id == "results", "pane-focused")
+        self.query_one("#search-row").set_class(focused_id == "search", "row-focused")
 
     def _search_input(self) -> SearchInput:
         return self.query_one("#search", SearchInput)
@@ -430,12 +506,23 @@ class LoadoutApp(App[None]):
         self._stats_markup = line
         self._refresh_bottom_bar()
 
+    def _context_keys_markup(self) -> str:
+        if self._selected and not self.study_mode:
+            copy_key = "copy" if self.config.output_mode == OutputMode.CLIPBOARD else "print"
+            return (
+                f"{self._keys_markup}  "
+                f"[{COLOR_DIM}]│[/]  "
+                f"[{COLOR_SECONDARY}]c[/] {copy_key}  "
+                f"[{COLOR_INFO}]r[/] run"
+            )
+        return self._keys_markup
+
     def _refresh_bottom_bar(self) -> None:
         stats = self._stats_markup or f"[{COLOR_DIM}]Loading pack stats…[/]"
         keys_bar = (
             f"{self._hint_markup}  "
             f"[{COLOR_DIM}]│[/]  "
-            f"{self._keys_markup}"
+            f"{self._context_keys_markup()}"
         )
         self.query_one("#stats-bar", Static).update(stats)
         self.query_one("#keys-bar", Static).update(keys_bar)
@@ -483,50 +570,46 @@ class LoadoutApp(App[None]):
 
     def _format_list_row(self, action: Action, query_text: str, *, selected: bool) -> str:
         tc = tool_color(action.tool)
-        tool = f"[{tc} bold]{action.tool:12}[/]"
+        tool = f"[{tc} bold]⚙ {action.tool:11}[/]"
         title = highlight_match(action.title, query_text) if query_text else action.title
 
         if selected:
-            title_part = f"[#FFFFFF bold on #3D3D3D] {title:28} [/]"
+            title_part = format_selected(title, width=28, level="search")
         else:
-            title_part = f" {title:28} "
+            title_part = f" [{COLOR_BRIGHT}]{title:27}[/]"
 
         desc = self._format_desc_suffix(self._row_description(action), max_len=36)
-        return f"▸ {tool} {title_part}{desc}"
+        marker = f"[{COLOR_ACCENT} bold]▸[/]" if selected else " "
+        return f"{marker} {tool} {title_part}{desc}"
 
     def _format_browse_row(self, row: BrowseRow, *, selected: bool) -> str:
-        marker = "▸" if selected else " "
+        marker = f"[{COLOR_ACCENT} bold]▸[/]" if selected else " "
         if row.level == "category":
-            if selected:
-                return (
-                    f"{marker} [#FFFFFF bold on #3D3D3D] {row.label} [/]  "
-                    f"[{COLOR_DIM}]{row.tool_count} tools · {row.command_count} cmds[/]"
-                )
-            return (
-                f"{marker} [{COLOR_SECONDARY} bold]{row.label}[/]  "
-                f"[{COLOR_DIM}]{row.tool_count} tools · {row.command_count} cmds[/]"
+            icon = category_icon(row.label)
+            label = f"{icon} {row.label}"
+            counts = (
+                f"[{COLOR_SECONDARY}]{row.tool_count}[/][{COLOR_DIM}] tools · [/]"
+                f"[{COLOR_CORAL}]{row.command_count}[/][{COLOR_DIM}] cmds[/]"
             )
+            if selected:
+                return f"{marker} {format_selected(label)}  {counts}"
+            return f"{marker} [{COLOR_PURPLE} bold]{label}[/]  {counts}"
         if row.level == "tool":
+            counts = f"[{COLOR_INFO}]{row.command_count}[/][{COLOR_DIM}] cmds[/]"
             if selected:
-                return (
-                    f"{marker} [#FFFFFF bold on #3D3D3D] {row.label} [/]  "
-                    f"[{COLOR_DIM}]{row.command_count} cmds[/]"
-                )
+                return f"{marker} {format_selected(row.label, level='tool')}  {counts}"
             tc = tool_color(row.label)
-            return (
-                f"{marker} [{tc} bold]{row.label}[/]  "
-                f"[{COLOR_DIM}]{row.command_count} cmds[/]"
-            )
+            return f"{marker} [{tc} bold]⚙ {row.label}[/]  {counts}"
         # command level
         title = row.label
         if selected:
-            title = f"[#FFFFFF bold on #3D3D3D] {title} [/]"
+            title_part = format_selected(title, level="command")
         else:
-            title = f" {title} "
+            title_part = f" [{COLOR_BRIGHT}]{title}[/]"
         desc = ""
         if row.action:
             desc = self._format_desc_suffix(self._row_description(row.action))
-        return f"{marker} {title}{desc}"
+        return f"{marker} {title_part}{desc}"
 
     def _category_meta(self, category: str) -> CategoryInfo:
         return category_info_for(category, self._category_info)
@@ -546,19 +629,22 @@ class LoadoutApp(App[None]):
     def _show_browse_detail(self, row: BrowseRow) -> None:
         if row.level == "category":
             meta = self._category_meta(row.label)
-            self._clear_detail()
-            self.query_one("#info-title", Static).update(
-                f"[{COLOR_SECONDARY} bold]📁 {row.label}[/]"
-            )
+            self._selected = None
+            self._update_action_buttons(False)
+            icon = category_icon(row.label)
             description = meta.description or "Browse the tools in this category."
+            self.query_one("#info-title", Static).update(
+                f"[{COLOR_PURPLE} bold]{icon} {row.label}[/]"
+            )
             self.query_one("#info-desc", Static).update(
                 f"[{COLOR_DESC}]{description}[/]"
             )
             self.query_one("#info-tags", Static).update(
-                f"[{COLOR_DIM}]{row.tool_count} tools · {row.command_count} commands[/]"
+                f"[{COLOR_SECONDARY}]{row.tool_count}[/] tools · "
+                f"[{COLOR_CORAL}]{row.command_count}[/] commands"
             )
             self.query_one("#info-command", Static).update(
-                f"[{COLOR_DIM}]Press Enter to browse tools in this category[/]"
+                f"[{COLOR_INFO}]👉[/] [{COLOR_BRIGHT}]Press Enter[/] to browse tools in this category"
             )
             self.query_one("#info-hint", Static).update(
                 f"[{COLOR_ACCENT}]📖 Strategy:[/] {meta.strategy}"
@@ -566,6 +652,8 @@ class LoadoutApp(App[None]):
             return
 
         if row.level == "tool" and row.category and row.tool:
+            self._selected = None
+            self._update_action_buttons(False)
             actions = self._browse_tree[row.category][row.tool]
             sample = actions[0]
             tc = tool_color(row.tool)
@@ -574,7 +662,7 @@ class LoadoutApp(App[None]):
                 f"[{COLOR_BRIGHT}]{row.category}[/]"
             )
             self.query_one("#info-desc", Static).update(
-                f"[{COLOR_DESC}]{row.command_count} commands available[/]"
+                f"[{COLOR_DESC}]{row.command_count} commands ready to use[/]"
             )
             overview = self._tool_overview(actions)
             tags = render_tags(sample.tags)
@@ -584,7 +672,8 @@ class LoadoutApp(App[None]):
             else:
                 self.query_one("#info-tags", Static).update(tags or docs)
             self.query_one("#info-command", Static).update(
-                f"[{COLOR_DIM}]Overview:[/] {overview}"
+                f"[{COLOR_INFO}]📋[/] [{COLOR_BRIGHT}]{overview}[/]\n"
+                f"[{COLOR_INFO}]👉[/] [{COLOR_BRIGHT}]Press Enter[/] to pick a command"
             )
             hint = sample.exam_hint or self._category_meta(row.category).strategy
             self.query_one("#info-hint", Static).update(
@@ -723,25 +812,33 @@ class LoadoutApp(App[None]):
     def _update_browse_path(self, *, search_query: str = "") -> None:
         path = self.query_one("#browse-path", Static)
         if search_query.strip():
-            path.update(f"[{COLOR_ACCENT}]Search results[/]")
+            path.update(f"[{COLOR_ACCENT} bold]🔎 Search results[/]")
             return
         breadcrumb = self._browse_breadcrumb()
-        path.update(f"[{COLOR_SECONDARY}]{breadcrumb}[/]")
+        if self._browse_level == "category":
+            path.update(f"[{COLOR_PURPLE} bold]📁 {breadcrumb}[/]")
+        elif self._browse_level == "tool":
+            path.update(f"[{COLOR_SECONDARY} bold]⚙ {breadcrumb}[/]")
+        else:
+            path.update(f"[{COLOR_PRIMARY} bold]⚡ {breadcrumb}[/]")
 
     def _preview_command(self, action: Action) -> str:
         return substitute(action.command, self.var_store.as_substitution_map()).command
 
-    def _action_chip(self, label: str, *, bg: str) -> str:
-        return f"[#1a1b26 on {bg}] {label} [/]"
+    def _action_chip(self, label: str, *, bg: str, shortcut: str = "") -> str:
+        suffix = f" [{shortcut}]" if shortcut else ""
+        return f"[#1a1b26 on {bg}] {label}{suffix} [/]"
 
     def _update_action_buttons(self, visible: bool) -> None:
         actions = self.query_one("#info-actions", Horizontal)
         if visible and not self.study_mode:
             copy_label = "Copy" if self.config.output_mode == OutputMode.CLIPBOARD else "Print"
             self.query_one("#copy-btn", Static).update(
-                self._action_chip(copy_label, bg="#4ECDC4")
+                self._action_chip(copy_label, bg="#4ECDC4", shortcut="c")
             )
-            self.query_one("#run-btn", Static).update(self._action_chip("Run", bg="#7aa2f7"))
+            self.query_one("#run-btn", Static).update(
+                self._action_chip("Run", bg="#7aa2f7", shortcut="r")
+            )
             actions.add_class("visible")
         else:
             actions.remove_class("visible")
@@ -787,12 +884,18 @@ class LoadoutApp(App[None]):
             self.query_one("#info-hint", Static).update("")
 
         self._update_action_buttons(True)
+        self._refresh_bottom_bar()
 
     def _clear_detail(self) -> None:
         self._selected = None
-        for wid in ("info-title", "info-desc", "info-tags", "info-command", "info-hint"):
-            self.query_one(f"#{wid}", Static).update("")
+        title, desc, hint = render_welcome_panel()
+        self.query_one("#info-title", Static).update(title)
+        self.query_one("#info-desc", Static).update(desc)
+        self.query_one("#info-tags", Static).update("")
+        self.query_one("#info-command", Static).update("")
+        self.query_one("#info-hint", Static).update(hint)
         self._update_action_buttons(False)
+        self._refresh_bottom_bar()
 
     def _results_list(self) -> ListView:
         return self.query_one("#results", ListView)
@@ -893,8 +996,17 @@ class LoadoutApp(App[None]):
         if self._selected:
             self._run_action_shell(self._selected)
 
+    def _detail_action_allowed(self) -> bool:
+        if getattr(self.focused, "id", None) == "search":
+            return False
+        return self._selected is not None and not self.study_mode
+
+    def action_copy_selected(self) -> None:
+        if self._detail_action_allowed() and self._selected:
+            self._copy_action(self._selected)
+
     def action_run_selected(self) -> None:
-        if self._selected:
+        if self._detail_action_allowed() and self._selected:
             self._run_action_shell(self._selected)
 
     def _rehighlight_browse_rows(self, selected_idx: int) -> None:

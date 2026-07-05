@@ -36,6 +36,14 @@ class ConfirmDestructive(ModalScreen[bool]):
         background: #1f2335;
         padding: 1 2;
     }
+    #confirm-dialog Horizontal {
+        width: 100%;
+        align: right middle;
+        margin-top: 1;
+    }
+    #confirm-dialog Button {
+        margin-left: 1;
+    }
     #confirm-cmd {
         margin: 1 0;
         padding: 1;
@@ -90,6 +98,14 @@ class ConfirmRun(ModalScreen[bool]):
         border: thick #4ECDC4;
         background: #1f2335;
         padding: 1 2;
+    }
+    #run-dialog Horizontal {
+        width: 100%;
+        align: right middle;
+        margin-top: 1;
+    }
+    #run-dialog Button {
+        margin-left: 1;
     }
     #run-cmd {
         margin: 1 0;
@@ -151,6 +167,14 @@ class PlaceholderForm(ModalScreen[dict[str, str] | None]):
         border: thick #4ECDC4;
         background: #1f2335;
         padding: 1 2;
+    }
+    #form-dialog Horizontal {
+        width: 100%;
+        align: right middle;
+        margin-top: 1;
+    }
+    #form-dialog Button {
+        margin-left: 1;
     }
     .var-label {
         margin-top: 1;
@@ -229,6 +253,14 @@ class VariablesScreen(ModalScreen[bool]):
         border: thick #FFE66D;
         background: #1f2335;
         padding: 1 2;
+    }
+    #vars-dialog > Horizontal {
+        width: 100%;
+        align: right middle;
+        margin-top: 1;
+    }
+    #vars-dialog Button {
+        margin-left: 1;
     }
     #vars-scroll {
         height: auto;
@@ -464,13 +496,15 @@ class HelpScreen(ModalScreen[None]):
 [{COLOR_SECONDARY} bold]Browse[/] (empty search)
   [{COLOR_ACCENT}]Categories[/] → [{COLOR_ACCENT}]Tools[/] → [{COLOR_ACCENT}]Commands[/]
   [{COLOR_ACCENT}]Enter[/]                  Run command (or drill down in browse)
-  [{COLOR_ACCENT}]r[/]                       Run in subterminal (same as Enter on command)
+  [{COLOR_ACCENT}]c[/]                       Copy / print command (when command selected)
+  [{COLOR_ACCENT}]r[/]                       Run in subterminal (when command selected)
   [{COLOR_ACCENT}]Esc[/]                    Back one level (or quit)
   [{COLOR_ACCENT}]Ctrl+T[/]                 Jump to categories
 
 [{COLOR_SECONDARY} bold]Detail panel[/]
-  [{COLOR_ACCENT}]Copy[/] / [{COLOR_ACCENT}]Print[/]   Copy or print command
-  [{COLOR_ACCENT}]Run[/]                  Launch subterminal immediately
+  [{COLOR_ACCENT}]Copy[/] [{COLOR_DIM}](c)[/] / [{COLOR_ACCENT}]Print[/] [{COLOR_DIM}](c)[/]   Output to clipboard or stdout
+  [{COLOR_ACCENT}]Run[/] [{COLOR_DIM}](r)[/]                  Launch in subterminal
+  [{COLOR_ACCENT}]Click[/] chips or use keyboard shortcuts above
 
   [{COLOR_ACCENT}]↑/↓[/] or [{COLOR_ACCENT}]Ctrl+P/N[/]   Move selection (even while searching)
   [{COLOR_ACCENT}]PgUp/PgDn[/]              Page through results

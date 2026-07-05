@@ -74,7 +74,7 @@ def test_render_stats_bar():
     )
     assert "47" in line
     assert "tools" in line
-    assert "commands" in line
+    assert "cmds" in line
     assert "Jul 03, 2026" in line
     assert "vars" in line
 

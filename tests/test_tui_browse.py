@@ -92,7 +92,7 @@ async def _search_on_launch() -> None:
         rendered = str(stats.render())
         assert "tools" in rendered
         assert "pack v" in rendered
-        assert "commands" in rendered
+        assert "cmds" in rendered
         assert "quit" in str(keys.render())
         assert keys.region.y == stats.region.y + 1
         assert keys.region.y == app.size.height - 1

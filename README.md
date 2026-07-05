@@ -66,7 +66,9 @@ loadout
 | Key | Action |
 |---|---|
 | `/` or start typing | Focus search |
-| `Enter` | Run selected action (copy / print / subterminal) |
+| `Enter` | Select / run command in subterminal |
+| `c` | Copy or print selected command |
+| `r` | Run selected command in subterminal |
 | `Ctrl+T` | Browse by category |
 | `Esc` | Back one level |
 | `v` | Variable editor |
