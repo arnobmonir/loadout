@@ -1,18 +1,30 @@
 tool: smbclient
-tags: [enumeration, smb, m05]
-exam_hint: "SMB/CIFS client — list shares, transfer files"
+tags: [enumeration, smb, m02]
+exam_hint: "smbclient connects to SMB/CIFS file shares — list files, download documents, and upload files on Windows and Samba servers."
 docs:
   - "man:smbclient"
 
 actions:
-  - title: list shares
-    desc: List available SMB shares (null session)
+  - title: List shares with guest access
+    desc: Attempts to connect anonymously and lists all available SMB shares on the target. Lab targets only.
     command: "smbclient -L //{{ip}} -N"
 
-  - title: connect share
-    desc: Interactive session on share
-    command: "smbclient //{{ip}}/{{share|C$}} -U {{user}}%{{pass}}"
+  - title: Connect to a share interactively
+    desc: Opens an interactive session on a specific share — use ls, get, and put commands to browse files.
+    command: "smbclient //{{ip}}/{{share|C$}} -N"
 
-  - title: download file
-    desc: Get file from share non-interactively
-    command: "smbclient //{{ip}}/{{share|share}} -U {{user}}%{{pass}} -c 'get remote.txt'"
+  - title: Connect with username and password
+    desc: Authenticates with credentials and opens an interactive session on the specified share.
+    command: "smbclient //{{ip}}/{{share|C$}} -U {{user|administrator}}%{{pass|password}}"
+
+  - title: Download a file from a share
+    desc: Connects to a share and downloads a specific file to your local machine in one command.
+    command: "smbclient //{{ip}}/{{share|C$}} -N -c 'get {{file|important.txt}}'"
+
+  - title: List files in a share non-interactively
+    desc: Runs the ls command and exits — quick way to see what files are in a share without an interactive session.
+    command: "smbclient //{{ip}}/{{share|C$}} -N -c 'ls'"
+
+  - title: Connect to IPC$ for named pipe access
+    desc: Connects to the IPC$ share which allows access to named pipes for further enumeration.
+    command: "smbclient //{{ip}}/IPC$ -N"

@@ -1,18 +1,34 @@
 tool: enum4linux
-tags: [enumeration, smb, m05]
-exam_hint: "SMB/NetBIOS enumeration — users, groups, shares, policies"
+tags: [enumeration, smb, m02]
+exam_hint: "enum4linux extracts information from Windows and Samba servers — users, groups, shares, password policies, and OS details via SMB/NetBIOS."
 docs:
-  - "man:enum4linux"
+  - https://github.com/CiscoCXSecurity/enum4linux
 
 actions:
-  - title: full enumeration
-    desc: All enum4linux checks against target
+  - title: Run all enumeration checks
+    desc: Performs every available SMB/NetBIOS test — users, groups, shares, policies, and OS info in one command. Lab targets only.
     command: "enum4linux -a {{ip}}"
 
-  - title: user enumeration
-    desc: Enumerate SMB users
+  - title: List SMB shares
+    desc: Shows all shared folders on the target and whether anonymous access is allowed.
+    command: "enum4linux -S {{ip}}"
+
+  - title: Enumerate user accounts
+    desc: Lists all user accounts exposed through SMB on the target system.
     command: "enum4linux -U {{ip}}"
 
-  - title: share listing
-    desc: List SMB shares
-    command: "enum4linux -S {{ip}}"
+  - title: Enumerate groups and members
+    desc: Lists all groups and which users belong to each group on the target.
+    command: "enum4linux -G {{ip}}"
+
+  - title: Check password policy
+    desc: Retrieves password policy settings — minimum length, lockout threshold, and password age.
+    command: "enum4linux -P {{ip}}"
+
+  - title: Get operating system info
+    desc: Identifies the target's operating system version and domain/workgroup name via SMB.
+    command: "enum4linux -o {{ip}}"
+
+  - title: Enumerate with credentials
+    desc: Authenticates with a username and password for deeper enumeration results.
+    command: "enum4linux -u {{user|administrator}} -p {{pass|password}} -a {{ip}}"

@@ -1,0 +1,14 @@
+tool: smbeagle
+tags: [enumeration, smb, m02]
+exam_hint: "SMBeagle searches SMB shares across a network for files containing passwords, secrets, and sensitive data."
+docs:
+  - https://github.com/punk-security/smbeagle
+
+actions:
+  - title: Scan SMB shares for sensitive files
+    desc: Crawls accessible SMB shares and searches file contents for passwords, API keys, and credentials. Lab targets only.
+    command: "SMBeagle -o {{output|results.csv}} -a {{user|administrator}} -p {{pass|password}} -d {{domain|WORKGROUP}}"
+
+  - title: Scan with domain credentials
+    desc: Authenticates with domain credentials and searches all reachable shares for sensitive content.
+    command: "SMBeagle -o {{output|results.csv}} -u {{user|admin}} -p {{pass|password}} -d {{domain|CORP}}"

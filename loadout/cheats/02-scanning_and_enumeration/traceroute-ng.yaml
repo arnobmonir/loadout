@@ -1,0 +1,18 @@
+tool: traceroute-ng
+tags: [scanning, network, m02]
+exam_hint: "traceroute-ng is an enhanced traceroute with better output formatting and export options for reports."
+docs:
+  - "man:traceroute"
+
+actions:
+  - title: Trace path with enhanced output
+    desc: Runs traceroute-ng to show the network path to a target with cleaner, more detailed output. Lab targets only.
+    command: "traceroute-ng {{domain}}"
+
+  - title: Trace using ICMP packets
+    desc: Uses ICMP for hop detection — alternative when UDP probes are filtered.
+    command: "traceroute-ng --icmp {{domain}}"
+
+  - title: Save trace results to a file
+    desc: Runs the trace and saves the full hop-by-hop report to a text file for your assessment notes.
+    command: "traceroute-ng --output {{output|trng-report.txt}} {{domain}}"

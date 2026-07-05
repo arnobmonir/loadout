@@ -1,0 +1,22 @@
+tool: puredns
+tags: [enumeration, dns, m02]
+exam_hint: "puredns resolves massive subdomain wordlists quickly — filters out wildcard DNS responses for accurate results."
+docs:
+  - https://github.com/d3mondev/puredns
+
+actions:
+  - title: Brute-force subdomains from wordlist
+    desc: Tries every name in a wordlist against the target domain and returns only subdomains that actually resolve. Lab targets only.
+    command: "puredns bruteforce {{wordlist|/usr/share/wordlists/dnsmap.txt}} {{domain}}"
+
+  - title: Brute-force with custom resolvers
+    desc: Uses your own DNS resolver list for faster and more reliable subdomain resolution.
+    command: "puredns bruteforce {{wordlist|wordlist.txt}} {{domain}} -r {{file|resolvers.txt}}"
+
+  - title: Resolve a list of subdomains
+    desc: Takes an existing subdomain list and validates which ones actually resolve to an IP address.
+    command: "puredns resolve {{file|subs.txt}} -r {{file|resolvers.txt}}"
+
+  - title: Brute-force with wildcard detection
+    desc: Brute-forces subdomains while automatically detecting and filtering wildcard DNS responses.
+    command: "puredns bruteforce {{wordlist|wordlist.txt}} {{domain}} --wildcard-detection"

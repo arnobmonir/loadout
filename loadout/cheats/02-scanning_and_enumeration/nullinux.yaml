@@ -1,0 +1,14 @@
+tool: nullinux
+tags: [enumeration, smb, m02]
+exam_hint: "nullinux automates SMB null session enumeration — finds users, groups, shares, and services without credentials."
+docs:
+  - https://github.com/m8r0wn/nullinux
+
+actions:
+  - title: Full null session enumeration
+    desc: Uses anonymous SMB access to enumerate users, groups, shares, and OS info on the target. Lab targets only.
+    command: "python3 nullinux.py {{ip}}"
+
+  - title: Enumerate with verbose output
+    desc: Same enumeration with detailed output showing each step and finding.
+    command: "python3 nullinux.py {{ip}} -v"

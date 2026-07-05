@@ -1,0 +1,18 @@
+tool: nbtscan
+tags: [enumeration, netbios, m02]
+exam_hint: "nbtscan scans a subnet for NetBIOS name information — fast way to find Windows hosts and their workgroup names."
+docs:
+  - https://www.kali.org/tools/nbtscan/
+
+actions:
+  - title: Scan subnet for NetBIOS names
+    desc: Scans every IP in a subnet and reports NetBIOS computer names, users, and workgroups. Lab targets only.
+    command: "nbtscan {{ip}}/24"
+
+  - title: Scan a single IP address
+    desc: Queries NetBIOS information from one specific target IP.
+    command: "nbtscan {{ip}}"
+
+  - title: Scan in reverse order with verbose output
+    desc: Scans the subnet in reverse IP order with detailed output for each host found.
+    command: "nbtscan -r -v {{ip}}/24"

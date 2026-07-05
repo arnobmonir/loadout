@@ -1,0 +1,22 @@
+tool: traceroute
+tags: [scanning, network, m02]
+exam_hint: "traceroute shows every router (hop) between you and a target — reveals the network path and helps map infrastructure."
+docs:
+  - "man:traceroute"
+
+actions:
+  - title: Trace the path to a host
+    desc: Shows each router hop from your machine to the target IP or domain. Useful for mapping network topology. Lab targets only.
+    command: "traceroute {{domain}}"
+
+  - title: Trace using ICMP instead of UDP
+    desc: Uses ICMP echo packets for each hop — sometimes works when normal traceroute is blocked by firewalls.
+    command: "traceroute -I {{domain}}"
+
+  - title: Limit the maximum number of hops
+    desc: Stops after 15 hops instead of the default 30 — faster when the target is close or unreachable.
+    command: "traceroute -m 15 {{domain}}"
+
+  - title: Trace to an IP address
+    desc: Traces the network path to a specific IP instead of a domain name.
+    command: "traceroute {{ip}}"

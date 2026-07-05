@@ -1,0 +1,22 @@
+tool: recon-ng
+tags: [enumeration, osint, m02]
+exam_hint: "recon-ng is a modular OSINT framework — load modules to harvest contacts, hosts, domains, and credentials from public sources."
+docs:
+  - https://github.com/lanmaster53/recon-ng
+
+actions:
+  - title: Start recon-ng interactive shell
+    desc: Opens the recon-ng framework where you load modules and run OSINT tasks. Lab targets only.
+    command: "recon-ng"
+
+  - title: Create a workspace for your target
+    desc: Creates a named workspace to organize all findings for one engagement.
+    command: "recon-ng -w {{keyword|acme_scope}}"
+
+  - title: Search available modules
+    desc: Lists all installable recon modules in the marketplace — contacts, hosts, credentials, and more.
+    command: "echo 'recon-ng: marketplace search hosts | marketplace search domains | marketplace install <module>'"
+
+  - title: Load a domain host enumeration module
+    desc: Loads the Bing domain web module to find hosts associated with a target domain.
+    command: "echo 'recon-ng: modules load recon/domains-hosts/bing_domain_web | options set SOURCE {{domain}} | run'"

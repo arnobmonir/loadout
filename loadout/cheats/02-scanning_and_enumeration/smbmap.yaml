@@ -1,0 +1,22 @@
+tool: smbmap
+tags: [enumeration, smb, m02]
+exam_hint: "smbmap lists SMB shares on a target and shows read/write permissions — quickly find accessible file shares."
+docs:
+  - https://github.com/ShawnDEvans/smbmap
+
+actions:
+  - title: List shares with guest access
+    desc: Shows all SMB shares on the target and whether guest/anonymous access is allowed. Lab targets only.
+    command: "smbmap -H {{ip}}"
+
+  - title: List shares with credentials
+    desc: Authenticates with a username and password, then lists all accessible shares and permissions.
+    command: "smbmap -u {{user|administrator}} -p {{pass|password}} -H {{ip}}"
+
+  - title: Recursively list files in a share
+    desc: Lists all files and folders inside a specific share — useful for finding sensitive documents.
+    command: "smbmap -H {{ip}} -r {{share|C$}}"
+
+  - title: Download a file from a share
+    desc: Downloads a specific file from an accessible SMB share to your local machine.
+    command: "smbmap -H {{ip}} --download '{{share|C$}}/path/to/file.txt'"

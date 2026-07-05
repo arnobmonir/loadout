@@ -1,0 +1,14 @@
+tool: ntptrace
+tags: [enumeration, ntp, m02]
+exam_hint: "ntptrace follows the NTP synchronization chain — shows which upstream time servers a target relies on."
+docs:
+  - "man:ntptrace"
+
+actions:
+  - title: Trace NTP synchronization path
+    desc: Follows the chain of NTP servers from the target back to the primary time source. Lab targets only.
+    command: "ntptrace {{ip}}"
+
+  - title: Trace with maximum hop limit
+    desc: Traces the NTP chain but stops after a set number of hops to avoid long traces.
+    command: "ntptrace -m 5 {{ip}}"

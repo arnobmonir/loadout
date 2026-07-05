@@ -1,0 +1,22 @@
+tool: kismet
+tags: [scanning, wireless, m02]
+exam_hint: "kismet passively detects wireless networks and clients without connecting — captures SSIDs, encryption, and device types."
+docs:
+  - https://www.kismetwireless.net/
+
+actions:
+  - title: Start Kismet wireless detector
+    desc: Launches Kismet to passively detect all wireless networks and clients in range. Lab only.
+    command: "sudo kismet"
+
+  - title: Monitor a specific wireless interface
+    desc: Starts Kismet on your chosen Wi-Fi adapter to capture and log wireless activity.
+    command: "sudo kismet -i {{interface|wlan0}}"
+
+  - title: Enable monitor mode then start Kismet
+    desc: Puts the adapter in monitor mode first, then starts Kismet on the monitor interface.
+    command: "sudo airmon-ng start {{interface|wlan0}} && sudo kismet -i {{interface|wlan0mon}}"
+
+  - title: Log wireless detections to file
+    desc: Runs Kismet and saves detected networks and clients to log files for later analysis.
+    command: "sudo kismet --log-types btsummary --log-title {{output|kismet}} -i {{interface|wlan0mon}}"

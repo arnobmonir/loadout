@@ -1,18 +1,26 @@
 tool: rustscan
-tags: [scanning, recon, m03]
-exam_hint: "Fast port scanner that feeds results to nmap"
+tags: [scanning, network, m02]
+exam_hint: "rustscan finds open ports blazingly fast, then automatically passes results to nmap for service detection — best of both worlds."
 docs:
   - https://github.com/RustScan/RustScan
 
 actions:
-  - title: all ports
-    desc: Scan all 65535 ports quickly
-    command: "rustscan -a {{ip}} -- -sV"
+  - title: Fast port scan on one host
+    desc: Scans all ports on a target in seconds using Rust's speed, then runs nmap on discovered ports. Lab targets only.
+    command: "rustscan -a {{ip}}"
 
-  - title: top ports
-    desc: Scan common ports with nmap follow-up
-    command: "rustscan -a {{ip}} -r 1-1000 -- -sC -sV"
+  - title: Scan all ports on a subnet
+    desc: Checks ports 1-65535 across every IP in a range — extremely fast initial sweep.
+    command: "rustscan -a {{ip}}/24 -p 1-65535"
 
-  - title: specific ports
-    desc: Scan defined ports
-    command: "rustscan -a {{ip}} -p {{port|80,443,8080}}"
+  - title: Pass found ports to nmap for details
+    desc: Rustscan finds open ports, then automatically runs nmap -A -sV on them for service and OS detection.
+    command: "rustscan -a {{ip}} -- -A -sV"
+
+  - title: Scan multiple hosts at once
+    desc: Runs a fast port scan against several IP addresses in one command.
+    command: "rustscan -a {{ip}},{{ip}},{{ip}} -p 1-10000"
+
+  - title: Scan with custom timeout
+    desc: Sets a longer timeout for slow-responding hosts — useful on congested networks.
+    command: "rustscan -a {{ip}} -t 2000"

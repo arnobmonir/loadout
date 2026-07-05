@@ -1,0 +1,14 @@
+tool: hyena
+tags: [enumeration, ad, m02]
+exam_hint: "Hyena is a Windows GUI for Active Directory management — enumerate users, groups, computers, and policies in AD environments."
+docs:
+  - https://www.systemtools.com/hyena/
+
+actions:
+  - title: Open Hyena product page
+    desc: Opens the SystemTools Hyena website — Windows AD management and enumeration GUI.
+    command: "xdg-open https://www.systemtools.com/hyena/"
+
+  - title: Enumerate AD users with ldapsearch
+    desc: CLI equivalent — lists all user accounts in Active Directory via LDAP.
+    command: "ldapsearch -x -H ldap://{{ip}} -b 'DC={{domain}},DC=local' '(objectClass=user)' cn"

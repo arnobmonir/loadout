@@ -1,0 +1,18 @@
+tool: httprecon
+tags: [scanning, web, m02]
+exam_hint: "httprecon performs passive and active web server fingerprinting to identify server software, OS, and technologies."
+docs:
+  - https://sourceforge.net/projects/httprecon/
+
+actions:
+  - title: Fingerprint web server by hostname
+    desc: Analyzes HTTP responses to identify the web server software and operating system. Lab targets only.
+    command: "httprecon -h {{domain}}"
+
+  - title: Fingerprint by domain name
+    desc: Runs httprecon against a domain to detect server type and version.
+    command: "httprecon {{domain}}"
+
+  - title: Use whatweb as modern alternative
+    desc: whatweb provides similar web technology fingerprinting with better maintained signatures.
+    command: "whatweb {{url|https://example.com}}"

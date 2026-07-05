@@ -1,0 +1,18 @@
+tool: recon-dog
+tags: [enumeration, osint, m02]
+exam_hint: "ReconDog is a simple all-in-one recon tool — enter a domain and it runs WHOIS, DNS, port scan, and CMS detection automatically."
+docs:
+  - https://github.com/s0md3v/ReconDog
+
+actions:
+  - title: Install ReconDog
+    desc: Clones the ReconDog repository and prepares it for use. Lab targets only.
+    command: "git clone https://github.com/s0md3v/ReconDog.git && cd ReconDog"
+
+  - title: Run ReconDog interactive scanner
+    desc: Starts the interactive menu — choose scan types for your target domain or IP.
+    command: "python3 dog"
+
+  - title: ReconDog workflow reminder
+    desc: Prints the menu options available in ReconDog — WHOIS, DNS, port scan, CMS detect, and more.
+    command: "echo 'ReconDog: python3 dog — select scan type, enter {{domain}} or {{ip}}'"

@@ -1,0 +1,14 @@
+tool: netscantools-pro
+tags: [scanning, network, m02]
+exam_hint: "NetScanTools Pro is a Windows GUI suite with ping, DNS lookup, port scan, traceroute, and WHOIS tools."
+docs:
+  - https://www.netscantools.com/netscantools_pro.html
+
+actions:
+  - title: Open NetScanTools Pro website
+    desc: Opens the product page for the Windows network toolkit.
+    command: "xdg-open https://www.netscantools.com/netscantools_pro.html"
+
+  - title: Full port scan equivalent
+    desc: CLI nmap service scan — alternative when NetScanTools GUI is not available.
+    command: "nmap -sV {{ip}}"

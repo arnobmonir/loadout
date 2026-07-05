@@ -1,0 +1,18 @@
+tool: ntpdc
+tags: [enumeration, ntp, m02]
+exam_hint: "ntpdc controls and queries NTP daemon — the monlist command can reveal all recent NTP clients (amplification attack vector)."
+docs:
+  - "man:ntpdc"
+
+actions:
+  - title: Get NTP monlist (client history)
+    desc: Requests the list of recent NTP clients — reveals IPs that synced with this server. Known amplification vector. Lab only.
+    command: "ntpdc -c monlist {{ip}}"
+
+  - title: Show NTP peer information
+    desc: Lists upstream NTP peers this server synchronizes with.
+    command: "ntpdc -c peers {{ip}}"
+
+  - title: List all NTP peers in detail
+    desc: Detailed peer list including stratum, offset, and delay for each upstream server.
+    command: "ntpdc -c listpeers {{ip}}"

@@ -1,18 +1,30 @@
 tool: nikto
-tags: [scanning, web, m04]
-exam_hint: "Web server vulnerability scanner — misconfigs and known issues"
+tags: [scanning, web, m02]
+exam_hint: "nikto scans web servers for known vulnerabilities, misconfigurations, outdated software, and dangerous files."
 docs:
-  - https://github.com/sullo/nikto
+  - https://cirt.net/Nikto2
 
 actions:
-  - title: basic scan
-    desc: Scan web server on target host
-    command: "nikto -h http://{{ip}}"
+  - title: Basic web vulnerability scan
+    desc: Runs nikto's full check suite against a web server — finds default files, outdated software, and misconfigs. Lab targets only.
+    command: "nikto -h {{url|http://example.com}}"
 
-  - title: HTTPS scan
-    desc: Scan HTTPS service
-    command: "nikto -h https://{{domain}} -ssl"
+  - title: Scan HTTPS website
+    desc: Runs the same vulnerability checks against an HTTPS target on port 443.
+    command: "nikto -h {{url|https://example.com}}"
 
-  - title: save report
-    desc: Write HTML report to file
-    command: "nikto -h http://{{ip}} -o {{output|nikto.html}} -Format htm"
+  - title: Save scan report as HTML
+    desc: Runs the scan and saves a formatted HTML report you can open in a browser and attach to your assessment.
+    command: "nikto -h {{url|http://example.com}} -output {{output|nikto-report.html}} -Format htm"
+
+  - title: Scan specific port
+    desc: Targets a web server running on a non-standard port like 8080 or 8443.
+    command: "nikto -h {{ip}} -p {{port|8080}}"
+
+  - title: Scan with a proxy
+    desc: Routes nikto traffic through Burp Suite or another proxy for manual inspection of requests.
+    command: "nikto -h {{url|http://example.com}} -useproxy {{url|http://127.0.0.1:8080}}"
+
+  - title: Scan multiple hosts from a file
+    desc: Reads a list of target URLs and scans each one sequentially.
+    command: "nikto -h {{url|http://example.com}} -o {{output|nikto-all.txt}}"

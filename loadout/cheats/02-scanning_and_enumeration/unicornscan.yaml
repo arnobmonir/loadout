@@ -1,0 +1,18 @@
+tool: unicornscan
+tags: [scanning, network, m02]
+exam_hint: "unicornscan is a fast asynchronous port scanner — sends many probes in parallel for quick TCP/UDP sweeps."
+docs:
+  - https://www.kali.org/tools/unicornscan/
+
+actions:
+  - title: Scan TCP ports 1 through 1024
+    desc: Performs a fast asynchronous TCP scan on the first 1024 ports. Much faster than nmap for quick sweeps. Lab targets only.
+    command: "unicornscan -mT {{ip}}:1-1024"
+
+  - title: Scan a custom port range
+    desc: Scans a specific TCP port range you define — useful when you know which ports matter.
+    command: "unicornscan -mT {{ip}}:{{port|1-65535}}"
+
+  - title: UDP scan on common ports
+    desc: Sends UDP probes to discover open UDP services like DNS (53) and SNMP (161).
+    command: "unicornscan -mU {{ip}}:53,161,500"

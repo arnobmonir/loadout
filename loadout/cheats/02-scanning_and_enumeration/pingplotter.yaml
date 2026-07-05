@@ -1,0 +1,18 @@
+tool: pingplotter
+tags: [scanning, network, m02]
+exam_hint: "PingPlotter continuously pings a target and graphs latency over time — great for finding intermittent network problems."
+docs:
+  - https://www.pingplotter.com
+
+actions:
+  - title: Open PingPlotter website
+    desc: Opens PingPlotter download page — GUI tool for continuous ping and route monitoring.
+    command: "xdg-open https://www.pingplotter.com"
+
+  - title: Continuous ping from CLI
+    desc: Sends continuous pings to monitor latency — CLI alternative to PingPlotter graphs.
+    command: "ping {{domain}}"
+
+  - title: Trace route with timing
+    desc: Shows the network path with per-hop latency — similar to PingPlotter's route view.
+    command: "traceroute {{domain}}"

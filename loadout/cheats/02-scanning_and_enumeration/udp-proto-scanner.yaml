@@ -1,0 +1,14 @@
+tool: udp-proto-scanner
+tags: [enumeration, udp, m02]
+exam_hint: "udp-proto-scanner probes UDP ports to identify which services are running — finds DNS, SNMP, NTP, and other UDP services."
+docs:
+  - https://github.com/CiscoCXSecurity/udp-proto-scanner
+
+actions:
+  - title: Scan UDP services on a target
+    desc: Sends UDP probes to common ports and identifies running services like DNS, SNMP, DHCP, and NTP. Lab targets only.
+    command: "perl udp-proto-scanner.pl {{ip}}"
+
+  - title: Scan UDP on a subnet
+    desc: Runs UDP service detection across every host in a subnet range.
+    command: "perl udp-proto-scanner.pl {{ip}}/24"

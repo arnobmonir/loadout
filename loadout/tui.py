@@ -272,6 +272,9 @@ class LoadoutApp(App[None]):
         self._browse_level: str = "category"  # category | tool | command
         self._selected_category: str | None = None
         self._selected_tool: str | None = None
+        self._browse_category_index: int = 0
+        self._browse_tool_index: int = 0
+        self._browse_command_index: int = 0
         self._browse_tree: dict[str, dict[str, list[Action]]] = {}
         self._category_sort: dict[str, str] = {}
         self._browse_rows: list[BrowseRow] = []
@@ -579,6 +582,31 @@ class LoadoutApp(App[None]):
         if row.level == "command" and row.action:
             self._show_detail(row.action)
 
+    def _remember_browse_index(self, idx: int) -> None:
+        if self._browse_level == "category":
+            self._browse_category_index = idx
+        elif self._browse_level == "tool":
+            self._browse_tool_index = idx
+        else:
+            self._browse_command_index = idx
+
+    def _browse_select_index(self) -> int:
+        """Return the list index to highlight for the current browse level."""
+        if not self._browse_rows:
+            return 0
+        if self._browse_level == "category":
+            idx = self._browse_category_index
+        elif self._browse_level == "tool":
+            idx = self._browse_tool_index
+        else:
+            idx = self._browse_command_index
+        return max(0, min(idx, len(self._browse_rows) - 1))
+
+    def _reset_browse_indices(self) -> None:
+        self._browse_category_index = 0
+        self._browse_tool_index = 0
+        self._browse_command_index = 0
+
     def _refresh_display(self, raw_query: str) -> None:
         query = parse_search_query(raw_query)
         list_view = self.query_one("#results", ListView)
@@ -647,13 +675,14 @@ class LoadoutApp(App[None]):
             self._update_header(tool_count, len(self.actions))
             self._update_browse_path()
 
+            select_idx = self._browse_select_index()
             for i, row in enumerate(self._browse_rows):
-                line = self._format_browse_row(row, selected=(i == 0))
+                line = self._format_browse_row(row, selected=(i == select_idx))
                 list_view.append(ListItem(Label(line, markup=True)))
 
             if self._browse_rows:
-                list_view.index = 0
-                self._show_browse_detail(self._browse_rows[0])
+                list_view.index = select_idx
+                self._show_browse_detail(self._browse_rows[select_idx])
                 breadcrumb = self._browse_breadcrumb()
                 self._set_status(
                     f"[{COLOR_SUCCESS}]●[/] {breadcrumb} — "
@@ -773,6 +802,7 @@ class LoadoutApp(App[None]):
         else:
             self._show_browse_detail(self._browse_rows[idx])
             self._rehighlight_browse_rows(idx)
+            self._remember_browse_index(idx)
 
         if lv.children and idx < len(lv.children):
             lv.scroll_to_widget(lv.children[idx], force=True)
@@ -791,12 +821,14 @@ class LoadoutApp(App[None]):
             return
         row = self._browse_rows[idx]
         if row.level == "category":
+            self._browse_category_index = idx
             self._selected_category = row.category
             self._browse_level = "tool"
             self._selected_tool = None
             self._refresh_display(self.query_one("#search", Input).value)
             self._results_list().focus()
         elif row.level == "tool":
+            self._browse_tool_index = idx
             self._selected_tool = row.tool
             self._browse_level = "command"
             self._refresh_display(self.query_one("#search", Input).value)
@@ -866,6 +898,7 @@ class LoadoutApp(App[None]):
             self._browse_level = "category"
             self._selected_category = None
             self._selected_tool = None
+            self._reset_browse_indices()
             self._refresh_display("")
             self._results_list().focus()
             return
@@ -874,6 +907,7 @@ class LoadoutApp(App[None]):
             self._browse_level = "category"
             self._selected_category = None
             self._selected_tool = None
+            self._reset_browse_indices()
             self._refresh_display("")
             self._results_list().focus()
             return
@@ -920,6 +954,7 @@ class LoadoutApp(App[None]):
             self._browse_level = "category"
             self._selected_category = None
             self._selected_tool = None
+            self._reset_browse_indices()
             self._refresh_display("")
 
     @on(ListView.Selected, "#results")
@@ -942,6 +977,7 @@ class LoadoutApp(App[None]):
         elif self._mode == "browse" and 0 <= idx < len(self._browse_rows):
             self._show_browse_detail(self._browse_rows[idx])
             self._rehighlight_browse_rows(idx)
+            self._remember_browse_index(idx)
 
     def _rehighlight_rows(self, selected_idx: int) -> None:
         query = parse_search_query(self.query_one("#search", Input).value)
@@ -1084,6 +1120,7 @@ class LoadoutApp(App[None]):
         self._browse_level = "category"
         self._selected_category = None
         self._selected_tool = None
+        self._reset_browse_indices()
         self._refresh_display("")
         self._results_list().focus()
 

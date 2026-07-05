@@ -1,0 +1,22 @@
+tool: advanced-ip-scanner
+tags: [scanning, network, m02]
+exam_hint: "Advanced IP Scanner discovers live hosts and open ports on a local network — popular GUI tool for Windows network mapping."
+docs:
+  - https://www.advanced-ip-scanner.com
+
+actions:
+  - title: Scan a subnet for live hosts
+    desc: Scans every IP in a subnet range to find which devices are online and responding. Lab networks only.
+    command: "advanced-ip-scanner {{ip}}/24"
+
+  - title: Scan a specific IP range
+    desc: Scans only the IPs between two addresses — useful for targeting a known DHCP range.
+    command: "advanced-ip-scanner {{ip|192.168.1.100}}-{{ip|192.168.1.200}}"
+
+  - title: Scan common ports on a subnet
+    desc: Checks ports 22, 80, 443, and 3389 on every host in the subnet.
+    command: "advanced-ip-scanner {{ip}}/24 -p 22,80,443,3389"
+
+  - title: Save scan results to a file
+    desc: Runs the scan and exports results to a text file for your report.
+    command: "advanced-ip-scanner {{ip}}/24 -o {{output|results.txt}}"

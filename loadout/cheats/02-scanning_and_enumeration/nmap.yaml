@@ -1,23 +1,55 @@
 tool: nmap
-tags: [recon, scanning, m03]
-exam_hint: "Network mapper — host/port/service/OS discovery"
+tags: [scanning, network, m02]
+exam_hint: "nmap is the essential network scanner — discovers live hosts, open ports, running services, and operating systems. Start every scan phase with nmap."
 docs:
   - https://nmap.org/book/man.html
   - "man:nmap"
 
 actions:
-  - title: host discovery
-    desc: Ping sweep on subnet (authorized lab only)
+  - title: Find live hosts on a subnet
+    desc: Sends ping probes to every IP in a subnet and lists which ones respond — no port scanning yet. Fast and quiet first step. Lab targets only.
     command: "nmap -sn {{ip}}/24"
 
-  - title: SYN stealth scan
-    desc: Stealth TCP SYN scan on target
+  - title: Stealth SYN port scan
+    desc: Sends half-open TCP SYN packets to discover open ports without completing the connection — harder to detect in logs.
     command: "nmap -sS {{ip}}"
 
-  - title: service version scan
-    desc: Probe open ports for service/version info
+  - title: Detect service names and versions
+    desc: Probes open ports to identify what software is running and its version number — critical for finding vulnerabilities.
     command: "nmap -sV {{ip}}"
 
-  - title: full TCP scan
-    desc: Scan all TCP ports (slow)
+  - title: Run default safe scripts on open ports
+    desc: Runs nmap's built-in NSE scripts for additional enumeration — finds banners, SSL info, and common misconfigs.
+    command: "nmap -sC {{ip}}"
+
+  - title: Full service scan with scripts
+    desc: Combines version detection and default scripts — the standard thorough scan for any target.
+    command: "nmap -sV -sC {{ip}}"
+
+  - title: Scan all 65535 TCP ports
+    desc: Checks every possible TCP port — slow but finds services on non-standard ports that quick scans miss.
     command: "nmap -p- {{ip}}"
+
+  - title: Scan top 1000 ports quickly
+    desc: Scans the 1000 most common ports — good balance of speed and coverage for initial assessment.
+    command: "nmap --top-ports 1000 {{ip}}"
+
+  - title: UDP port scan
+    desc: Scans common UDP ports for services like DNS (53), SNMP (161), and DHCP (67) that TCP scans miss.
+    command: "nmap -sU --top-ports 20 {{ip}}"
+
+  - title: Detect operating system
+    desc: Analyzes TCP/IP stack behavior to guess the target's operating system — Windows, Linux, etc.
+    command: "nmap -O {{ip}}"
+
+  - title: Aggressive full scan
+    desc: Combines OS detection, version scan, script scan, and traceroute — most comprehensive but very noisy. Lab only.
+    command: "nmap -A {{ip}}"
+
+  - title: Save results in all formats
+    desc: Saves scan output as normal text, grepable, and XML files for reporting and import into other tools.
+    command: "nmap -sV -oA {{output|nmap-scan}} {{ip}}"
+
+  - title: Scan through a SOCKS proxy
+    desc: Routes nmap traffic through a proxy to scan from a different network location.
+    command: "nmap -sT --proxies socks4://{{ip}}:1080 {{ip}}"

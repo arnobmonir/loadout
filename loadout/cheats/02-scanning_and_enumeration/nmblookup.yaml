@@ -1,0 +1,18 @@
+tool: nmblookup
+tags: [enumeration, netbios, m02]
+exam_hint: "nmblookup queries NetBIOS names on a network — finds Windows computer names, workgroups, and master browsers."
+docs:
+  - "man:nmblookup"
+
+actions:
+  - title: Look up NetBIOS name from IP
+    desc: Queries the NetBIOS name registered to an IP address — reveals the Windows computer name. Lab targets only.
+    command: "nmblookup -A {{ip}}"
+
+  - title: Resolve a NetBIOS name to IP
+    desc: Looks up the IP address for a known NetBIOS computer name on the network.
+    command: "nmblookup {{hostname|TARGETPC}}"
+
+  - title: Broadcast query for all NetBIOS names
+    desc: Sends a broadcast request to discover all NetBIOS names on the local subnet.
+    command: "nmblookup -B {{ip}} '*'"

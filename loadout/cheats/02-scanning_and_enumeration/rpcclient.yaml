@@ -1,18 +1,30 @@
 tool: rpcclient
-tags: [enumeration, smb, m05]
-exam_hint: "MS-RPC client — SAMR, LSA, user enumeration via RPC"
+tags: [enumeration, rpc, m02]
+exam_hint: "rpcclient connects to Windows RPC services — enumerate users, groups, domain info, and password policies over the network."
 docs:
   - "man:rpcclient"
 
 actions:
-  - title: null session
-    desc: Connect with null session
+  - title: Connect with null session
+    desc: Connects to the RPC service without credentials — works when anonymous access is allowed. Lab targets only.
     command: "rpcclient -U '' -N {{ip}}"
 
-  - title: enumerate users
-    desc: List domain users via enumdomusers
+  - title: Connect with credentials
+    desc: Authenticates with a username and password to access RPC enumeration commands.
+    command: "rpcclient -U '{{user|administrator}}%{{pass|password}}' {{ip}}"
+
+  - title: Enumerate domain users
+    desc: Once connected, run enumdomusers to list all domain user accounts.
     command: "rpcclient -U '' -N {{ip}} -c enumdomusers"
 
-  - title: password policy
-    desc: Query domain password policy
+  - title: Enumerate domain groups
+    desc: Lists all domain groups and their descriptions via RPC.
+    command: "rpcclient -U '' -N {{ip}} -c enumdomgroups"
+
+  - title: Get password policy
+    desc: Retrieves the domain password policy — minimum length, complexity, and lockout settings.
     command: "rpcclient -U '' -N {{ip}} -c getdompwinfo"
+
+  - title: Query domain information
+    desc: Shows domain name, server role, and forest information for the target.
+    command: "rpcclient -U '' -N {{ip}} -c querydominfo"

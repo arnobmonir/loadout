@@ -1,0 +1,18 @@
+tool: superenum
+tags: [enumeration, osint, m02]
+exam_hint: "SuperEnum automates multi-phase enumeration — combines port scanning, service detection, and OSINT in one workflow."
+docs:
+  - https://github.com/topics/enumeration
+
+actions:
+  - title: Quick enumeration of a domain
+    desc: Runs a fast enumeration pass against a domain — ports, services, and basic OSINT. Lab targets only.
+    command: "superenum --target {{domain}} --mode quick"
+
+  - title: Full enumeration of a subnet
+    desc: Comprehensive scan of every host in a subnet — all ports, services, and enumeration modules.
+    command: "superenum --target {{ip}}/24 --mode full"
+
+  - title: Save enumeration report
+    desc: Runs enumeration and exports all findings to a report file.
+    command: "superenum --target {{domain}} --output {{output|superenum-report.txt}}"

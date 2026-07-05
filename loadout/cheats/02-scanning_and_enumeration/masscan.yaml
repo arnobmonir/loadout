@@ -1,18 +1,26 @@
 tool: masscan
-tags: [scanning, recon, m03]
-exam_hint: "Ultra-fast port scanner — stateless TCP/UDP SYN scanning"
+tags: [scanning, network, m02]
+exam_hint: "masscan is the fastest port scanner — can scan the entire internet in minutes. Use it for quick wide sweeps, then follow up with nmap on found ports."
 docs:
   - https://github.com/robertdavidgraham/masscan
 
 actions:
-  - title: top ports sweep
-    desc: Scan top 1000 TCP ports on target
-    command: "masscan {{ip}} -p1-65535 --rate=1000"
+  - title: Scan top 100 ports on a subnet
+    desc: Rapidly checks the 100 most common ports on every host in a subnet. Much faster than nmap for initial discovery. Lab targets only.
+    command: "sudo masscan {{ip}}/24 --top-ports 100 --rate 1000"
 
-  - title: single port range
-    desc: Scan specific port range
-    command: "masscan {{ip}} -p{{port|80-443}} --rate=500"
+  - title: Scan all TCP ports on one host
+    desc: Checks all 65535 TCP ports on a single target at high speed — finds non-standard services quickly.
+    command: "sudo masscan {{ip}} -p1-65535 --rate 1000"
 
-  - title: banner grab
-    desc: Grab banners on open ports
-    command: "masscan {{ip}} -p{{port|22,80,443}} --banners"
+  - title: Scan specific ports on a large network
+    desc: Checks ports 80, 443, and 22 across a /16 network — useful for finding web and SSH servers at scale.
+    command: "sudo masscan {{ip}}/16 -p80,443,22 --rate 2000 -oG {{output|masscan.gnmap}}"
+
+  - title: Scan excluding gateway IP
+    desc: Scans a subnet but skips the gateway/router IP to avoid triggering alerts on network infrastructure.
+    command: "sudo masscan {{ip}}/24 -p1-1024 --exclude {{ip}} --rate 500"
+
+  - title: Grab banners from open ports
+    desc: After finding open ports, attempts to read service banners for version identification.
+    command: "sudo masscan {{ip}} -p{{port|22,80,443}} --banners --rate 500"

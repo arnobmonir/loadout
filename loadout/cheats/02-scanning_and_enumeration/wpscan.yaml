@@ -1,18 +1,30 @@
 tool: wpscan
-tags: [enumeration, web, wordpress, m04]
-exam_hint: "WordPress security scanner — plugins, themes, users, vulns"
+tags: [enumeration, web, m02]
+exam_hint: "wpscan finds WordPress version, plugins, themes, users, and known vulnerabilities — essential for any WordPress site assessment."
 docs:
   - https://github.com/wpscanteam/wpscan
 
 actions:
-  - title: basic scan
-    desc: Enumerate WordPress installation
-    command: "wpscan --url http://{{domain}} --enumerate ap,at,u"
+  - title: Basic WordPress scan
+    desc: Detects WordPress version, themes, plugins, and known vulnerabilities on a WordPress site. Lab targets only.
+    command: "wpscan --url {{url|http://example.com}}"
 
-  - title: aggressive enum
-    desc: Aggressive plugin/theme detection
-    command: "wpscan --url http://{{domain}} --enumerate ap,at,cb,dbe"
+  - title: Enumerate WordPress users
+    desc: Finds WordPress user accounts by author ID — reveals usernames for password attacks.
+    command: "wpscan --url {{url|http://example.com}} --enumerate u"
 
-  - title: password attack
-    desc: Brute force WordPress logins (authorized lab)
-    command: "wpscan --url http://{{domain}} -U {{user|admin}} -P {{wordlist}}"
+  - title: Enumerate all plugins and themes
+    desc: Discovers installed plugins and themes with their version numbers — checks each against vulnerability databases.
+    command: "wpscan --url {{url|http://example.com}} --enumerate ap,at"
+
+  - title: Aggressive scan with API token
+    desc: Uses the WPScan vulnerability database API for comprehensive plugin and theme vulnerability checking.
+    command: "wpscan --url {{url|http://example.com}} --api-token {{token|YOUR_TOKEN}}"
+
+  - title: Brute-force WordPress login
+    desc: Attempts to guess the admin password using a wordlist against the WordPress login page. Lab only.
+    command: "wpscan --url {{url|http://example.com}} -U {{user|admin}} -P {{wordlist|/usr/share/wordlists/rockyou.txt}}"
+
+  - title: Save results to a file
+    desc: Runs the scan and saves all findings to a text file for your report.
+    command: "wpscan --url {{url|http://example.com}} -o {{output|wpscan.txt}}"

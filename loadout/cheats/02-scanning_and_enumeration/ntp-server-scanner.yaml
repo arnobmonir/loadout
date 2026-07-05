@@ -1,0 +1,14 @@
+tool: ntp-server-scanner
+tags: [enumeration, ntp, m02]
+exam_hint: "NTP Server Scanner checks NTP servers for misconfigurations like open monlist — can enable amplification attacks."
+docs:
+  - https://www.softperfect.com
+
+actions:
+  - title: Check NTP monlist vulnerability
+    desc: Tests if the NTP server responds to monlist queries — a known amplification attack vector. Lab only.
+    command: "ntpdc -c monlist {{ip}}"
+
+  - title: Verify NTP port is open
+    desc: Confirms UDP port 123 is accessible before running NTP enumeration tools.
+    command: "nmap -sU -p 123 {{ip}}"

@@ -1,0 +1,18 @@
+tool: nemesis
+tags: [scanning, network, m02]
+exam_hint: "nemesis crafts custom network packets — inject TCP, UDP, ICMP, and ARP packets for low-level network testing."
+docs:
+  - https://github.com/troglobit/nemesis
+
+actions:
+  - title: Send a custom TCP packet
+    desc: Crafts and sends a custom TCP packet with specific flags to a target port — used for firewall and IDS testing. Lab only.
+    command: "nemesis tcp -S {{ip}} -D {{ip}} -fS -y {{port|80}}"
+
+  - title: Send an ICMP echo request
+    desc: Sends a custom ICMP ping packet to test host reachability with crafted packet options.
+    command: "nemesis icmp -D {{ip}} -e echo-reply"
+
+  - title: Send a custom ARP packet
+    desc: Crafts ARP packets for network-layer testing on the local subnet.
+    command: "nemesis arp -D {{ip}} -h {{ip}}"

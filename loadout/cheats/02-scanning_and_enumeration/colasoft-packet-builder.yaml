@@ -1,0 +1,14 @@
+tool: colasoft-packet-builder
+tags: [scanning, network, m02]
+exam_hint: "Colasoft Packet Builder is a Windows GUI tool for crafting custom network packets — useful for firewall and IDS testing."
+docs:
+  - https://www.colasoft.com
+
+actions:
+  - title: Open Colasoft Packet Builder
+    desc: Opens the Colasoft website to download Packet Builder — a GUI for designing and sending custom TCP/UDP/ICMP packets. Lab only.
+    command: "xdg-open https://www.colasoft.com/packet_builder/"
+
+  - title: Craft packets with nemesis instead
+    desc: CLI alternative — sends custom TCP packets from the command line when Colasoft GUI is not available.
+    command: "nemesis tcp -S {{ip}} -D {{ip}} -fS -y {{port|80}}"

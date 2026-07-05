@@ -1,0 +1,18 @@
+tool: ntpdate
+tags: [enumeration, ntp, m02]
+exam_hint: "ntpdate queries NTP time servers — can reveal NTP version and whether the server allows monlist queries (amplification risk)."
+docs:
+  - "man:ntpdate"
+
+actions:
+  - title: Query time from NTP server
+    desc: Asks the target NTP server for the current time — confirms the service is running. Lab targets only.
+    command: "ntpdate {{ip}}"
+
+  - title: Query without setting local clock
+    desc: Checks the NTP server response without changing your system clock — read-only query.
+    command: "ntpdate -q {{ip}}"
+
+  - title: Check if NTP port is open
+    desc: Uses nmap to verify UDP port 123 (NTP) is open on the target before running NTP tools.
+    command: "nmap -sU -p 123 {{ip}}"

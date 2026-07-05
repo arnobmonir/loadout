@@ -1,0 +1,26 @@
+tool: airodump-ng
+tags: [scanning, wireless, m02]
+exam_hint: "airodump-ng captures Wi-Fi traffic and lists nearby access points, clients, and signal strength — the first step in wireless auditing."
+docs:
+  - https://www.aircrack-ng.org/doku.php?id=airodump-ng
+
+actions:
+  - title: Enable monitor mode on wireless adapter
+    desc: Puts your Wi-Fi adapter into monitor mode so it can capture all wireless traffic, not just your connected network. Lab only.
+    command: "sudo airmon-ng start {{interface|wlan0}}"
+
+  - title: Scan for nearby Wi-Fi networks
+    desc: Lists all visible access points with BSSID, channel, encryption type, and connected clients. Lab only.
+    command: "sudo airodump-ng {{interface|wlan0mon}}"
+
+  - title: Capture traffic from one access point
+    desc: Focuses on a specific access point by BSSID and saves captured packets to a file for analysis.
+    command: "sudo airodump-ng -b {{mac|AA:BB:CC:DD:EE:FF}} --write {{output|capture}} {{interface|wlan0mon}}"
+
+  - title: Capture on a specific channel
+    desc: Locks to channel 6 and captures all wireless traffic on that channel.
+    command: "sudo airodump-ng -c 6 -w {{output|capture}} {{interface|wlan0mon}}"
+
+  - title: Save results as CSV for analysis
+    desc: Captures wireless data and saves access point and client lists as CSV files.
+    command: "sudo airodump-ng -w {{output|scan}} --output-format csv {{interface|wlan0mon}}"

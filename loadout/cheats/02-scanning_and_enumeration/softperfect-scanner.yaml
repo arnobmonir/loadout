@@ -1,0 +1,14 @@
+tool: softperfect-scanner
+tags: [enumeration, network, m02]
+exam_hint: "SoftPerfect Network Scanner is a Windows GUI tool for ping sweeps, port scans, and remote shutdown of network devices."
+docs:
+  - https://www.softperfect.com/products/networkscanner/
+
+actions:
+  - title: Open SoftPerfect Network Scanner page
+    desc: Opens the product page for the Windows network scanner GUI.
+    command: "xdg-open https://www.softperfect.com/products/networkscanner/"
+
+  - title: Ping sweep equivalent
+    desc: CLI nmap ping sweep to discover live hosts — alternative to SoftPerfect GUI scan.
+    command: "nmap -sn {{ip}}/24"

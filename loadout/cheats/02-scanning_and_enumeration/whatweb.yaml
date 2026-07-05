@@ -1,0 +1,22 @@
+tool: whatweb
+tags: [scanning, web, m02]
+exam_hint: "whatweb identifies what technologies a website uses — CMS, web server, JavaScript frameworks, analytics, and plugins."
+docs:
+  - https://github.com/urbanadventurer/WhatWeb
+
+actions:
+  - title: Identify technologies on a website
+    desc: Scans a URL and reports the web server, CMS, frameworks, and plugins in use. Quick fingerprinting step. Lab targets only.
+    command: "whatweb {{url|https://example.com}}"
+
+  - title: Aggressive scan with plugin detection
+    desc: Uses aggression level 3 for deeper plugin and version detection — sends more requests but finds more details.
+    command: "whatweb -a 3 {{url|https://example.com}}"
+
+  - title: Scan multiple URLs from a file
+    desc: Reads a list of URLs and fingerprints each one — useful after subdomain discovery.
+    command: "whatweb -i {{file|urls.txt}}"
+
+  - title: Save results as JSON
+    desc: Exports technology fingerprint results to a JSON file for reporting or further processing.
+    command: "whatweb --log-json={{output|whatweb.json}} {{url|https://example.com}}"

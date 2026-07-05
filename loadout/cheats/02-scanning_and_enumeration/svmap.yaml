@@ -1,0 +1,14 @@
+tool: svmap
+tags: [enumeration, voip, m02]
+exam_hint: "svmap scans networks for SIP (VoIP) servers and extensions — finds IP phones and PBX systems on the network."
+docs:
+  - https://github.com/EnableSecurity/sipvicious
+
+actions:
+  - title: Scan subnet for SIP servers
+    desc: Sends SIP OPTIONS probes across a subnet to discover VoIP servers and IP phones. Lab targets only.
+    command: "svmap {{ip}}/24"
+
+  - title: Scan a single IP for SIP
+    desc: Checks one IP address for running SIP/VoIP services on common ports.
+    command: "svmap {{ip}}"

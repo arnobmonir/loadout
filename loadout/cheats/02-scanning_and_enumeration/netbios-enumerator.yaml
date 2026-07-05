@@ -1,0 +1,13 @@
+tool: netbios-enumerator
+tags: [enumeration, netbios, m02]
+exam_hint: "NetBIOS Enumerator is a Windows GUI tool that scans for NetBIOS names, shares, and user accounts on a network."
+docs: []
+
+actions:
+  - title: Scan subnet with nbtscan
+    desc: CLI equivalent — scans for NetBIOS names and workgroups on a subnet.
+    command: "nbtscan {{ip}}/24"
+
+  - title: Full SMB enumeration with enum4linux
+    desc: Comprehensive NetBIOS and SMB enumeration from the command line.
+    command: "enum4linux -a {{ip}}"

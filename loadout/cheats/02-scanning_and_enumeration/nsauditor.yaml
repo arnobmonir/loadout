@@ -1,0 +1,14 @@
+tool: nsauditor
+tags: [enumeration, network, m02]
+exam_hint: "Nsauditor is a Windows network security auditor — scans for open ports, shares, services, and known vulnerabilities."
+docs:
+  - https://www.nsauditor.com
+
+actions:
+  - title: Open Nsauditor website
+    desc: Opens the Nsauditor product page — Windows network security auditing suite.
+    command: "xdg-open https://www.nsauditor.com"
+
+  - title: Full service scan equivalent
+    desc: CLI nmap scan with version detection and default scripts — covers many Nsauditor checks.
+    command: "nmap -sV -sC {{ip}}"

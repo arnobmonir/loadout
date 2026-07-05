@@ -1,0 +1,18 @@
+tool: colasoft-ping-tool
+tags: [scanning, network, m02]
+exam_hint: "Colasoft Ping Tool sends multiple ping types (ICMP, TCP, UDP) to check if hosts are alive — Windows GUI utility."
+docs:
+  - https://www.colasoft.com
+
+actions:
+  - title: Ping a host with ICMP
+    desc: CLI equivalent — sends ICMP echo requests to check if the target is alive.
+    command: "ping -c 4 {{ip}}"
+
+  - title: Ping a specific TCP port
+    desc: Checks if a host is alive by attempting a TCP connection to a port — works when ICMP is blocked.
+    command: "nmap -sn -PS{{port|80}} {{ip}}"
+
+  - title: Open Colasoft Ping Tool download page
+    desc: Opens the Colasoft website for the GUI ping utility.
+    command: "xdg-open https://www.colasoft.com/ping_tool/"

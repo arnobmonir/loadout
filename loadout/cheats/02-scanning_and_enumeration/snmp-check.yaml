@@ -1,0 +1,18 @@
+tool: snmp-check
+tags: [enumeration, snmp, m02]
+exam_hint: "snmp-check quickly summarizes SNMP-exposed information — system details, network interfaces, routing, and running processes."
+docs:
+  - https://www.kali.org/tools/snmp-check/
+
+actions:
+  - title: Check SNMP with public community
+    desc: Runs a high-level SNMP assessment using the default 'public' community string. Shows system info and interfaces. Lab targets only.
+    command: "snmp-check -t {{ip}} -c public"
+
+  - title: Check SNMP with private community
+    desc: Tries the 'private' community string for potentially more detailed or writable SNMP access.
+    command: "snmp-check -t {{ip}} -c private"
+
+  - title: Enumerate all SNMP information
+    desc: Runs all available SNMP enumeration modules against the target.
+    command: "snmp-check -t {{ip}} -c public -r"

@@ -1,0 +1,14 @@
+tool: solarwinds-ets
+tags: [scanning, network, m02]
+exam_hint: "SolarWinds Engineer's Toolset is a Windows GUI bundle with over 60 network diagnostics tools — ping, scan, DNS, SNMP."
+docs:
+  - https://www.solarwinds.com/engineers-toolset
+
+actions:
+  - title: Open SolarWinds Toolset page
+    desc: Opens the SolarWinds Engineer's Toolset product page.
+    command: "xdg-open https://www.solarwinds.com/engineers-toolset"
+
+  - title: Port scan equivalent with nmap
+    desc: CLI nmap scan with service detection — covers many Toolset scanner features.
+    command: "nmap -sV -sC {{ip}}"

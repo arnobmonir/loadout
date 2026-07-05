@@ -8,6 +8,47 @@ from loadout.tui import LoadoutApp
 from loadout.variables import VariableStore
 
 
+async def _browse_back_preserves_selection() -> None:
+    config = LoadoutConfig.load()
+    config.output_mode = OutputMode.PRINT
+    app = LoadoutApp(config, VariableStore(defaults=config.default_vars))
+    async with app.run_test(size=(120, 40)) as pilot:
+        await pilot.pause()
+        assert app._browse_level == "category"
+        assert len(app._browse_rows) >= 2
+
+        # Select second category and drill into tools
+        app._set_index(1)
+        await pilot.pause()
+        await pilot.press("enter")
+        await pilot.pause()
+        assert app._browse_level == "tool"
+        assert app._browse_category_index == 1
+
+        # Back to categories — second item should stay selected
+        await pilot.press("escape")
+        await pilot.pause()
+        assert app._browse_level == "category"
+        assert app._results_list().index == 1
+
+        # Drill into tools again, select second tool, drill into commands
+        await pilot.press("enter")
+        await pilot.pause()
+        assert app._browse_level == "tool"
+        app._set_index(1)
+        await pilot.pause()
+        await pilot.press("enter")
+        await pilot.pause()
+        assert app._browse_level == "command"
+        assert app._browse_tool_index == 1
+
+        # Back to tools — second tool should stay selected
+        await pilot.press("escape")
+        await pilot.pause()
+        assert app._browse_level == "tool"
+        assert app._results_list().index == 1
+
+
 async def _browse_three_levels() -> None:
     config = LoadoutConfig.load()
     config.output_mode = OutputMode.PRINT
@@ -50,8 +91,8 @@ async def _search_on_launch() -> None:
         keys = app.query_one("#keys-bar")
         rendered = str(stats.render())
         assert "tools" in rendered
-        assert "pack v5" in rendered
-        assert "376" in rendered or "commands" in rendered
+        assert "pack v6" in rendered
+        assert "569" in rendered or "commands" in rendered
         assert "quit" in str(keys.render())
         assert keys.region.y == stats.region.y + 1
         assert keys.region.y == app.size.height - 1
@@ -65,6 +106,10 @@ async def _search_on_launch() -> None:
 
 def test_search_focused_on_launch():
     asyncio.run(_search_on_launch())
+
+
+def test_browse_back_preserves_selection():
+    asyncio.run(_browse_back_preserves_selection())
 
 
 def test_enter_drills_category_tool_command():
