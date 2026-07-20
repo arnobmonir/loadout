@@ -22,6 +22,7 @@ classifiers = [
     "Topic :: Security",
 ]
 dependencies = [
+    "cryptography>=42.0",
     "pyyaml>=6.0",
     "rapidfuzz>=3.0",
     "pyperclip>=1.8",
@@ -43,7 +44,7 @@ where = ["."]
 include = ["loadout*"]
 
 [tool.setuptools.package-data]
-loadout = ["cheats/**/*.yaml"]
+loadout = ["cheats.pack"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

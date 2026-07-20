@@ -7,7 +7,8 @@ import sys
 
 from loadout import __version__
 from loadout.cheats_cmd import scaffold_user_cheat
-from loadout.config import LoadoutConfig, get_builtin_cheats_dir
+from loadout.config import LoadoutConfig, get_builtin_cheat_source
+from loadout.cheat_pack import is_cheat_pack, iter_pack_cheat_entries
 from loadout.loader import CheatLoadError, find_duplicate_tools, load_cheat_file, load_cheats
 from loadout.output import doctor_report
 from loadout.tui import run_tui
@@ -99,7 +100,7 @@ def _cheat_paths_for_source(config: LoadoutConfig, source: str) -> list:
     from pathlib import Path
 
     if source == "builtin":
-        return [get_builtin_cheats_dir()]
+        return [get_builtin_cheat_source()]
     if source == "user":
         return list(config.cheat_paths)
     return config.all_cheat_paths()
@@ -117,8 +118,7 @@ def _cmd_cheats(config: LoadoutConfig, args: argparse.Namespace) -> int:
         from pathlib import Path
 
         if args.all:
-            target = get_builtin_cheats_dir()
-            paths = sorted(target.rglob("*.yaml"))
+            target = get_builtin_cheat_source()
             dupes = find_duplicate_tools([target])
             if dupes:
                 print(
@@ -126,25 +126,35 @@ def _cmd_cheats(config: LoadoutConfig, args: argparse.Namespace) -> int:
                     file=sys.stderr,
                 )
                 return 1
+            if is_cheat_pack(target):
+                entries = iter_pack_cheat_entries(target)
+            else:
+                entries = [(path, None) for path in sorted(target.rglob("*.yaml"))]
         elif args.path:
             target = Path(args.path)
             if target.is_file():
-                paths = [target]
+                if is_cheat_pack(target):
+                    entries = iter_pack_cheat_entries(target)
+                else:
+                    entries = [(target, None)]
             elif target.is_dir():
-                paths = sorted(target.rglob("*.yaml"))
+                entries = [(path, None) for path in sorted(target.rglob("*.yaml"))]
             else:
                 print(f"loadout: not found: {target}", file=sys.stderr)
                 return 1
         else:
-            target = get_builtin_cheats_dir()
-            paths = sorted(target.rglob("*.yaml"))
+            target = get_builtin_cheat_source()
+            if is_cheat_pack(target):
+                entries = iter_pack_cheat_entries(target)
+            else:
+                entries = [(path, None) for path in sorted(target.rglob("*.yaml"))]
 
         errors = 0
-        for path in paths:
+        for path, content in entries:
             if path.name in {"manifest.yaml", "_template.yaml"}:
                 continue
             try:
-                load_cheat_file(path)
+                load_cheat_file(path, content=content)
                 print(f"OK  {path}")
             except CheatLoadError as exc:
                 print(f"ERR {exc}", file=sys.stderr)

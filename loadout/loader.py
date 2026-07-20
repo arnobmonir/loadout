@@ -7,6 +7,7 @@ from pathlib import Path
 
 import yaml
 
+from loadout.cheat_pack import is_cheat_pack, iter_pack_cheat_entries
 from loadout.models import Action, CheatFile
 
 _SKIP_FILES = {"manifest.yaml", "_template.yaml"}
@@ -27,11 +28,14 @@ def _yaml_files(path: Path) -> list[Path]:
     return sorted({f for f in files if f.name not in _SKIP_FILES})
 
 
-def load_cheat_file(path: Path) -> CheatFile:
-    """Parse a single cheat YAML file."""
+def load_cheat_file(path: Path, *, content: str | None = None) -> CheatFile:
+    """Parse a single cheat YAML file (or in-memory YAML text from a pack)."""
     try:
-        with path.open(encoding="utf-8") as fh:
-            data = yaml.safe_load(fh)
+        if content is None:
+            with path.open(encoding="utf-8") as fh:
+                data = yaml.safe_load(fh)
+        else:
+            data = yaml.safe_load(content)
     except yaml.YAMLError as exc:
         raise CheatLoadError(f"{path}: invalid YAML: {exc}") from exc
 
@@ -100,13 +104,20 @@ def load_cheat_file(path: Path) -> CheatFile:
     )
 
 
+def _iter_cheat_sources(base: Path) -> list[tuple[Path, str | None]]:
+    """Yield (path, content) pairs; content is set when loading from a .pack file."""
+    if is_cheat_pack(base):
+        return [(path, text) for path, text in iter_pack_cheat_entries(base)]
+    return [(path, None) for path in _yaml_files(base)]
+
+
 def find_duplicate_tools(paths: list[Path]) -> list[str]:
     """Return tool names that appear in more than one cheat file."""
     tool_files: dict[str, list[Path]] = {}
     for base in paths:
-        for cheat_path in _yaml_files(base):
+        for cheat_path, content in _iter_cheat_sources(base):
             try:
-                cheat = load_cheat_file(cheat_path)
+                cheat = load_cheat_file(cheat_path, content=content)
             except CheatLoadError:
                 continue
             tool_files.setdefault(cheat.tool, []).append(cheat_path)
@@ -115,14 +126,14 @@ def find_duplicate_tools(paths: list[Path]) -> list[str]:
 
 
 def load_cheats(paths: list[Path], *, warn: bool = True) -> list[Action]:
-    """Load and merge cheat files from multiple directories."""
+    """Load and merge cheat files from directories or compiled .pack files."""
     by_key: dict[tuple[str, str], Action] = {}
     order: list[tuple[str, str]] = []
 
     for base in paths:
-        for cheat_path in _yaml_files(base):
+        for cheat_path, content in _iter_cheat_sources(base):
             try:
-                cheat = load_cheat_file(cheat_path)
+                cheat = load_cheat_file(cheat_path, content=content)
             except CheatLoadError as exc:
                 if warn:
                     print(f"loadout: warning: {exc}", file=sys.stderr)

@@ -154,11 +154,22 @@ loadout cheats validate ~/.local/share/loadout/cheats/
 ```
 loadout/
 ├── loadout/           # Python package (TUI, loader, config)
-│   └── cheats/        # Built-in CEH cheat pack (787 YAML files)
+│   └── cheats.pack    # Built-in CEH cheat pack (compiled; not plain YAML)
 ├── tests/
-├── scripts/           # Generators used to build the cheat pack from CEH notebook sources
+├── scripts/           # Generators and build_cheat_pack.py
 ├── pyproject.toml
 └── README.md
+```
+
+Built-in cheats ship as a single **AES-256-GCM encrypted** `cheats.pack` file. The cheat library is only readable through Loadout (TUI/CLI), not as plain YAML on disk or in the repository.
+
+### Rebuilding the cheat pack (maintainers)
+
+YAML sources live locally under `loadout/cheats/` (not committed). After editing sources:
+
+```bash
+python scripts/build_cheat_pack.py
+pytest
 ```
 
 ## Development

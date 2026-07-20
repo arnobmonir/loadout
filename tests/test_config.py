@@ -2,13 +2,18 @@
 
 from pathlib import Path
 
-from loadout.config import LoadoutConfig, get_builtin_cheats_dir
+from loadout.config import LoadoutConfig, get_builtin_cheat_source
 
 
-def test_builtin_cheats_dir_exists():
-    path = get_builtin_cheats_dir()
-    assert path.is_dir()
-    assert any(path.rglob("nmap.yaml"))
+def test_builtin_cheat_source_exists():
+    path = get_builtin_cheat_source()
+    assert path.exists()
+    if path.is_dir():
+        assert any(path.rglob("nmap.yaml"))
+    else:
+        from loadout.cheat_pack import is_cheat_pack
+
+        assert is_cheat_pack(path)
 
 
 def test_loadout_config_defaults(tmp_path, monkeypatch):
@@ -43,7 +48,7 @@ def test_all_cheat_paths_includes_builtin():
     cfg = LoadoutConfig()
     paths = cfg.all_cheat_paths()
     assert len(paths) >= 1
-    assert any("cheats" in str(p) for p in paths)
+    assert any("cheat" in str(p).lower() for p in paths)
 
 
 def test_ensure_dirs_creates_user_cheat_path(tmp_path, monkeypatch):

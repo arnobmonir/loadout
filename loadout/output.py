@@ -245,7 +245,7 @@ def doctor_report() -> list[tuple[str, str, str]]:
     """Return (check, status, detail) rows for loadout doctor."""
     import sys as _sys
 
-    from loadout.config import get_builtin_cheats_dir
+    from loadout.config import get_builtin_cheat_source
 
     rows: list[tuple[str, str, str]] = []
 
@@ -274,8 +274,9 @@ def doctor_report() -> list[tuple[str, str, str]]:
         rows.append(("subterminal", "warn", "no tmux pane or terminal emulator found for Run"))
 
     try:
-        builtin = get_builtin_cheats_dir()
-        rows.append(("builtin cheats", "pass", str(builtin)))
+        builtin = get_builtin_cheat_source()
+        label = "compiled pack" if builtin.suffix == ".pack" else "source tree"
+        rows.append(("builtin cheats", "pass", f"{builtin} ({label})"))
     except FileNotFoundError as exc:
         rows.append(("builtin cheats", "fail", str(exc)))
 

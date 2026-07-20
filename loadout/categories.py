@@ -7,7 +7,8 @@ from pathlib import Path
 
 import yaml
 
-from loadout.config import get_builtin_cheats_dir
+from loadout.cheat_pack import is_cheat_pack, load_pack_manifest
+from loadout.config import get_builtin_cheat_source
 
 _DEFAULT_STRATEGY = (
     "Review the tool details, then choose the smallest command that answers your question."
@@ -27,17 +28,25 @@ def category_key(display_name: str) -> str:
     return display_name.strip().lower().replace(" ", "_")
 
 
-def manifest_category_slugs(cheats_dir: Path | None = None) -> tuple[str, ...]:
-    """Return manifest category slugs in YAML definition order."""
-    cheats_dir = cheats_dir or get_builtin_cheats_dir()
-    manifest = cheats_dir / "manifest.yaml"
+def _load_manifest_data(cheat_source: Path) -> dict:
+    if is_cheat_pack(cheat_source):
+        return load_pack_manifest(cheat_source)
+
+    manifest = cheat_source / "manifest.yaml"
     if not manifest.is_file():
-        return ()
+        return {}
     try:
         with manifest.open(encoding="utf-8") as fh:
             data = yaml.safe_load(fh) or {}
     except yaml.YAMLError:
-        return ()
+        return {}
+    return data if isinstance(data, dict) else {}
+
+
+def manifest_category_slugs(cheat_source: Path | None = None) -> tuple[str, ...]:
+    """Return manifest category slugs in YAML definition order."""
+    cheat_source = cheat_source or get_builtin_cheat_source()
+    data = _load_manifest_data(cheat_source)
     raw_categories = data.get("categories")
     if not isinstance(raw_categories, dict):
         return ()
@@ -48,18 +57,10 @@ def manifest_category_slugs(cheats_dir: Path | None = None) -> tuple[str, ...]:
     )
 
 
-def load_category_info(cheats_dir: Path | None = None) -> dict[str, CategoryInfo]:
-    """Load category descriptions and strategies from manifest.yaml."""
-    cheats_dir = cheats_dir or get_builtin_cheats_dir()
-    manifest = cheats_dir / "manifest.yaml"
-    if not manifest.is_file():
-        return {}
-
-    try:
-        with manifest.open(encoding="utf-8") as fh:
-            data = yaml.safe_load(fh) or {}
-    except yaml.YAMLError:
-        return {}
+def load_category_info(cheat_source: Path | None = None) -> dict[str, CategoryInfo]:
+    """Load category descriptions and strategies from the built-in manifest."""
+    cheat_source = cheat_source or get_builtin_cheat_source()
+    data = _load_manifest_data(cheat_source)
 
     raw_categories = data.get("categories")
     if not isinstance(raw_categories, dict):

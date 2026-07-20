@@ -25,19 +25,36 @@ def get_cache_dir() -> Path:
     return _expand(os.environ.get("LOADOUT_CACHE_DIR", "~/.cache/loadout"))
 
 
-def get_builtin_cheats_dir() -> Path:
-    """Resolve built-in cheats whether installed editable or as a wheel."""
-    pkg_cheats = Path(__file__).resolve().parent / "cheats"
+def _package_root() -> Path:
+    return Path(__file__).resolve().parent
+
+
+def get_builtin_cheat_source() -> Path:
+    """Built-in cheat pack (.pack) or source directory (dev-only YAML tree)."""
+    pkg_root = _package_root()
+    pack = pkg_root / "cheats.pack"
+    if pack.is_file():
+        return pack
+
+    pkg_cheats = pkg_root / "cheats"
     if pkg_cheats.is_dir() and any(pkg_cheats.rglob("*.yaml")):
         return pkg_cheats
 
-    repo_cheats = Path(__file__).resolve().parent.parent / "cheats"
-    if repo_cheats.is_dir():
+    repo_cheats = pkg_root.parent / "cheats"
+    if repo_cheats.is_dir() and any(repo_cheats.rglob("*.yaml")):
         return repo_cheats
 
     raise FileNotFoundError(
         "Built-in cheat pack not found. Reinstall loadout-cli or run from the project root."
     )
+
+
+def get_builtin_cheats_dir() -> Path:
+    """Resolve built-in cheats directory (dev YAML tree). Prefer get_builtin_cheat_source()."""
+    source = get_builtin_cheat_source()
+    if source.is_dir():
+        return source
+    return source.parent / "cheats"
 
 
 def get_user_cheats_dir() -> Path:
@@ -100,7 +117,7 @@ class LoadoutConfig:
 
     def all_cheat_paths(self) -> list[Path]:
         """Builtin cheats first, then user paths (later overrides earlier)."""
-        return [get_builtin_cheats_dir(), *self.cheat_paths]
+        return [get_builtin_cheat_source(), *self.cheat_paths]
 
     def save(self) -> None:
         """Persist current settings to config.yaml (merges with existing file)."""

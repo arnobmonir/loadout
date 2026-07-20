@@ -10,7 +10,8 @@ import yaml
 
 from loadout.browse import build_browse_tree
 from loadout.categories import manifest_category_slugs
-from loadout.config import get_builtin_cheats_dir
+from loadout.cheat_pack import count_pack_cheat_files, is_cheat_pack, load_pack_manifest
+from loadout.config import get_builtin_cheat_source
 from loadout.loader import _SKIP_FILES
 from loadout.models import Action
 
@@ -42,17 +43,26 @@ def _yaml_cheat_files(path: Path) -> list[Path]:
     return [f for f in files if f.name not in _SKIP_FILES]
 
 
-def _load_manifest_version(cheats_dir: Path) -> str:
-    manifest = cheats_dir / "manifest.yaml"
-    if not manifest.is_file():
-        return "?"
-    try:
-        with manifest.open(encoding="utf-8") as fh:
-            data = yaml.safe_load(fh) or {}
-    except yaml.YAMLError:
-        return "?"
+def _load_manifest_version(cheat_source: Path) -> str:
+    if is_cheat_pack(cheat_source):
+        data = load_pack_manifest(cheat_source)
+    else:
+        manifest = cheat_source / "manifest.yaml"
+        if not manifest.is_file():
+            return "?"
+        try:
+            with manifest.open(encoding="utf-8") as fh:
+                data = yaml.safe_load(fh) or {}
+        except yaml.YAMLError:
+            return "?"
     version = data.get("version")
     return str(version) if version is not None else "?"
+
+
+def _builtin_cheat_file_count(cheat_source: Path) -> int:
+    if is_cheat_pack(cheat_source):
+        return count_pack_cheat_files(cheat_source)
+    return len(_yaml_cheat_files(cheat_source))
 
 
 def _latest_mtime(paths: list[Path]) -> datetime | None:
@@ -75,31 +85,34 @@ def collect_pack_stats(
 ) -> PackStats:
     """Derive pack statistics from loaded actions and cheat directories."""
     cheat_paths = cheat_paths or []
-    builtin_dir = get_builtin_cheats_dir()
+    builtin_source = get_builtin_cheat_source()
 
     tree, _ = build_browse_tree(actions)
     tags = {tag.lower() for action in actions for tag in action.tags}
-    manifest_slugs = manifest_category_slugs(builtin_dir)
+    manifest_slugs = manifest_category_slugs(builtin_source)
     category_count = len(manifest_slugs) if manifest_slugs else len(tree)
 
-    builtin_files = _yaml_cheat_files(builtin_dir)
+    builtin_file_count = _builtin_cheat_file_count(builtin_source)
     user_files: list[Path] = []
     for path in cheat_paths:
-        if path.resolve() == builtin_dir.resolve():
+        if path.resolve() == builtin_source.resolve():
             continue
         user_files.extend(_yaml_cheat_files(path))
 
-    manifest_mtime = _latest_mtime([builtin_dir / "manifest.yaml"])
-    content_mtime = _latest_mtime(builtin_files + user_files)
-    updated_at = content_mtime or manifest_mtime or datetime.now()
+    if is_cheat_pack(builtin_source):
+        updated_at = datetime.fromtimestamp(builtin_source.stat().st_mtime)
+    else:
+        manifest_mtime = _latest_mtime([builtin_source / "manifest.yaml"])
+        content_mtime = _latest_mtime(_yaml_cheat_files(builtin_source) + user_files)
+        updated_at = content_mtime or manifest_mtime or datetime.now()
 
     return PackStats(
         tool_count=len({a.tool for a in actions}),
         command_count=len(actions),
         category_count=category_count,
         tag_count=len(tags),
-        cheat_file_count=len(builtin_files),
+        cheat_file_count=builtin_file_count,
         user_cheat_file_count=len(user_files),
-        pack_version=_load_manifest_version(builtin_dir),
+        pack_version=_load_manifest_version(builtin_source),
         updated_at=updated_at,
     )
